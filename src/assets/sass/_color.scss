@@ -1,0 +1,19 @@
+*{
+    --black: #0b0b0b;
+    --white: #f0f0f0;
+    --gray: #808080;
+    --silver: #C0C0C0;
+    --navy: #000080;
+}
+.theme {
+--secondary: var(--navy);
+--thirdary: var(--gray)
+}
+.theme--light{
+    --background:var(--silver);
+    --primary:var(--black);
+}
+.theme--dark {
+    --background: var(--black);
+    --primary: var(--silver);
+}
