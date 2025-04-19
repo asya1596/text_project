@@ -1,9 +1,6 @@
 <template>
-  <div>
-    <div
-      :class="['switch', { 'switch--active': isActive }]"
-      @click="handleSwitch"
-    >
+  <div class="switch-box">
+    <div :class="['switch', { 'switch--active': isActive }]" @click="handleSwitch">
       <input type="checkbox" :checked="isActive" :id="switchId" />
     </div>
     <label :for="switchId">
@@ -45,6 +42,7 @@ export default {
   border: 2px solid var(--thirdary);
   cursor: pointer;
   transition: border-color 0.2s ease-out;
+
   &::before {
     content: "";
     position: absolute;
@@ -56,6 +54,7 @@ export default {
     border-radius: 8px;
     transition: all 0.2s ease-out;
   }
+
   input {
     position: absolute;
     width: 0;
@@ -63,11 +62,19 @@ export default {
     overflow: hidden;
   }
 }
+
 .switch--active {
   border-color: var(--secondary);
+
   &::before {
     left: 29px;
     background-color: var(--secondary);
   }
+}
+
+.switch-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 </style>

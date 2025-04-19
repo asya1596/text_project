@@ -18,9 +18,13 @@
     </nav>
     <div class="phone_and_theme">
       <a href="#">+79998753456</a>
-      <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme"/>
-      <light-icon v-if="isLightTheme" />
-      <dark-icon v-else />
+      <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme">
+        <div>
+          <light-icon v-if="isLightTheme" />
+          <dark-icon v-else />
+        </div>
+      </switch-component>
+
     </div>
   </header>
 </template>
@@ -62,6 +66,7 @@ header {
   padding: 10px 30px;
   backdrop-filter: blur(10px);
   border-radius: 0px 0px 8px 8px;
+
   .phone_and_theme {
     display: flex;
     align-items: center;
@@ -75,24 +80,30 @@ header {
       gap: 10px;
     }
   }
+
   a {
     font-size: 14px;
     color: var(--primary);
     padding: 4px;
     border-radius: 8px;
     transition: color 0.2s ease-out;
+
     &:hover {
       background-color: rgba($color: #fff, $alpha: 0.1);
     }
   }
+
   & ::v-deep .switch {
     border-color: var(--primary);
+
     &::before {
       background-color: var(--primary);
     }
   }
+
   & ::v-deep .switch--active {
     border-color: var(--primary);
+
     &::before {
       background-color: var(--primary);
     }

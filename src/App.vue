@@ -14,12 +14,12 @@ import {
 
 <script>
 export default {
-  computed:{
-  ...mapState(
-    {
-      theme: state => state.theme
-    }
-  )
+  computed: {
+    ...mapState(
+      {
+        theme: state => state.theme
+      }
+    )
   }
 }
 </script>
