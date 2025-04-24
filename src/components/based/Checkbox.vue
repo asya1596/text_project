@@ -1,6 +1,8 @@
 <template>
   <div class="checkbox-box">
-    <div :class="['checkbox', { 'checkbox-active': isChecked }]" @click="checkbox">
+    <div :class="['checkbox', { 'checkbox-active': isChecked}]" 
+    @click="checkbox"
+    >
       <input type="checkbox" :id="checboxId" :value="isChecked" />
     </div>
     <label :for="checboxId">
@@ -33,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.checkbox {
+.checkbox{
   position: relative;
   width: 20px;
   min-width: 20px;
@@ -41,7 +43,6 @@ export default {
   border: 2px solid var(--thirdary);
   cursor: auto;
   transition: border-color 0.2s ease-out;
-
   &::before {
     content: "";
     position: absolute;
@@ -55,10 +56,9 @@ export default {
     border-color: var(--thirdary);
     transition: all 0.2s ease-out;
     opacity: 0;
-
-
+    
+    
   }
-
   input {
     position: absolute;
     width: 0;
@@ -66,18 +66,16 @@ export default {
     overflow: hidden;
   }
 }
-
-.checkbox-active {
+.checkbox-active{
   background-color: var(--secondary);
-
-  &::before {
+  &::before{
     opacity: 1;
   }
-}
+  }
+  .checkbox-box{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
 
-.checkbox-box {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
 </style>

@@ -3,16 +3,15 @@
     <h2>Примеры работ</h2>
     <div class="works">
       <switch-component v-model:is-active="exSwitch" switch-id="ex-switch">
-        <p>Вася Не вредная</p>
+        <p>Свитч обычный</p>
       </switch-component>
       <checkbox-component v-model:is-checked="exCheckbox" checbox-id="ex-checbox">
-        <p>Нафая не вредина</p>
+        <p>Чекбокс обычный</p>
       </checkbox-component>
-
+      <accordion-component/>
 
     </div>
   </div>
-
 </template>
 
 
@@ -20,13 +19,16 @@
 <script setup>
 import SwitchComponent from "./based/Switch.vue";
 import CheckboxComponent from "./based/Checkbox.vue";
+import AccordionComponent from "./based/Accordion.vue";
 </script>
+
 <script>
 export default {
   data() {
     return {
       exSwitch: false,
       exCheckbox: false,
+      exAccordion: false
     };
   },
 };
