@@ -1,19 +1,32 @@
-*{
+* {
     --black: #0b0b0b;
     --white: #f0f0f0;
-    --gray: #808080;
-    --silver: #C0C0C0;
-    --navy: #000080;
+    --gray: #A9A9A9;
+    --dodgerblue: #1E90FF;
+    --blue: #0000FF;
+    --dimgrey: #696969;
+    --aqua: #00FFFF;
+    --mono: #6c6c6c;
+    --ghostwhite: #F8F8FF;
 }
+
 .theme {
---secondary: var(--navy);
---thirdary: var(--gray)
+    --secondary: var(--blue);
+    --thirdary: var(--dodgerblue);
+    
 }
-.theme--light{
-    --background:var(--silver);
-    --primary:var(--black);
+
+.theme--light {
+    --background: var(--ghostwhite);
+    --primary: var(--black);
+    --element: var(--aqua);
+    --bary: var(--dimgrey );
+
 }
+
 .theme--dark {
     --background: var(--black);
-    --primary: var(--silver);
+    --primary: var(--ghostwhite);
+    --element: var(--blue);
+    --bary: var(--gray);
 }

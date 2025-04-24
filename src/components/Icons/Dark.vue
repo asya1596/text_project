@@ -24,7 +24,7 @@
 <style lang="scss" scoped>
 svg {
   path {
-    fill: var(--primary);
+    fill: var(--element);
   }
 }
 </style>

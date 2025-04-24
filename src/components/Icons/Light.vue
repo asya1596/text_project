@@ -30,7 +30,7 @@
 <style lang="scss" scoped>
 svg {
   circle,polygon {
-    fill: var(--primary);
+    fill: var(--element);
   }
 }
 </style>

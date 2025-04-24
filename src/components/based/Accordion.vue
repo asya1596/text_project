@@ -44,14 +44,14 @@ export default {
 <style lang="scss" scoped>
 .accordion-elem {
     display: block;
-    background-color: var(--thirdary);
+    background-color: var(--bary);
     padding: 10px;
     width: 400px;
     border-radius: 10px;
 }
 
 .accordion-item-head {
-    color: var(--primary);
+    color: var(--background);
     padding: 5px;
     cursor: pointer;
     font-size: 18px;
@@ -62,7 +62,7 @@ export default {
 
 .accordion-item-body {
     font-size: 14px;
-    color: var(--primary);
+    color: var(--background);
     cursor: pointer;
     width: 100%;
     padding: 5px 5px 5px 5px;

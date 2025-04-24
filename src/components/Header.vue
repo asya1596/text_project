@@ -83,7 +83,7 @@ header {
 
   a {
     font-size: 14px;
-    color: var(--primary);
+    color: var(--background);
     padding: 4px;
     border-radius: 8px;
     transition: color 0.2s ease-out;
@@ -94,18 +94,18 @@ header {
   }
 
   & ::v-deep .switch {
-    border-color: var(--primary);
+    border-color: var(--element);
 
     &::before {
-      background-color: var(--primary);
+      background-color: var(--element);
     }
   }
 
   & ::v-deep .switch--active {
-    border-color: var(--primary);
+    border-color: var(--element);
 
     &::before {
-      background-color: var(--primary);
+      background-color: var(--element);
     }
   }
 }

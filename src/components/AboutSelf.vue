@@ -14,7 +14,7 @@
         CSS базовый курс <br />
         JS-базовый курс<br />
         VUE3-общие принципы<br />
-        Принципы работы d Git- репозиториq<br />
+        Принципы работы в Git- репозиторий<br />
         Английский язык- уровень B1.
       </p>
     </div>
@@ -36,13 +36,13 @@
   }
   h2 {
     font-size: 22px;
-    color: var(--primary);
+    color: var(--background);
     transition: color 0.2s ease-out;
     margin-bottom: 10px;
   }
   p{
     font-size: 16px;
-    color: var(--primary);
+    color: var(--background);
     transition: color 0.2s ease-out;
   }
 }

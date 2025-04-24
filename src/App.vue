@@ -28,8 +28,8 @@ export default {
 @import "/src/assets/css/index.css";
 @import "/src/assets/sass/index.scss";
 
-body {
+.theme {
   position: relative;
-  background-color: #6c6c6c;
+  background-color: var(--primary);
 }
 </style>

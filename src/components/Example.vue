@@ -39,7 +39,7 @@ export default {
   h2 {
     text-align: center;
     font-size: 22px;
-    color: var(--primary);
+    color: var(--background);
     transition: color 0.2s ease-out;
     margin-bottom: 10px;
   }
@@ -54,7 +54,7 @@ export default {
 
   p {
     font-size: 16px;
-    color: var(--primary);
+    color: var(--background);
     transition: color 0.2s ease-out;
   }
 }
