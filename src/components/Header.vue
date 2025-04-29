@@ -89,7 +89,7 @@ header {
     transition: color 0.2s ease-out;
 
     &:hover {
-      background-color: rgba($color: #fff, $alpha: 0.1);
+      background-color: rgba($color: #A9A9A9, $alpha: 0.4);
     }
   }
 
