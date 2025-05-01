@@ -1,21 +1,20 @@
 <template>
-    <div class="input-box">
-        <label :for="inputId">{{ labelText }}</label>
-        <input :value="modelValue" @input="handlInput" type="text" placeholder="Введите текст" :id="inputId" />
+    <div class="textarea-box">
+        <label for="textareaId">{{ labelText }}</label>
+        <textarea :value="modelValue" @input="handlInput" placeholder="Введите несколько строчек" rows="5" cols="10"
+            :id="textareaId">
+        </textarea>
     </div>
 </template>
 
 <script>
-// это объект, внутри которого объявлена функция-свойство дата, которая возвращает нам объект, 
-// свойствами которого является реактивная переменная(message, inputId).
 export default {
     methods: {
-        // это метод, который поднимает собитие(update:modelValue)
         handlInput(event) {
             this.$emit("update:modelValue", event.target.value)
         }
-    }
 
+    },
 }
 </script>
 
@@ -23,36 +22,35 @@ export default {
 defineProps({
     modelValue: {
         type: String,
-        required: true,
+        requierd: true,
     },
-    inputId: {
+    textareaId: {
         type: String,
-        default: ""
+        default: "",
     },
     labelText: {
         type: String,
         default: "",
-    }
+    },
 
 })
-
 </script>
 
 <style lang="scss" scoped>
-.input-box {
+.textarea-box {
     position: relative;
     padding-top: 20px;
     width: min-content;
     margin-bottom: 10px;
     transition: all 0.2s ease-out;
-    
 
-    input {
+
+    textarea {
         border: 2px solid var(--thirdary);
         width: 400px;
         transition: all 0.2s ease-out;
         color: var(--background);
-        border-radius: 6px;
+        border-radius: 10px;
 
         &::placeholder {
             color: var(--background);

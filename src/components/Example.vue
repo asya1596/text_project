@@ -8,16 +8,14 @@
       <checkbox-component v-model:is-checked="exCheckbox" checbox-id="ex-checbox">
         <p>Чекбокс обычный</p>
       </checkbox-component>
-      <accordion-component>
-
-      </accordion-component>
-
-      <input-component v-model="exInput" input-id="ex-input" ladel-text="Инпут простой">
-      <!-- Идет привязка атрибута модульвелью к переменной, затем подпись на событие update:модульвелью-->
-      <!-- добавлен атрибут лайблтекст- для помещения лайбла без слота и возможности поместить туда что угодно, 
+      <accordion-component />
+      <input-component v-model="exInput" input-id="ex-input" label-text="Инпут простой">
+        <!-- Идет привязка атрибута модульвелью к переменной, затем подпись на событие update:модульвелью-->
+        <!-- добавлен атрибут лайблтекст- для помещения лайбла без слота и возможности поместить туда что угодно, 
         через пропсы -->
-
       </input-component>
+      <textarea-component v-model="exTextarea" textarea-id="ex-textarea" label-text="Многострочный коментарий">
+      </textarea-component>
     </div>
   </div>
 </template>
@@ -29,6 +27,7 @@ import SwitchComponent from "./based/Switch.vue";
 import CheckboxComponent from "./based/Checkbox.vue";
 import AccordionComponent from "./based/Accordion.vue";
 import InputComponent from "./based/Input.vue";
+import TextareaComponent from "./based/Textarea.vue";
 </script>
 
 <script>
@@ -38,6 +37,7 @@ export default {
       exSwitch: false,
       exCheckbox: false,
       exInput: "",
+      exTextarea: "",
     };
   },
 };
