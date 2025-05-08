@@ -56,7 +56,7 @@ export default {
 
 .works {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   flex-direction: column;
   align-items: left;
   justify-content: left;

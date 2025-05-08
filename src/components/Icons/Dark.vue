@@ -7,7 +7,7 @@
     x="0px"
     y="0px"
     width="15"
-    height="15"
+    height="16"
     viewBox="0 0 502 502"
     xml:space="preserve"
   >
@@ -23,6 +23,10 @@
 
 <style lang="scss" scoped>
 svg {
+  &:hover {
+      box-shadow: 1px 1px 3px 1px var(--bary);
+      border-radius: 10px;
+    }
   path {
     fill: var(--element);
   }

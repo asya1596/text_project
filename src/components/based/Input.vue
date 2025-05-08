@@ -1,5 +1,6 @@
 <template>
-    <div class="input-box">
+    <div class="input-box" :class="{ 'input-box--active': modelValue }">
+        <!-- присвоен класс для обозначения активного состояния. -->
         <label :for="inputId">{{ labelText }}</label>
         <input :value="modelValue" @input="handlInput" type="text" placeholder="Введите текст" :id="inputId" />
     </div>
@@ -53,11 +54,18 @@ defineProps({
         transition: all 0.2s ease-out;
         color: var(--background);
         border-radius: 6px;
-
+        &:hover {
+                box-shadow: 1px 1px 3px 1px var(--bary);
+            }
+        &:focus{
+            border: 2px solid var(--secondary);
+        }
         &::placeholder {
             color: var(--background);
         }
     }
+    
+
 
     label {
         position: absolute;
@@ -65,6 +73,11 @@ defineProps({
         right: 0;
         transition: all 0.2s ease-out;
         color: var(--background);
+    }
+}
+.input-box--active{
+    input{
+        border: 2px solid var(--secondary);
     }
 }
 </style>

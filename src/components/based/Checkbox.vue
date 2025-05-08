@@ -41,21 +41,26 @@ export default {
   min-width: 20px;
   height: 20px;
   border: 2px solid var(--thirdary);
-  cursor: auto;
+  cursor: pointer;
+  border-radius: 5px;
   transition: border-color 0.2s ease-out;
+  &:hover {
+      box-shadow: 1px 1px 3px 1px var(--bary);
+    }
   &::before {
     content: "";
     position: absolute;
-    top: -1px;
+    top: 1px;
     left: 2px;
     width: 12px;
-    height: 12px;
+    height: 10px;
     transform: rotate(-45deg);
     border-style: solid;
     border-width: 0px 0px 2px 2px;
-    border-color: var(--thirdary);
+    border-color: var(--secondary);
     transition: all 0.2s ease-out;
     opacity: 0;
+    border-radius: 1px;
     
     
   }
@@ -67,7 +72,7 @@ export default {
   }
 }
 .checkbox-active{
-  background-color: var(--secondary);
+  border-color: var(--secondary);
   &::before{
     opacity: 1;
   }

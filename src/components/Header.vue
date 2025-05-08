@@ -19,7 +19,7 @@
     <div class="phone_and_theme">
       <a href="#">+79998753456</a>
       <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme">
-        <div>
+        <div class="icons">
           <light-icon v-if="isLightTheme" />
           <dark-icon v-else />
         </div>
@@ -57,6 +57,7 @@ export default {
 <style lang="scss" scoped>
 header {
   position: sticky;
+  z-index: 100;
   top: 0;
   left: 0;
   display: flex;
@@ -71,6 +72,12 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
+
+    .icons {
+      height: 15px;
+      display: flex;
+      align-items: center;
+    }
   }
 
   nav {

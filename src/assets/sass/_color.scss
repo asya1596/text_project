@@ -12,21 +12,27 @@
 
 .theme {
     --secondary: var(--blue);
-    --thirdary: var(--dodgerblue);
+    // border-при включении и изменении состояния
+    --thirdary: var(--dodgerblue);  
+    // border элементов
     
 }
 
 .theme--light {
     --background: var(--ghostwhite);
     --primary: var(--black);
-    --element: var(--aqua);
+    // цвет текста светлая тема
+    --element: var(--blue);
     --bary: var(--dimgrey );
+    // цвет элемента при ховере светлая тема
 
 }
 
 .theme--dark {
     --background: var(--black);
     --primary: var(--ghostwhite);
-    --element: var(--blue);
+    // цвет текста темная тема
+    --element: var(--dodgerblue);
     --bary: var(--gray);
+    // цвет элемента при ховере темная тема
 }

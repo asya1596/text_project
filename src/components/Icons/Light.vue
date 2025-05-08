@@ -29,6 +29,10 @@
 
 <style lang="scss" scoped>
 svg {
+  &:hover {
+      box-shadow: 1px 1px 3px 1px var(--bary);
+      border-radius: 10px;
+    }
   circle,polygon {
     fill: var(--element);
   }

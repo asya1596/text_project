@@ -43,6 +43,7 @@ defineProps({
     width: min-content;
     margin-bottom: 10px;
     transition: all 0.2s ease-out;
+    
 
 
     textarea {
@@ -51,7 +52,13 @@ defineProps({
         transition: all 0.2s ease-out;
         color: var(--background);
         border-radius: 10px;
-
+        outline: none;
+        &:hover {
+                box-shadow: 1px 1px 3px 1px var(--bary);
+            }
+        &:focus{
+            border: 2px solid var(--secondary);
+        }
         &::placeholder {
             color: var(--background);
         }
