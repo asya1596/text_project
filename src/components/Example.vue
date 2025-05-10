@@ -16,6 +16,7 @@
       </input-component>
       <textarea-component v-model="exTextarea" textarea-id="ex-textarea" label-text="Многострочный коментарий">
       </textarea-component>
+      <select-component/>
     </div>
   </div>
 </template>
@@ -28,6 +29,7 @@ import CheckboxComponent from "./based/Checkbox.vue";
 import AccordionComponent from "./based/Accordion.vue";
 import InputComponent from "./based/Input.vue";
 import TextareaComponent from "./based/Textarea.vue";
+import SelectComponent from "./based/Select";
 </script>
 
 <script>
@@ -38,6 +40,7 @@ export default {
       exCheckbox: false,
       exInput: "",
       exTextarea: "",
+      exSelect: "",
     };
   },
 };

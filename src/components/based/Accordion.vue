@@ -68,7 +68,6 @@ export default {
     color: var(--background);
     cursor: pointer;
     width: 100%;
-    padding: 5px;
     transition: all 0.2s ease;
     transform: scaleY(1) translateY(0);
     height: 210px;
