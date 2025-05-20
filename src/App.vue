@@ -30,6 +30,6 @@ export default {
 
 .theme {
   position: relative;
-  background-color: var(--primary);
+  background-color: var(--backgroundwall);
 }
 </style>

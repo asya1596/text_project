@@ -10,11 +10,16 @@
                           checbox-id="ex-checbox">
         <p>Чекбокс обычный</p>
       </checkbox-component>
+      <listitem-component v-model="selectedSort"
+                          :items="sortItems"
+                          label-text="Селект кастомный"> </listitem-component>
+      <!-- через директиву мы привязываем переменную к modulValue атрибуту
+        и подписываемся а собитие(называется update:modelValue). 
+        При поднятии события переменной присваивается новое значение. -->
       <accordion-component />
       <input-component v-model="exInput"
                        input-id="ex-input"
                        label-text="Инпут простой">
-        <!-- Идет привязка атрибута модульвелью к переменной, затем подпись на событие update:модульвелью-->
         <!-- добавлен атрибут лайблтекст- для помещения лайбла без слота и возможности поместить туда что угодно, 
         через пропсы -->
       </input-component>
@@ -22,12 +27,6 @@
                           textarea-id="ex-textarea"
                           label-text="Многострочный коментарий">
       </textarea-component>
-      <select-component v-model="exSelect"></select-component>
-      <listitem-component v-model="selectedSort"
-                          :items="sortItems"> </listitem-component>
-      <!-- через директиву мы привязываем переменную к modulValue атрибуту
-        и подписываемся а собитие(называется update:modelValue). 
-        При поднятии события переменной присваивается новое значение. -->
     </div>
   </div>
 </template>
@@ -40,7 +39,6 @@ import CheckboxComponent from "./based/Checkbox.vue";
 import AccordionComponent from "./based/Accordion.vue";
 import InputComponent from "./based/Input.vue";
 import TextareaComponent from "./based/Textarea.vue";
-import SelectComponent from "./based/Select.vue";
 import ListitemComponent from "./based/Listitem.vue";
 </script>
 
@@ -52,9 +50,7 @@ export default {
       exCheckbox: false,
       exInput: "",
       exTextarea: "",
-      exSelect: "",
-      // selectedSort- переменная с дефолтным значением строка. 
-      selectedSort: "Выбери элемент",
+      selectedSort: "Выбери вариант",
       sortItems: [
         { value: '1', name: "Выбери 1 вариант" },
         { value: '2', name: "Выбери 2 вариант" },
