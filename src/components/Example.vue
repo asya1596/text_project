@@ -18,8 +18,8 @@
         При поднятии события переменной присваивается новое значение. -->
       <accordion-component />
       <input-component v-model="exInput"
-                       input-id="ex-input"
-                       label-text="Инпут простой">
+                      input-id="ex-input"
+                      label-text="Инпут простой">
         <!-- добавлен атрибут лайблтекст- для помещения лайбла без слота и возможности поместить туда что угодно, 
         через пропсы -->
       </input-component>

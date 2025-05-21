@@ -6,8 +6,7 @@
              @click="handelClick"
              id="listItemId">
             <p>{{ modelValue }}</p>
-            <ul class="listItem_elem"
-                v-show="isOpen">
+            <ul class="listItem_elem">
                 <li v-for="item in items"
                     :key="item.value"
                     @click="handleShoose(item.name)">
@@ -65,6 +64,7 @@ defineProps({
     position: relative;
     margin-right: 5px;
     cursor: pointer;
+
     label {
         position: absolute;
         left: 170px;
@@ -77,17 +77,21 @@ defineProps({
     width: 170px;
     border-radius: 5px;
     text-align: center;
-    height: 38px;
 
     .listItem_elem {
+        transform: scaleY(0) translateY(-100%);
+        height: 0;
+        transition: all 0.2s ease;
+
         li {
-            line-height: 0;
-            transition: line-height 0.5s
+            border: 1px solid var(--secondary);
+            border-radius: 5px;
+            margin: 4px;
+            color: var(--background);
         }
     }
 
     p {
-        display: block;
         text-align: center;
         margin: 4px;
         height: 27px;
@@ -107,25 +111,14 @@ defineProps({
 }
 
 
+
 .listItem--active {
     border: 2px solid var(--secondary);
-    height: max-content;
 
     .listItem_elem {
-        display: block;
-        text-align: center;
-
-        li {
-            line-height: 1;
-            border: 1px solid var(--secondary);
-            border-radius: 5px;
-            margin: 4px;
-            color: var(--background);
-            &:hover{
-                border-color: var(--secondary);
-                background-color: var(--bary);
-            }
-        }
+        transform: scaleY(1) translateY(0%);
+        height: 84px;
     }
+
 }
 </style>
