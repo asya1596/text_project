@@ -11,8 +11,7 @@
         <p>Чекбокс обычный</p>
       </checkbox-component>
       <listitem-component v-model="selectedSort"
-                          :items="sortItems"
-                          label-text="Селект кастомный"> </listitem-component>
+                          :items="sortItems"> </listitem-component>
       <!-- через директиву мы привязываем переменную к modulValue атрибуту
         и подписываемся а собитие(называется update:modelValue). 
         При поднятии события переменной присваивается новое значение. -->

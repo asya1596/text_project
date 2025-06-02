@@ -1,6 +1,6 @@
 <template>
     <div class="select">
-        <label for="listItemId"> {{ labelText }}</label>
+
         <div class="listItem"
              :class="{ 'listItem--active': isOpen }"
              @click="handelClick"
@@ -51,10 +51,7 @@ defineProps({
         type: Array,
         default: () => [],
     },
-    labelText: {
-        type: String,
-        default: "",
-    }
+
 })
 
 </script>
@@ -64,12 +61,6 @@ defineProps({
     position: relative;
     margin-right: 5px;
     cursor: pointer;
-
-    label {
-        position: absolute;
-        left: 170px;
-        padding: 5px;
-    }
 }
 
 .listItem {
