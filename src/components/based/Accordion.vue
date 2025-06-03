@@ -4,9 +4,11 @@
     <!-- теперь будем чере класс задавать в стилях состояие Аккордиона -->
     <div class="accordion-elem " :class="{ 'accordion-elem--active': isOpen }" @click="handleСlick" id="accordion">
         <h3 class="accordion-item-head">
+            <!-- todo вынести в качестве переменной или slot -->
             Заголовок аккордиона
         </h3>
         <div class="accordion-item-body" :class="{ 'accordion-item-body--deactive': !isOpen }">
+            <!-- todo вынести в slot -->
             <p>
                 1. Текст первого пунта аккордиона, здесь я вам расскжу сквзку про белого бычка и ушлого старика.
             </p>
