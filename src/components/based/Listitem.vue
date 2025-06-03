@@ -1,17 +1,19 @@
 <template>
     <div class="select">
-
+        <!-- todo переназвать классы для лучшей читаемости -->
         <div class="listItem"
              :class="{ 'listItem--active': isOpen }"
              @click="handelClick"
              id="listItemId">
             <p>{{ modelValue }}</p>
+            <!-- todo сделать выпадающий список больше похожий на прототип (сейчас анимация и расположение похожи на аккордеон) -->
             <ul class="listItem_elem">
                 <li v-for="item in items"
                     :key="item.value"
                     @click="handleShoose(item.name)">
                     {{ item.name }}
                 </li>
+                <!-- todo убрить паддинг снизу и добавить отступ от первой строчки -->
             </ul>
         </div>
     </div>
@@ -19,6 +21,7 @@
 </template>
 
 <script>
+// todo переназвать компонент на более понятный
 export default {
     data() {
         return {

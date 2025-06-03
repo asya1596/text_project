@@ -1,6 +1,9 @@
 <template>
     <div class="textarea-box">
         <label for="textareaId">{{ labelText }}</label>
+        <!-- todo добавить отступы для большей схожести с другими элементами -->
+        <!-- todo убрать resize -->
+        <!-- todo добавить синий бордер с введенным текстом, по аналогии с input -->
         <textarea :value="modelValue" @input="handlInput" placeholder="Введите несколько строчек" rows="5" cols="10"
             :id="textareaId">
         </textarea>

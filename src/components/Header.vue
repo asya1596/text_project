@@ -3,6 +3,7 @@
     <nav>
       <ul>
         <li>
+          <!-- todo добавить паддинг слева-справа -->
           <router-link to="#"> Обо мне </router-link>
         </li>
         <li>
@@ -18,6 +19,7 @@
     </nav>
     <div class="phone_and_theme">
       <!-- todo телефон вынести в state (vue-store) глобальный для большей гибкости -->
+      <!-- todo сделать ссылку чтобы открывался телефонный набор на телефоне -->
       <a href="#">+79998753456</a>
       <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme">
         <div class="icons">

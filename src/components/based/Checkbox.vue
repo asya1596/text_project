@@ -1,10 +1,12 @@
 <template>
   <div class="checkbox-box">
+    <!-- todo класс переназвать active должен быть модификатором -->
     <div :class="['checkbox', { 'checkbox-active': isChecked}]" 
     @click="checkbox"
     >
       <input type="checkbox" :id="checboxId" :value="isChecked" />
     </div>
+    <!-- todo сделать label не выбираемым -->
     <label :for="checboxId">
       <slot></slot>
     </label>

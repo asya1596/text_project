@@ -3,6 +3,7 @@
     <div class="switch-box" @click="handleSwitch">
       <input type="checkbox" :checked="isActive" :id="switchId" />
     </div>
+    <!-- todo сделать label не выбираемым -->
     <label :for="switchId">
       <slot></slot>
     </label>

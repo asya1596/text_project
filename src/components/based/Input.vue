@@ -2,6 +2,7 @@
     <div class="input-box" :class="{ 'input-box--active': modelValue }">
         <!-- присвоен класс для обозначения активного состояния. -->
         <label :for="inputId">{{ labelText }}</label>
+        <!-- todo добавить отступы для большей схожести с другими элементами -->
         <input :value="modelValue" @input="handlInput" type="text" placeholder="Введите текст" :id="inputId" />
     </div>
 </template>
