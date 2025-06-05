@@ -1,9 +1,6 @@
 <template>
-    <div class="textarea-box">
+    <div class="textarea-box" :class="{'textarea-box--active': modelValue}">
         <label for="textareaId">{{ labelText }}</label>
-        <!-- todo добавить отступы для большей схожести с другими элементами -->
-        <!-- todo убрать resize -->
-        <!-- todo добавить синий бордер с введенным текстом, по аналогии с input -->
         <textarea :value="modelValue" @input="handlInput" placeholder="Введите несколько строчек" rows="5" cols="10"
             :id="textareaId">
         </textarea>
@@ -46,9 +43,6 @@ defineProps({
     width: min-content;
     margin-bottom: 10px;
     transition: all 0.2s ease-out;
-    
-
-
     textarea {
         border: 2px solid var(--thirdary);
         width: 400px;
@@ -56,6 +50,8 @@ defineProps({
         color: var(--background);
         border-radius: 10px;
         outline: none;
+        padding: 5px;
+        resize:none;
         &:hover {
                 box-shadow: 1px 1px 3px 1px var(--bary);
             }
@@ -73,6 +69,12 @@ defineProps({
         right: 0;
         transition: all 0.2s ease-out;
         color: var(--background);
+        user-select: none;
+    }
+}
+.textarea-box--active{
+    textarea{
+        border: 2px solid var(--secondary);
     }
 }
 </style>

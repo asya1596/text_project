@@ -10,8 +10,8 @@
                           checbox-id="ex-checbox">
         <p>Чекбокс обычный</p>
       </checkbox-component>
-      <listitem-component v-model="selectedSort"
-                          :items="sortItems"> </listitem-component>
+      <select-component v-model="selectedSort"
+                          :items="sortList"> </select-component>
       <!-- через директиву мы привязываем переменную к modulValue атрибуту
         и подписываемся а собитие(называется update:modelValue). 
         При поднятии события переменной присваивается новое значение. -->
@@ -58,7 +58,7 @@ import CheckboxComponent from "./based/Checkbox.vue";
 import AccordionComponent from "./based/Accordion.vue";
 import InputComponent from "./based/Input.vue";
 import TextareaComponent from "./based/Textarea.vue";
-import ListitemComponent from "./based/Listitem.vue";
+import SelectComponent from "./based/Select.vue";
 </script>
 
 <script>
@@ -70,7 +70,7 @@ export default {
       exInput: "",
       exTextarea: "",
       selectedSort: "Выбери вариант",
-      sortItems: [
+      sortList: [
         { value: '1', name: "Выбери 1 вариант" },
         { value: '2', name: "Выбери 2 вариант" },
         { value: '3', name: "Выбери 3 вариант" },

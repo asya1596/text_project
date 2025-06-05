@@ -2,7 +2,6 @@
     <div class="input-box" :class="{ 'input-box--active': modelValue }">
         <!-- присвоен класс для обозначения активного состояния. -->
         <label :for="inputId">{{ labelText }}</label>
-        <!-- todo добавить отступы для большей схожести с другими элементами -->
         <input :value="modelValue" @input="handlInput" type="text" placeholder="Введите текст" :id="inputId" />
     </div>
 </template>
@@ -55,6 +54,7 @@ defineProps({
         transition: all 0.2s ease-out;
         color: var(--background);
         border-radius: 6px;
+        padding: 5px;
         &:hover {
                 box-shadow: 1px 1px 3px 1px var(--bary);
             }
@@ -74,6 +74,7 @@ defineProps({
         right: 0;
         transition: all 0.2s ease-out;
         color: var(--background);
+        user-select: none;
     }
 }
 .input-box--active{

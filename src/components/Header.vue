@@ -20,8 +20,10 @@
     <div class="phone_and_theme">
       <!-- todo телефон вынести в state (vue-store) глобальный для большей гибкости -->
       <!-- todo сделать ссылку чтобы открывался телефонный набор на телефоне -->
-      <a href="#">+79998753456</a>
-      <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme">
+      <a href="#">{{ phone }}</a>
+      <switch-component :is-active="isLightTheme"
+                        @update:is-active="changeTheme"
+                        switch-id="theme">
         <div class="icons">
           <light-icon v-if="isLightTheme" />
           <dark-icon v-else />

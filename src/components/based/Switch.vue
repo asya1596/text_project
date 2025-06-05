@@ -3,7 +3,6 @@
     <div class="switch-box" @click="handleSwitch">
       <input type="checkbox" :checked="isActive" :id="switchId" />
     </div>
-    <!-- todo сделать label не выбираемым -->
     <label :for="switchId">
       <slot></slot>
     </label>
@@ -77,13 +76,13 @@ export default {
 
   label {
     color: var(--primary);
+    user-select: none;
   }
 }
 
 .switch--active {
   .switch-box {
     border: 2px solid var(--secondary);
-
     &::before {
       background-color: var(--secondary);
       left: 63px;
@@ -91,7 +90,6 @@ export default {
       transition: background-color 0.4s ease-out, left 0.2s 0.2s, right 0.2s;
     }
   }
-
 }
 
 </style>

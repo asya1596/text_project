@@ -28,10 +28,11 @@ export default {
 @import "/src/assets/css/index.css";
 @import "/src/assets/sass/index.scss";
 
-// todo добавить фон на всю страницу (снизу есть белая полоска)
-
 .theme {
   position: relative;
   background-color: var(--backgroundwall);
+  min-height: 100vh;
+  // контент не на весь экран браузера резулирует величина vh, % тут не сработают.
+  // граница background появлялась в следствие заданной высоты по высоте контента(а он не на все окно браузера был).
 }
 </style>

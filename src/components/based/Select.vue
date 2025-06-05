@@ -1,19 +1,17 @@
 <template>
     <div class="select">
-        <!-- todo переназвать классы для лучшей читаемости -->
-        <div class="listItem"
-             :class="{ 'listItem--active': isOpen }"
+        <div class="drop-down-list"
+             :class="{ 'drop-down-list--active': isOpen }"
              @click="handelClick"
-             id="listItemId">
+             id="drop-down-list-id">
             <p>{{ modelValue }}</p>
             <!-- todo сделать выпадающий список больше похожий на прототип (сейчас анимация и расположение похожи на аккордеон) -->
-            <ul class="listItem_elem">
+            <ul class="drop-down-list-element">
                 <li v-for="item in items"
                     :key="item.value"
                     @click="handleShoose(item.name)">
                     {{ item.name }}
                 </li>
-                <!-- todo убрить паддинг снизу и добавить отступ от первой строчки -->
             </ul>
         </div>
     </div>
@@ -21,7 +19,6 @@
 </template>
 
 <script>
-// todo переназвать компонент на более понятный
 export default {
     data() {
         return {
@@ -66,16 +63,17 @@ defineProps({
     cursor: pointer;
 }
 
-.listItem {
+.drop-down-list {
     border: 2px solid var(--thirdary);
     width: 170px;
     border-radius: 5px;
     text-align: center;
 
-    .listItem_elem {
+    .drop-down-list-element {
         transform: scaleY(0) translateY(-100%);
         height: 0;
         transition: all 0.2s ease;
+        padding: 2px 0px 0px 0px;
 
         li {
             border: 1px solid var(--secondary);
@@ -92,6 +90,7 @@ defineProps({
         border: 1px solid var(--thirdary);
         border-radius: 5px;
         color: var(--background);
+        user-select: none;
 
         &:hover {
             border-color: var(--secondary);
@@ -106,12 +105,12 @@ defineProps({
 
 
 
-.listItem--active {
+.drop-down-list--active {
     border: 2px solid var(--secondary);
 
-    .listItem_elem {
+    .drop-down-list-element {
         transform: scaleY(1) translateY(0%);
-        height: 84px;
+        height: 90px;
     }
 
 }

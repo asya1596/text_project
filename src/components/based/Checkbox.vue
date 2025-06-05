@@ -1,12 +1,11 @@
 <template>
   <div class="checkbox-box">
-    <!-- todo класс переназвать active должен быть модификатором -->
-    <div :class="['checkbox', { 'checkbox-active': isChecked}]" 
-    @click="checkbox"
-    >
-      <input type="checkbox" :id="checboxId" :value="isChecked" />
+    <div :class="['checkbox', { 'checkbox--active': isChecked }]"
+         @click="checkbox">
+      <input type="checkbox"
+             :id="checboxId"
+             :value="isChecked" />
     </div>
-    <!-- todo сделать label не выбираемым -->
     <label :for="checboxId">
       <slot></slot>
     </label>
@@ -37,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.checkbox{
+.checkbox {
   position: relative;
   width: 20px;
   min-width: 20px;
@@ -46,9 +45,11 @@ export default {
   cursor: pointer;
   border-radius: 5px;
   transition: border-color 0.2s ease-out;
+
   &:hover {
-      box-shadow: 1px 1px 3px 1px var(--bary);
-    }
+    box-shadow: 1px 1px 3px 1px var(--bary);
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -63,9 +64,10 @@ export default {
     transition: all 0.2s ease-out;
     opacity: 0;
     border-radius: 1px;
-    
-    
+
+
   }
+
   input {
     position: absolute;
     width: 0;
@@ -73,16 +75,22 @@ export default {
     overflow: hidden;
   }
 }
-.checkbox-active{
+
+.checkbox--active {
   border-color: var(--secondary);
-  &::before{
+
+  &::before {
     opacity: 1;
   }
-  }
-  .checkbox-box{
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
+}
 
+.checkbox-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  label {
+    user-select: none;
+  }
+}
 </style>

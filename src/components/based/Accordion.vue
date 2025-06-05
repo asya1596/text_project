@@ -58,6 +58,7 @@ export default {
     border-radius: 10px;
     padding: 10px;
     border-bottom: 0px solid var(--thirdary);
+    user-select: none;
 }
 
 .accordion-item-body {
