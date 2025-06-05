@@ -15,10 +15,30 @@
       <!-- через директиву мы привязываем переменную к modulValue атрибуту
         и подписываемся а собитие(называется update:modelValue). 
         При поднятии события переменной присваивается новое значение. -->
-      <accordion-component />
+      <accordion-component>
+        <template v-slot:head>
+          <h3> Заголовок аккордиона</h3>
+        </template>
+        <template v-slot:content>
+          <p class="content-accordion">
+            1. Текст первого пунта аккордиона, здесь я вам расскжу сквзку
+            про белого бычка и ушлого старика.
+          </p>
+          <p class="content-accordion">
+            2. Текст второго пунта аккордиона, здесь
+            я вам расскжу сквзку
+            про Царя Солтана и царевну лягушку.
+          </p>
+          <p class="content-accordion">
+            3. Текст третьего пунта аккордиона, а тут
+            я вам сказку не
+            расскажу.
+          </p>
+        </template>
+      </accordion-component>
       <input-component v-model="exInput"
-                      input-id="ex-input"
-                      label-text="Инпут простой">
+                       input-id="ex-input"
+                       label-text="Инпут простой">
         <!-- добавлен атрибут лайблтекст- для помещения лайбла без слота и возможности поместить туда что угодно, 
         через пропсы -->
       </input-component>
@@ -83,6 +103,11 @@ export default {
     font-size: 16px;
     color: var(--background);
     transition: color 0.2s ease-out;
+  }
+  .content-accordion{
+    margin: 3px;
+    padding: 1px 3px 3px 3px;
+    text-align: left;
   }
 }
 </style>

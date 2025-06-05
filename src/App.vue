@@ -29,6 +29,7 @@ export default {
 @import "/src/assets/sass/index.scss";
 
 // todo добавить фон на всю страницу (снизу есть белая полоска)
+
 .theme {
   position: relative;
   background-color: var(--backgroundwall);

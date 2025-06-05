@@ -3,7 +3,7 @@
     <nav>
       <ul>
         <li>
-          <!-- todo добавить паддинг слева-справа -->
+
           <router-link to="#"> Обо мне </router-link>
         </li>
         <li>
@@ -94,7 +94,7 @@ header {
   a {
     font-size: 14px;
     color: var(--background);
-    padding: 4px;
+    padding: 10px;
     border-radius: 8px;
     transition: color 0.2s ease-out;
 
