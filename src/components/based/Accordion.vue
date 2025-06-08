@@ -41,10 +41,10 @@ export default {
     border: 2px solid var(--thirdary);
     width: 400px;
     border-radius: 10px;
-
     &:hover {
-        box-shadow: 1px 1px 3px 1px var(--bary);
-    }
+            border-color: var(--secondary);
+        }
+    
 }
 
 .accordion-item-head {
@@ -59,6 +59,7 @@ export default {
     padding: 10px;
     border-bottom: 0px solid var(--thirdary);
     user-select: none;
+    
 }
 
 .accordion-item-body {

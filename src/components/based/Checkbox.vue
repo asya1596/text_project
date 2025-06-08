@@ -45,10 +45,11 @@ export default {
   cursor: pointer;
   border-radius: 5px;
   transition: border-color 0.2s ease-out;
-
   &:hover {
-    box-shadow: 1px 1px 3px 1px var(--bary);
-  }
+            border-color: var(--secondary);
+        }
+
+ 
 
   &::before {
     content: "";

@@ -1,12 +1,12 @@
 <template>
     <div class="select">
-        <div class="drop-down-list"
-             :class="{ 'drop-down-list--active': isOpen }"
+        <div class="dropdown-list"
+             :class="{ 'dropdown-list--active': isOpen }"
              @click="handelClick"
-             id="drop-down-list-id">
+             id="dropdown-list-id">
             <p>{{ modelValue }}</p>
             <!-- todo сделать выпадающий список больше похожий на прототип (сейчас анимация и расположение похожи на аккордеон) -->
-            <ul class="drop-down-list-element">
+            <ul class="dropdown-list-element">
                 <li v-for="item in items"
                     :key="item.value"
                     @click="handleShoose(item.name)">
@@ -59,59 +59,128 @@ defineProps({
 <style lang="scss" scoped>
 .select {
     position: relative;
-    margin-right: 5px;
-    cursor: pointer;
+    
 }
 
-.drop-down-list {
+.dropdown-list {
     border: 2px solid var(--thirdary);
-    width: 170px;
     border-radius: 5px;
+    padding: 3px;
+    width: 400px;
     text-align: center;
-
-    .drop-down-list-element {
-        transform: scaleY(0) translateY(-100%);
-        height: 0;
-        transition: all 0.2s ease;
-        padding: 2px 0px 0px 0px;
-
-        li {
-            border: 1px solid var(--secondary);
-            border-radius: 5px;
-            margin: 4px;
-            color: var(--background);
-        }
-    }
-
-    p {
-        text-align: center;
-        margin: 4px;
-        height: 27px;
-        border: 1px solid var(--thirdary);
-        border-radius: 5px;
-        color: var(--background);
-        user-select: none;
-
-        &:hover {
-            border-color: var(--secondary);
-        }
-    }
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
 
     &:hover {
         border-color: var(--secondary);
-        box-shadow: 1px 1px 3px 1px var(--bary);
+    }
+
+    p {
+        user-select: none;
+    }
+
+}
+
+.dropdown-list-element {
+    background-color: var(--backgroundwall);
+    transform: scaleY(0);
+    position: absolute;
+    z-index: 1;
+    margin: 3px;
+    left: -3px;
+    border: 2px solid var(--thirdary);
+    border-radius: 0px 0px 5px 5px;
+    padding: 5px;
+    border-top: 0px;
+    width: 400px;
+    transition: 0.2s ease;
+    
+
+    li {
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid var(--thirdary);
+        border-radius: 5px;
+
     }
 }
 
+.dropdown-list--active {
+    border-radius: 5px 5px 0px 0px;
+    border-color: var(--secondary);
+    
 
-
-.drop-down-list--active {
-    border: 2px solid var(--secondary);
-
-    .drop-down-list-element {
+    .dropdown-list-element {
         transform: scaleY(1) translateY(0%);
-        height: 90px;
-    }
+        border-color: var(--secondary);
 
+        li {
+            &:hover {
+                background: var(--bary);
+                border-color: var(--secondary);
+            }
+        }
+    }
 }
-</style>
+
+
+// .select {
+//     cursor: pointer;
+
+// }
+
+// .drop-down-list {
+//     position: relative;
+//     border: 2px solid var(--thirdary);
+//     width: 170px;
+//     border-radius: 5px;
+//     text-align: center;
+//     transition: all 0.2s ease;
+
+//     .drop-down-list-element {
+//         position: absolute;
+//         transform: scaleY(0);
+//         transition: all 0.2s ease;
+//         background-color: var(--ghostwhite);
+//         border: 2px solid var(--secondary);
+//         border-radius: 0px 0px 5px 5px;
+//         border-top: 0px;
+//         padding: 2px 0px 0px 0px;
+
+//         li {
+//             border: 1px solid var(--secondary);
+//             border-radius: 5px;
+//             margin: 4px;
+//             color: var(--background);
+//         }
+//     }
+
+//     p {
+//         text-align: center;
+//         color: var(--background);
+//         user-select: none;
+
+//         &:hover {
+//             border-color: var(--secondary);
+//         }
+//     }
+// }
+
+
+
+// .drop-down-list--active {
+//     border-color: var(--secondary);
+//     border-radius: 5px 5px 0px 0px;
+//     border-bottom-color: var(--ghostwhite);
+
+//     &:hover {
+//         border-bottom-color: var(--ghostwhite);
+//     }
+
+//     .drop-down-list-element {
+//         transform: scaleY(1) translateY(0%);
+
+//     }
+
+// }</style>

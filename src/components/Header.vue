@@ -18,9 +18,7 @@
       </ul>
     </nav>
     <div class="phone_and_theme">
-      <!-- todo телефон вынести в state (vue-store) глобальный для большей гибкости -->
-      <!-- todo сделать ссылку чтобы открывался телефонный набор на телефоне -->
-      <a href="#">{{ phone }}</a>
+      <a :href="`tel:${phone}`">{{ phone }}</a>
       <switch-component :is-active="isLightTheme"
                         @update:is-active="changeTheme"
                         switch-id="theme">
@@ -45,6 +43,7 @@ export default {
   computed: {
     ...mapState({
       theme: (state) => state.theme,
+      phone: (state) => state.phone,
     }),
     isLightTheme() {
       return this.theme === "light";

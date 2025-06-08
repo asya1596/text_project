@@ -1,12 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AboutSelf from '@/components/AboutSelf.vue'
+import Example from '@/components/Example.vue'
 
 const routes = [
-  // todo сделать редирект на главную страницу с других роутов
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/:any(.*)',
+    redirect: '/'
   },
 ]
 

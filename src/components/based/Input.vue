@@ -56,8 +56,9 @@ defineProps({
         border-radius: 6px;
         padding: 5px;
         &:hover {
-                box-shadow: 1px 1px 3px 1px var(--bary);
-            }
+            border-color: var(--secondary);
+        }
+    
         &:focus{
             border: 2px solid var(--secondary);
         }
