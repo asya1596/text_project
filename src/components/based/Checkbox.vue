@@ -65,8 +65,6 @@ export default {
     transition: all 0.2s ease-out;
     opacity: 0;
     border-radius: 1px;
-
-
   }
 
   input {
