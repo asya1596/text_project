@@ -40,8 +40,8 @@
 			<input-component v-model="exInput"
 							 input-id="ex-input"
 							 label-text="Инпут простой">
-				<!-- добавлен атрибут лейблтекст- для помещения лейбла без слота и возможности поместить туда что угодно, 
-        через пропсы -->
+				<!-- добавлен атрибут лейблтекст- для помещения лейбла без слота и возможности 
+				 поместить туда что угодно, через пропсы -->
 			</input-component>
 			<textarea-component v-model="exTextarea"
 								textarea-id="ex-textarea"
@@ -68,6 +68,16 @@
 				<!-- изменили с-во пропса с false на true, чтобы применить с-во isBlocked -->
 
 			</div>
+			<div class="radiobutton">
+				<radiobutton-component v-model:is-active="exRadiobutton1"
+									   radibutton-id="ex-radiobutton"
+									   label-text="Радиокнопка" />
+				<radiobutton-component v-model:is-active="exRadiobutton2"
+									   radibutton-id="radiobutto2"
+									   :is-blocked="true"
+									   label-text="Радиокнопка">
+				</radiobutton-component>
+			</div>
 
 		</div>
 	</div>
@@ -83,6 +93,8 @@ import InputComponent from "./based/Input.vue";
 import TextareaComponent from "./based/Textarea.vue";
 import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
+import RadiobuttonComponent from "./based/Radiobutton.vue";
+
 </script>
 
 <script>
@@ -105,8 +117,12 @@ export default {
 				'approval',
 				'removal',
 				'warning',
-			]
-		};
+			],
+			exRadiobutton1: false,
+			exRadiobutton2: false,
+			// добавила вторую переменную, для того чтобы привязать их к разным компонентам через v-model
+			// (чтобы задать разный функционал)
+		}
 	},
 };
 </script>
@@ -145,6 +161,12 @@ export default {
 	.button {
 		display: flex;
 		margin: 5px;
+	}
+
+	.radiobutton {
+		display: flex;
+		margin: 5px;
+		padding: 5px;
 	}
 }
 </style>

@@ -48,9 +48,6 @@ export default {
   &:hover {
             border-color: var(--secondary);
         }
-
- 
-
   &::before {
     content: "";
     position: absolute;
