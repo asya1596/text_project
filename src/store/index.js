@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    theme: "dark"
+    theme: "dark",
+    phone: "+79998753456",
   },
   getters: {
   },

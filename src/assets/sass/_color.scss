@@ -3,39 +3,52 @@
     --gray:#808080;
     --white: #f0f0f0;
     --gray-light: #A9A9A9;
-    --dodgerblue: #1E90FF;
+    --dodger-blue: #1E90FF;
     --blue: #0000FF;
     --dimgrey: #696969;
     --aqua: #00FFFF;
     --mono: #6c6c6c;
-    --ghostwhite: #F8F8FF;
+    --ghost-white: #F8F8FF;
+    --gold: #FFD700;
+    --orange: #FFA500;
+    --0reen: #008000;
+    --lime-green: #32CD32;
+    --dark-red: #8B0000;
+    --red: #FF0000;
 }
 
 .theme {
     --secondary: var(--blue);
     // border-при включении и изменении состояния
-    --thirdary: var(--dodgerblue);  
+    --thirdary: var(--dodger-blue);  
     // border элементов
+    --approval: var(--lime-green);
+    --approval-hover: var(--green);
+    --removal: var(--gold);
+    --removal-hover:var(--orange);
+    --warning:var(--red);
+    --warning-hover:var(--dark-red);
+
     
 }
 
 .theme--light {
-    --background: var(--ghostwhite);
+    --background: var(--ghost-white);
     --primary: var(--black);
     // цвет текста светлая тема
     --element: var(--blue);
     --bary: var(--dimgrey );
     // цвет элемента при ховере светлая тема
-    --backgroundwall: var(--gray);
+    --background-wall: var(--gray);
 
 }
 
 .theme--dark {
     --background: var(--black);
-    --primary: var(--ghostwhite);
+    --primary: var(--ghost-white);
     // цвет текста темная тема
-    --element: var(--dodgerblue);
+    --element: var(--dodger-blue);
     --bary: var(--gray-light);
     // цвет элемента при ховере темная тема
-    --backgroundwall: var(--ghostwhite);
+    --background-wall: var(--ghost-white);
 }

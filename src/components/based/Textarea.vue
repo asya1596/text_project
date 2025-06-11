@@ -1,5 +1,5 @@
 <template>
-    <div class="textarea-box">
+    <div class="textarea-box" :class="{'textarea-box--active': modelValue}">
         <label for="textareaId">{{ labelText }}</label>
         <textarea :value="modelValue" @input="handlInput" placeholder="Введите несколько строчек" rows="5" cols="10"
             :id="textareaId">
@@ -44,8 +44,6 @@ defineProps({
     margin-bottom: 10px;
     transition: all 0.2s ease-out;
     
-
-
     textarea {
         border: 2px solid var(--thirdary);
         width: 400px;
@@ -53,9 +51,12 @@ defineProps({
         color: var(--background);
         border-radius: 10px;
         outline: none;
+        padding: 5px;
+        resize:none;
         &:hover {
-                box-shadow: 1px 1px 3px 1px var(--bary);
-            }
+            border-color: var(--secondary);
+        }
+    
         &:focus{
             border: 2px solid var(--secondary);
         }
@@ -70,6 +71,12 @@ defineProps({
         right: 0;
         transition: all 0.2s ease-out;
         color: var(--background);
+        user-select: none;
+    }
+}
+.textarea-box--active{
+    textarea{
+        border: 2px solid var(--secondary);
     }
 }
 </style>

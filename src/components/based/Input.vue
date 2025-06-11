@@ -54,9 +54,11 @@ defineProps({
         transition: all 0.2s ease-out;
         color: var(--background);
         border-radius: 6px;
+        padding: 5px;
         &:hover {
-                box-shadow: 1px 1px 3px 1px var(--bary);
-            }
+            border-color: var(--secondary);
+        }
+    
         &:focus{
             border: 2px solid var(--secondary);
         }
@@ -73,6 +75,7 @@ defineProps({
         right: 0;
         transition: all 0.2s ease-out;
         color: var(--background);
+        user-select: none;
     }
 }
 .input-box--active{

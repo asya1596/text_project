@@ -3,6 +3,7 @@
     <nav>
       <ul>
         <li>
+
           <router-link to="#"> Обо мне </router-link>
         </li>
         <li>
@@ -17,8 +18,10 @@
       </ul>
     </nav>
     <div class="phone_and_theme">
-      <a href="#">+79998753456</a>
-      <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme">
+      <a :href="`tel:${phone}`">{{ phone }}</a>
+      <switch-component :is-active="isLightTheme"
+                        @update:is-active="changeTheme"
+                        switch-id="theme">
         <div class="icons">
           <light-icon v-if="isLightTheme" />
           <dark-icon v-else />
@@ -40,6 +43,7 @@ export default {
   computed: {
     ...mapState({
       theme: (state) => state.theme,
+      phone: (state) => state.phone,
     }),
     isLightTheme() {
       return this.theme === "light";
@@ -91,7 +95,7 @@ header {
   a {
     font-size: 14px;
     color: var(--background);
-    padding: 4px;
+    padding: 10px;
     border-radius: 8px;
     transition: color 0.2s ease-out;
 

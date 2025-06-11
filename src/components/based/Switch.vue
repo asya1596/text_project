@@ -44,8 +44,9 @@ export default {
   border-radius: 25px;
   transition: border 0.4s ease-out, left 0.2s, right 0.2s 0.2s;
   &:hover {
-      box-shadow: 1px 1px 3px 1px var(--bary);
-    }
+            border-color: var(--secondary);
+        }
+  
   &::before {
     content: '';
     position: absolute;
@@ -76,13 +77,13 @@ export default {
 
   label {
     color: var(--primary);
+    user-select: none;
   }
 }
 
 .switch--active {
   .switch-box {
     border: 2px solid var(--secondary);
-
     &::before {
       background-color: var(--secondary);
       left: 63px;
@@ -90,7 +91,6 @@ export default {
       transition: background-color 0.4s ease-out, left 0.2s 0.2s, right 0.2s;
     }
   }
-
 }
 
 </style>

@@ -2,20 +2,16 @@
     <!-- Через V-bind привязали класс к переменной, которой задали значение Boolean  -->
     <!--  :class="{ 'accordion-elem--active': isOpen }" -->
     <!-- теперь будем чере класс задавать в стилях состояие Аккордиона -->
-    <div class="accordion-elem " :class="{ 'accordion-elem--active': isOpen }" @click="handleСlick" id="accordion">
+    <div class="accordion-elem "
+         :class="{ 'accordion-elem--active': isOpen }"
+         @click="handleСlick"
+         id="accordion">
         <h3 class="accordion-item-head">
-            Заголовок аккордиона
+            <slot name="head"></slot>
         </h3>
-        <div class="accordion-item-body" :class="{ 'accordion-item-body--deactive': !isOpen }">
-            <p>
-                1. Текст первого пунта аккордиона, здесь я вам расскжу сквзку про белого бычка и ушлого старика.
-            </p>
-            <p>
-                2. Текст второго пунта аккордиона, здесь я вам расскжу сквзку про Царя Солтана и царевну лягушку.
-            </p>
-            <p>
-                3. Текст третьего пунта аккордиона, а тут я вам сказку не расскажу.
-            </p>
+        <div class="accordion-item-body"
+             :class="{ 'accordion-item-body--deactive': !isOpen }">
+            <slot name="content"></slot>
         </div>
     </div>
 </template>
@@ -46,8 +42,9 @@ export default {
     width: 400px;
     border-radius: 10px;
     &:hover {
-            box-shadow: 1px 1px 3px 1px var(--bary);
+            border-color: var(--secondary);
         }
+    
 }
 
 .accordion-item-head {
@@ -61,6 +58,8 @@ export default {
     border-radius: 10px;
     padding: 10px;
     border-bottom: 0px solid var(--thirdary);
+    user-select: none;
+    
 }
 
 .accordion-item-body {
@@ -72,15 +71,12 @@ export default {
     transform: scaleY(1) translateY(0);
     height: 210px;
     padding: 5px;
-
-    p {
-        transition: all 0.2s ease;
-        margin: 10px;
-    }
 }
-.accordion-elem--active{
+
+.accordion-elem--active {
     border: 2px solid var(--secondary);
-    .accordion-item-head{
+
+    .accordion-item-head {
         border-bottom: 2px solid var(--secondary);
     }
 }
