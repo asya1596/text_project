@@ -5,7 +5,6 @@
              @click="handelClick"
              id="dropdown-list-id">
             <p>{{ modelValue }}</p>
-            <!-- todo сделать выпадающий список больше похожий на прототип (сейчас анимация и расположение похожи на аккордеон) -->
             <ul class="dropdown-list-element">
                 <li v-for="item in items"
                     :key="item.value"
