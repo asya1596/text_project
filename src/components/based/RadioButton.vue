@@ -1,15 +1,15 @@
 <template>
-    <div :class="['radibutton', {
-        'radibutton--active': isActive,
-        'radibutton--disabled': isBlocked,
+    <div :class="['radio-button', {
+        'radio-button--active': isActive,
+        'radio-button--disabled': isBlocked,
     }]">
-        <div class="radibutton-box"
+        <div class="radio-button-box"
              @click="checkbox">
             <input type="checkbox"
-                   :id="radibuttonId"
+                   :id="radioButtonId"
                    :value="isActive" />
         </div>
-        <label :for="radibuttonId">
+        <label :for="radioButtonId">
             {{ labelText }}
             <slot></slot>
         </label>
@@ -22,9 +22,9 @@ defineProps({
         type: Boolean,
         required: true,
     },
-    radibuttonId: {
+    radioButtonId: {
         type: String,
-        default: "radibutton-id",
+        default: "radio-button-id",
     },
     labelText: {
         type: String,
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.radibutton-box {
+.radio-button-box {
     position: relative;
     height: 20px;
     width: 20px;
@@ -86,10 +86,10 @@ export default {
     }
 }
 
-.radibutton--active {
+.radio-button--active {
     border-color: var(--secondary);
 
-    .radibutton-box {
+    .radio-button-box {
         &::before {
             opacity: 1;
         }
@@ -97,7 +97,7 @@ export default {
 
 }
 
-.radibutton {
+.radio-button {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -108,7 +108,7 @@ export default {
     }
 }
 
-.radibutton--disabled {
+.radio-button--disabled {
     cursor: not-allowed;
     opacity: 0.5;
 
@@ -116,10 +116,10 @@ export default {
         cursor: not-allowed;
     }
 
-    .radibutton-box {
+    .radio-button-box {
         cursor: not-allowed;
 
-        &:not(.radibutton--disabled):hover {
+        &:not(.radio-button--disabled):hover {
             border-color: var(--thirdary);
         }
     }

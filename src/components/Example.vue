@@ -39,46 +39,38 @@
 			</accordion-component>
 			<input-component v-model="exInput"
 							 input-id="ex-input"
-							 label-text="Инпут простой">
-				<!-- добавлен атрибут лейблтекст- для помещения лейбла без слота и возможности 
+							 label-text="Инпут простой" />
+			<!-- добавлен атрибут лейблтекст- для помещения лейбла без слота и возможности 
 				 поместить туда что угодно, через пропсы -->
-			</input-component>
 			<textarea-component v-model="exTextarea"
 								textarea-id="ex-textarea"
-								label-text="Многострочный коментарий">
-			</textarea-component>
+								label-text="Многострочный коментарий" />
 			<div class="button">
 				<button-component v-for="typeButton in typesButton"
 								  :type-button="typeButton" />
 				<!-- черзез цикл перебрали массив классов и отобразили кнопки с разными стилями -->
-
 			</div>
 			<div class="button">
-
 				<button-component v-for="typeButton in typesButton"
 								  :type-button="typeButton"
 								  :is-download="true" />
 				<!-- изменили с-во пропса с false на true, чтобы применить с-во isDownload  -->
 			</div>
 			<div class="button">
-
 				<button-component v-for="typeButton in typesButton"
 								  :type-button="typeButton"
 								  :is-blocked="true" />
 				<!-- изменили с-во пропса с false на true, чтобы применить с-во isBlocked -->
-
 			</div>
-			<div class="radiobutton">
-				<radiobutton-component v-model:is-active="exRadiobutton1"
-									   radibutton-id="ex-radiobutton"
-									   label-text="Радиокнопка" />
-				<radiobutton-component v-model:is-active="exRadiobutton2"
-									   radibutton-id="radiobutto2"
-									   :is-blocked="true"
-									   label-text="Радиокнопка">
-				</radiobutton-component>
+			<div class="radio-button">
+				<radio-button-component v-model:is-active="exRadioButton1"
+										radiButton-id="radio-butto1"
+										label-text="Радиокнопка" />
+				<radio-button-component v-model:is-active="exRadioButton2"
+										radioButton-id="radio-butto2"
+										:is-blocked="true"
+										label-text="Радиокнопка" />
 			</div>
-
 		</div>
 	</div>
 </template>
@@ -93,7 +85,7 @@ import InputComponent from "./based/Input.vue";
 import TextareaComponent from "./based/Textarea.vue";
 import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
-import RadiobuttonComponent from "./based/Radiobutton.vue";
+import RadioButtonComponent from "./based/radio-button.vue";
 
 </script>
 
@@ -118,8 +110,8 @@ export default {
 				'removal',
 				'warning',
 			],
-			exRadiobutton1: false,
-			exRadiobutton2: false,
+			exRadioButton1: false,
+			exRadioButton2: false,
 			// добавила вторую переменную, для того чтобы привязать их к разным компонентам через v-model
 			// (чтобы задать разный функционал)
 		}
@@ -163,7 +155,7 @@ export default {
 		margin: 5px;
 	}
 
-	.radiobutton {
+	.radio-button {
 		display: flex;
 		margin: 5px;
 		padding: 5px;
