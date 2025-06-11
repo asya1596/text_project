@@ -85,7 +85,7 @@ import InputComponent from "./based/Input.vue";
 import TextareaComponent from "./based/Textarea.vue";
 import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
-import RadioButtonComponent from "./based/radio-button.vue";
+import RadioButtonComponent from "./based/RadioButton.vue";
 
 </script>
 
