@@ -40,6 +40,7 @@
     --bary: var(--dimgrey );
     // цвет элемента при ховере светлая тема
     --background-wall: var(--gray);
+    --hintborder:var(--black);
 
 }
 
@@ -51,4 +52,5 @@
     --bary: var(--gray-light);
     // цвет элемента при ховере темная тема
     --background-wall: var(--ghost-white);
+    --hintborder: var(--mono);
 }

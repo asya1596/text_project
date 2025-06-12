@@ -90,6 +90,7 @@ export default {
     border-color: var(--secondary);
 
     .radio-button-box {
+        border-color: var(--secondary);
         &::before {
             opacity: 1;
         }
@@ -105,6 +106,7 @@ export default {
 
     label {
         user-select: none;
+        color:var(--background);
     }
 }
 

@@ -71,6 +71,7 @@
 										:is-blocked="true"
 										label-text="Радиокнопка" />
 			</div>
+				<hint-component hint-text="Подсказка"/>
 		</div>
 	</div>
 </template>
@@ -86,6 +87,7 @@ import TextareaComponent from "./based/Textarea.vue";
 import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
 import RadioButtonComponent from "./based/RadioButton.vue";
+import HintComponent from "./based/Hint.vue"
 
 </script>
 
@@ -136,7 +138,6 @@ export default {
 	flex-direction: column;
 	justify-content: left;
 	padding-left: 10px;
-	margin-bottom: 10px;
 
 	p {
 		font-size: 16px;
@@ -157,8 +158,7 @@ export default {
 
 	.radio-button {
 		display: flex;
-		margin: 5px;
-		padding: 5px;
+	
 	}
 }
 </style>
