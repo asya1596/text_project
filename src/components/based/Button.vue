@@ -69,7 +69,7 @@ export default {
     border-radius: 5px;
     border-width: 2px;
     border-style: solid;
-
+    color: var(--background);
 }
 
 .button--primary {
