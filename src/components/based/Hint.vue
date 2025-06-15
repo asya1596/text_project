@@ -3,16 +3,16 @@
         <div class="hint-content">
             <span>{{ hintText }}</span>
         </div>
-        <div class="hint-icon">
+        <div class="hint-body">
             <slot>
-                <svg-icon class="hint-default" />
+                <hint-question-icon class="hint-default" />
             </slot>
         </div>
     </div>
 </template>
 
 <script setup>
-import SvgIcon from '@/assets/img/SvgIcon.vue';
+import HintQuestionIcon from '@/assets/img/HintQuestionIcon';
 defineProps({
     hintText: {
         type: String,
@@ -33,14 +33,14 @@ defineProps({
         display: none;
         top: -20px;
         left: 40px;
-        border: 2px solid var(--hintborder);
+        border: 2px solid var(--hint-border);
         border-radius: 5px;
         background-color: var(--bary);
         padding: 0px 5px;
         color: var(--background);
     }
 
-    .hint-icon {
+    .hint-body {
         width: 30px;
         height: 30px;
     }
@@ -52,7 +52,7 @@ defineProps({
 
     .hint-default {
         ::v-deep path {
-            fill: var(--hintborder);
+            fill: var(--hint-border);
         }
     }
 }
