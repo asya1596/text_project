@@ -44,10 +44,8 @@ defineProps({
 export default {
     methods: {
         handlInput(event) {
-            if (!this.isBlocked) {
                 event.target.value = Number(event.target.value)
                 this.$emit("update:numberValue", Number(event.target.value))
-            }
         },
         handlClickOnIncrementButton() {
             if (!this.isBlocked) {
@@ -66,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.input-number-box {
+.input-number-box--active {
     position: relative;
     padding-top: 20px;
     width: min-content;
@@ -79,6 +77,7 @@ export default {
         color: var(--background);
         border-radius: 6px;
         padding: 5px;
+        -moz-appearance: textfield;
 
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -143,13 +142,6 @@ export default {
         &:hover:deep path {
             fill: var(--secondary);
         }
-    }
-}
-
-.input-number-box--active {
-
-    input {
-        border: 2px solid var(--secondary);
     }
 }
 

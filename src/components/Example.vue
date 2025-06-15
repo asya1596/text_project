@@ -82,6 +82,7 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
+			<tab-component v-model="exTab"/>
 		</div>
 	</div>
 </template>
@@ -98,6 +99,8 @@ import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
 import RadioButtonComponent from "./based/RadioButton.vue";
 import InputNumberComponent from "./based/InputNumber.vue";
+import TabComponent from "./based/Tab.vue";
+
 
 </script>
 
@@ -129,6 +132,7 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
+			exTab: "Таб",
 		}
 	},
 };
