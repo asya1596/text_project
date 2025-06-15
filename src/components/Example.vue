@@ -71,6 +71,17 @@
 										:is-blocked="true"
 										label-text="Радиокнопка" />
 			</div>
+			<input-number-component v-model:number-value="exInputNumber1"
+									input-number-id="ex-input-number"
+									label-text="Инпут номерной" />
+			<input-number-component v-model:number-value="exInputNumber2"
+									:is-blocked="true"
+									input-number-id="ex-input-number"
+									label-text="Инпут номерной" />
+			<input-number-component v-model:number-value="exInputNumber3"
+									:is-blocked="true"
+									input-number-id="ex-input-number"
+									label-text="Инпут номерной" />
 		</div>
 	</div>
 </template>
@@ -86,6 +97,7 @@ import TextareaComponent from "./based/Textarea.vue";
 import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
 import RadioButtonComponent from "./based/RadioButton.vue";
+import InputNumberComponent from "./based/InputNumber.vue";
 
 </script>
 
@@ -114,6 +126,9 @@ export default {
 			exRadioButton2: false,
 			// добавила вторую переменную, для того чтобы привязать их к разным компонентам через v-model
 			// (чтобы задать разный функционал)
+			exInputNumber1: 0,
+			exInputNumber2: 767763746,
+			exInputNumber3: 0,
 		}
 	},
 };
