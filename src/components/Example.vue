@@ -72,15 +72,15 @@
 										label-text="Радиокнопка" />
 			</div>
 			<input-number-component v-model:number-value="exInputNumber1"
-									input-number-id="ex-input-number"
+									input-number-id="ex-input-number1"
 									label-text="Инпут номерной" />
 			<input-number-component v-model:number-value="exInputNumber2"
 									:is-blocked="true"
-									input-number-id="ex-input-number"
+									input-number-id="ex-input-number2"
 									label-text="Инпут номерной" />
 			<input-number-component v-model:number-value="exInputNumber3"
 									:is-blocked="true"
-									input-number-id="ex-input-number"
+									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
 		</div>
 	</div>

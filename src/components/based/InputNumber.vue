@@ -1,13 +1,10 @@
 <template>
     <div class="input-number-box"
-         :class="{
-            'input-number-box--active': isActive,
-            'input-number-box--disabled': isBlocked
-        }">
-        <label :for="inputNumberId"> {{ labelText }}</label>
+         :class="['input-number-box--active',
+            { 'input-number-box--disabled': isBlocked }]">
+        <label> {{ labelText }}</label>
         <input :value="numberValue"
                type="number"
-               :id="inputNumberId"
                @input="handlInput" />
 
         <button class="btn-arrow arrow-up"
@@ -27,7 +24,7 @@ defineProps({
         type: String,
         default: "",
     },
-    inputNumberId: {
+    idInputNumber: {
         type: String,
         default: "",
     },
@@ -38,10 +35,6 @@ defineProps({
     isBlocked: {
         type: Boolean,
         default: false,
-    },
-    isActive: {
-        type: Boolean,
-        required: true,
     },
 })
 </script>
@@ -86,7 +79,6 @@ export default {
         color: var(--background);
         border-radius: 6px;
         padding: 5px;
-        -moz-appearance: textfield;
 
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;
