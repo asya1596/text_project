@@ -2,7 +2,7 @@
     <div class="input-box" :class="{ 'input-box--active': modelValue }">
         <!-- присвоен класс для обозначения активного состояния. -->
         <label :for="inputId">{{ labelText }}</label>
-        <input :value="modelValue" @input="handlInput" type="text" placeholder="Введите текст" :id="inputId" />
+        <input :value="modelValue" @input="handleInput" type="text" placeholder="Введите текст" :id="inputId" />
     </div>
 </template>
 
@@ -12,7 +12,7 @@
 export default {
     methods: {
         // это метод, который поднимает собитие(update:modelValue)
-        handlInput(event) {
+        handleInput(event) {
             this.$emit("update:modelValue", event.target.value)
         }
     }

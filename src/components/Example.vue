@@ -71,7 +71,22 @@
 										:is-blocked="true"
 										label-text="Радиокнопка" />
 			</div>
+<<<<<<< HEAD
 				<hint-component hint-text="Подсказка"/>
+=======
+			<input-number-component v-model:number-value="exInputNumber1"
+									input-number-id="ex-input-number1"
+									label-text="Инпут номерной" />
+			<input-number-component v-model:number-value="exInputNumber2"
+									:is-blocked="true"
+									input-number-id="ex-input-number2"
+									label-text="Инпут номерной" />
+			<input-number-component v-model:number-value="exInputNumber3"
+									:is-blocked="true"
+									input-number-id="ex-input-number3"
+									label-text="Инпут номерной" />
+			<tab-component v-model="exTab" />
+>>>>>>> cf3ed52 (добавила компонент таб)
 		</div>
 	</div>
 </template>

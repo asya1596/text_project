@@ -1,7 +1,7 @@
 <template>
     <div class="textarea-box" :class="{'textarea-box--active': modelValue}">
         <label for="textareaId">{{ labelText }}</label>
-        <textarea :value="modelValue" @input="handlInput" placeholder="Введите несколько строчек" rows="5" cols="10"
+        <textarea :value="modelValue" @input="handleInput" placeholder="Введите несколько строчек" rows="5" cols="10"
             :id="textareaId">
         </textarea>
     </div>
@@ -10,7 +10,7 @@
 <script>
 export default {
     methods: {
-        handlInput(event) {
+        handleInput(event) {
             this.$emit("update:modelValue", event.target.value)
         }
 
