@@ -71,9 +71,7 @@
 										:is-blocked="true"
 										label-text="Радиокнопка" />
 			</div>
-<<<<<<< HEAD
 				<hint-component hint-text="Подсказка"/>
-=======
 			<input-number-component v-model:number-value="exInputNumber1"
 									input-number-id="ex-input-number1"
 									label-text="Инпут номерной" />
@@ -86,7 +84,6 @@
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
 			<tab-component v-model="exTab" />
->>>>>>> cf3ed52 (добавила компонент таб)
 		</div>
 	</div>
 </template>
@@ -131,6 +128,10 @@ export default {
 			exRadioButton2: false,
 			// добавила вторую переменную, для того чтобы привязать их к разным компонентам через v-model
 			// (чтобы задать разный функционал)
+			exInputNumber1: 0,
+			exInputNumber2: 767763746,
+			exInputNumber3: 0,
+			exTab: "",
 		}
 	},
 };
