@@ -1,6 +1,5 @@
 <template>
     <div class="textarea-box" :class="{'textarea-box--active': modelValue}">
-        <label for="textareaId">{{ labelText }}</label>
         <label>{{ labelText }}</label>
         <textarea :value="modelValue" @input="handleInput" placeholder="Введите несколько строчек" rows="5" cols="10"
             :id="textareaId">

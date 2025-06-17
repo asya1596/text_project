@@ -71,8 +71,9 @@
 										:is-blocked="true"
 										label-text="Радиокнопка" />
 			</div>
-				<hint-component hint-text="Подсказка"/>
-			<tab-component v-model="exTab" />
+			<hint-component hint-text="Подсказка" />
+			<tab-component v-model:tab-choose="exTab"
+						   :tabs="tabs" />
 		</div>
 	</div>
 </template>
@@ -88,7 +89,8 @@ import TextareaComponent from "./based/Textarea.vue";
 import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
 import RadioButtonComponent from "./based/RadioButton.vue";
-import HintComponent from "./based/Hint.vue"
+import HintComponent from "./based/Hint.vue";
+import TabComponent from "./based/Tab.vue";
 
 </script>
 
@@ -118,6 +120,13 @@ export default {
 			// добавила вторую переменную, для того чтобы привязать их к разным компонентам через v-model
 			// (чтобы задать разный функционал)
 			exTab: "",
+			tabs: [
+				{ id: "1", label: "Таб 1" },
+				{ id: "2", label: "Таб 2" },
+				{ id: "3", label: "Таб 3" },
+				{ id: "4", label: "Таб 4" },
+				{ id: "5", label: "Таб 5" },
+			],
 		}
 	},
 };
@@ -160,7 +169,7 @@ export default {
 
 	.radio-button {
 		display: flex;
-	
+
 	}
 }
 </style>
