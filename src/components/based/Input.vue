@@ -7,8 +7,7 @@
 </template>
 
 <script>
-// это объект, внутри которого объявлена функция-свойство дата, которая возвращает нам объект, 
-// свойствами которого является реактивная переменная(message, inputId).
+
 export default {
     methods: {
         // это метод, который поднимает собитие(update:modelValue)
@@ -28,7 +27,7 @@ defineProps({
     },
     inputId: {
         type: String,
-        default: ""
+        default: "",
     },
     labelText: {
         type: String,

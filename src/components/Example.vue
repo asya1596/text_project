@@ -43,7 +43,6 @@
 			<!-- добавлен атрибут лейблтекст- для помещения лейбла без слота и возможности 
 				 поместить туда что угодно, через пропсы -->
 			<textarea-component v-model="exTextarea"
-								textarea-id="ex-textarea"
 								label-text="Многострочный коментарий" />
 			<div class="button">
 				<button-component v-for="typeButton in typesButton"
@@ -74,6 +73,17 @@
 			<hint-component hint-text="Подсказка" />
 			<tabs-component v-model:tab-choose="exTab"
 						   :tabs="tabs" />
+			<input-number-component v-model:number-value="exInputNumber1"
+									input-number-id="ex-input-number1"
+									label-text="Инпут номерной" />
+			<input-number-component v-model:number-value="exInputNumber2"
+									:is-blocked="true"
+									input-number-id="ex-input-number2"
+									label-text="Инпут номерной" />
+			<input-number-component v-model:number-value="exInputNumber3"
+									:is-blocked="true"
+									input-number-id="ex-input-number3"
+									label-text="Инпут номерной" />
 		</div>
 	</div>
 </template>
@@ -89,7 +99,8 @@ import TextareaComponent from "./based/Textarea.vue";
 import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
 import RadioButtonComponent from "./based/RadioButton.vue";
-import HintComponent from "./based/Hint.vue";
+import InputNumberComponent from "./based/InputNumber.vue";
+import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
 
 </script>
@@ -127,6 +138,9 @@ export default {
 				{ id: "4", label: "Таб 4" },
 				{ id: "5", label: "Таб 5" },
 			],
+			exInputNumber1: 0,
+			exInputNumber2: 767763746,
+			exInputNumber3: 0,
 		}
 	},
 };
