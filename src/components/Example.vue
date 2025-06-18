@@ -71,6 +71,7 @@
 										:is-blocked="true"
 										label-text="Радиокнопка" />
 			</div>
+      <hint-component hint-text="Подсказка"/>
 			<input-number-component v-model:number-value="exInputNumber1"
 									input-number-id="ex-input-number1"
 									label-text="Инпут номерной" />
@@ -98,6 +99,7 @@ import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
 import RadioButtonComponent from "./based/RadioButton.vue";
 import InputNumberComponent from "./based/InputNumber.vue";
+import HintComponent from "./based/Hint.vue"
 
 </script>
 
@@ -151,7 +153,6 @@ export default {
 	flex-direction: column;
 	justify-content: left;
 	padding-left: 10px;
-	margin-bottom: 10px;
 
 	p {
 		font-size: 16px;
@@ -172,8 +173,7 @@ export default {
 
 	.radio-button {
 		display: flex;
-		margin: 5px;
-		padding: 5px;
+	
 	}
 }
 </style>
