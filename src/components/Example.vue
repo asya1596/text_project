@@ -43,7 +43,6 @@
 			<!-- добавлен атрибут лейблтекст- для помещения лейбла без слота и возможности 
 				 поместить туда что угодно, через пропсы -->
 			<textarea-component v-model="exTextarea"
-								textarea-id="ex-textarea"
 								label-text="Многострочный коментарий" />
 			<div class="button">
 				<button-component v-for="typeButton in typesButton"
@@ -71,7 +70,9 @@
 										:is-blocked="true"
 										label-text="Радиокнопка" />
 			</div>
-      <hint-component hint-text="Подсказка"/>
+			<hint-component hint-text="Подсказка" />
+			<tabs-component v-model:tab-choose="exTab"
+						   :tabs="tabs" />
 			<input-number-component v-model:number-value="exInputNumber1"
 									input-number-id="ex-input-number1"
 									label-text="Инпут номерной" />
@@ -100,6 +101,7 @@ import ButtonComponent from "./based/Button.vue";
 import RadioButtonComponent from "./based/RadioButton.vue";
 import InputNumberComponent from "./based/InputNumber.vue";
 import HintComponent from "./based/Hint.vue"
+import TabsComponent from "./based/Tabs.vue";
 
 </script>
 
@@ -128,6 +130,14 @@ export default {
 			exRadioButton2: false,
 			// добавила вторую переменную, для того чтобы привязать их к разным компонентам через v-model
 			// (чтобы задать разный функционал)
+			exTab: "",
+			tabs: [
+				{ id: "1", label: "Таб 1" },
+				{ id: "2", label: "Таб 2" },
+				{ id: "3", label: "Таб 3" },
+				{ id: "4", label: "Таб 4" },
+				{ id: "5", label: "Таб 5" },
+			],
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
@@ -173,7 +183,7 @@ export default {
 
 	.radio-button {
 		display: flex;
-	
+
 	}
 }
 </style>
