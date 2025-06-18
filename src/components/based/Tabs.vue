@@ -1,5 +1,5 @@
 <template>
-    <ul class="nav-tab">
+    <ul class="tab">
         <li v-for="tab in tabs"
             :class="['tab-element', { 'tab-element--active': tab.id === tabChoose }]"
             @click="handleClick(tab.id)
@@ -34,7 +34,7 @@ defineProps({
 
 
 <style lang="scss" scoped>
-.nav-tab {
+.tab {
     display: flex;
     position: relative;
     max-width: max-content;

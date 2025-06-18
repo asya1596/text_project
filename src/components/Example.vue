@@ -72,7 +72,7 @@
 										label-text="Радиокнопка" />
 			</div>
 			<hint-component hint-text="Подсказка" />
-			<tab-component v-model:tab-choose="exTab"
+			<tabs-component v-model:tab-choose="exTab"
 						   :tabs="tabs" />
 		</div>
 	</div>
@@ -90,7 +90,7 @@ import SelectComponent from "./based/Select.vue";
 import ButtonComponent from "./based/Button.vue";
 import RadioButtonComponent from "./based/RadioButton.vue";
 import HintComponent from "./based/Hint.vue";
-import TabComponent from "./based/Tab.vue";
+import TabsComponent from "./based/Tabs.vue";
 
 </script>
 
