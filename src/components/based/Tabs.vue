@@ -57,8 +57,11 @@ defineProps({
 
     .tab-element--active {
         background-color: var(--background);
-        border-width: 0px;
+        border-color: var(--background);
         color: var(--primary);
+        &:hover {
+                border-color: var(--background);
+            }
     }
 
 }
