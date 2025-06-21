@@ -1,7 +1,6 @@
 <template>
     <div class="input-number-box"
-         :class="['input-number-box--active',
-            { 'input-number-box--disabled': isBlocked }]">
+         :class="[{ 'input-number-box--disabled': isBlocked }]">
         <label> {{ labelText }}</label>
         <input :value="numberValue"
                type="number"
@@ -79,6 +78,7 @@ export default {
         color: var(--background);
         border-radius: 6px;
         padding: 5px;
+        appearance: textfield;
 
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -122,19 +122,6 @@ export default {
         }
     }
 
-    .icon-arrow {
-        display: flex;
-        flex-direction: column;
-        pointer-events: none;
-        width: 20px;
-        height: 20px;
-
-        &:deep path {
-            transition: fill 0.2s ease-out;
-            fill: var(--thirdary);
-        }
-    }
-
     .btn-arrow {
         position: absolute;
         width: 20px;
@@ -143,13 +130,6 @@ export default {
         &:hover:deep path {
             fill: var(--secondary);
         }
-    }
-}
-
-.input-number-box--active {
-
-    input {
-        border: 2px solid var(--secondary);
     }
 }
 

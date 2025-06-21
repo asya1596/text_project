@@ -2,8 +2,7 @@
     <ul class="tab">
         <li v-for="tab in tabs"
             :class="['tab-element', { 'tab-element--active': tab.id === tabChoose }]"
-            @click="handleClick(tab.id)
-                ">
+            @click="handleClick(tab.id)">
             {{ tab.label }}
         </li>
     </ul>
@@ -57,7 +56,7 @@ defineProps({
 
     .tab-element--active {
         background-color: var(--background);
-        border-width: 0px;
+        border-color: var(--background);
         color: var(--primary);
     }
 
