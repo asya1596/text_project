@@ -58,6 +58,9 @@ defineProps({
         background-color: var(--background);
         border-color: var(--background);
         color: var(--primary);
+        &:hover {
+                border-color: var(--background);
+            }
     }
 
 }

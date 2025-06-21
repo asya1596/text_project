@@ -132,7 +132,6 @@ export default {
         }
     }
 }
-
 .input-number-box--disabled {
     input {
         pointer-events: none;
