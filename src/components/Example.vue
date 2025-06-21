@@ -72,7 +72,7 @@
 			</div>
 			<hint-component hint-text="Подсказка" />
 			<tabs-component v-model:tab-choose="exTab"
-						   :tabs="tabs" />
+							:tabs="tabs" />
 			<input-number-component v-model:number-value="exInputNumber1"
 									input-number-id="ex-input-number1"
 									label-text="Инпут номерной" />
@@ -84,6 +84,7 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
+			<bread-crumbs-component v-model:items="myItems"/>
 		</div>
 	</div>
 </template>
@@ -102,6 +103,7 @@ import RadioButtonComponent from "./based/RadioButton.vue";
 import InputNumberComponent from "./based/InputNumber.vue";
 import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
+import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 
 </script>
 
@@ -141,6 +143,15 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
+			myItems: [
+				{ label: 'крошка 1', url: '' },
+				{ label: 'крошка 2', url: '' },
+				{ label: 'крошка 3', url: '' },
+				{ label: 'крошка 4', url: '' },
+				{ label: 'крошка 5', url: '' },
+				{ label: 'крошка 6', url: '' },
+				{ label: 'крошка 7', url: '' },
+			],
 		}
 	},
 };
