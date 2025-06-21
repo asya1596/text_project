@@ -72,7 +72,10 @@
 			</div>
 			<hint-component hint-text="Подсказка" />
 			<tabs-component v-model:tab-choose="exTab"
-						   :tabs="tabs" />
+							:tabs="tabs" />
+			<pagination-component v-model:current-page="currentPage"
+								  :total-pages="100" />
+								  <!--  -->
 			<input-number-component v-model:number-value="exInputNumber1"
 									input-number-id="ex-input-number1"
 									label-text="Инпут номерной" />
@@ -84,6 +87,7 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
+
 		</div>
 	</div>
 </template>
@@ -102,6 +106,7 @@ import RadioButtonComponent from "./based/RadioButton.vue";
 import InputNumberComponent from "./based/InputNumber.vue";
 import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
+import PaginationComponent from "./based/Pagination.vue";
 
 </script>
 
@@ -141,6 +146,7 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
+			currentPage: 1,
 		}
 	},
 };
