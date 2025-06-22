@@ -122,19 +122,6 @@ export default {
         }
     }
 
-    .icon-arrow {
-        display: flex;
-        flex-direction: column;
-        pointer-events: none;
-        width: 20px;
-        height: 20px;
-
-        &:deep path {
-            transition: fill 0.2s ease-out;
-            fill: var(--thirdary);
-        }
-    }
-
     .btn-arrow {
         position: absolute;
         width: 20px;
