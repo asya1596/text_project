@@ -1,26 +1,29 @@
 <template>
-
-    <div class="pagination-box">
-        <button :class="['btn-arrow', { 'btn-arrow--disabled': currentPage === 1 }]"
-                @click="prevPage">
-            <arrow-icon class="arrow-left" />
-        </button>
-        <ul class="pagination">
-            <li v-for="(page, index) in visiblePages"
-                :key="index"
-                :class="['page', { 'page--active': currentPage === page }]"
-                @click="changePage(page)">
-                <!-- отображение всех страниц с помощью v-for, 
+    <ul class="pagination">
+        <li>
+            <button :class="['btn-arrow', { 'btn-arrow--disabled': currentPage === 1 }]"
+                    @click="prevPage">
+                <arrow-icon class="arrow-left" />
+            </button>
+        </li>
+        <li v-for="(page, index) in visiblePages"
+            :key="index"
+            :class="['page', { 'points': points === page }, { 'page--active': currentPage === page }]"
+            @click="changePage(page)">
+            <!-- отображение всех страниц с помощью v-for, 
                  добавление обработчика события клика по странице, 
                  добавление  активного класса при клике на страницу-->
-                {{ page }}
-            </li>
-        </ul>
-        <button :class="['btn-arrow', { 'btn-arrow--disabled': currentPage === totalPages }]"
-                @click="nextPage">
-            <arrow-icon class="arrow-right" />
-        </button>
-    </div>
+            {{ page }}
+        </li>
+        <li>
+            <button :class="['btn-arrow', { 'btn-arrow--disabled': currentPage === totalPages }]"
+                    @click="nextPage">
+                <arrow-icon class="arrow-right" />
+            </button>
+        </li>
+    </ul>
+
+
 
 </template>
 
@@ -43,6 +46,11 @@ defineProps({
 
 <script>
 export default {
+    data() {
+        return {
+            points: '...',
+        }
+    },
     computed: {
         visiblePages() {
             const pages = [];
@@ -50,7 +58,8 @@ export default {
             pages.push(1);
             // добавили в пустой массив первую страницу
             if (this.currentPage > 3) {
-                pages.push('...');
+
+                pages.push(this.points);
             }
             // добавляем точки в массив,если есть пропуск (если текущая страница больше 3)
             const start = Math.max(2, this.currentPage - 1);
@@ -61,8 +70,8 @@ export default {
                 pages.push(i);
                 // c помощью цикла for заполняем наш массив pages числами в диапазоне от start до end включительно
             }
-            if (this.totalPages - this.currentPage > 2) {
-                pages.push('...');
+            if (this.totalPages - this.currentPage > 3) {
+                pages.push(this.points);
                 // добавляем точки в массив,если есть пропуск(в конце)
             }
             if (this.totalPages > 1) {
@@ -86,7 +95,7 @@ export default {
             // метод, который поднимает событие перехода на следующую страницу(клик по кнопкам-стрелкам)
         },
         changePage(page) {
-            if (typeof page === 'number'){
+            if (typeof page === 'number') {
                 // условие -проверка на тип страницы в методе.
                 this.$emit('update:current-page', page);
             }
@@ -98,40 +107,33 @@ export default {
 
 
 <style lang="scss" scoped>
-.pagination-box {
+.pagination {
     display: flex;
-    justify-content: left;
-    align-items: center;
     gap: 5px;
     color: var(--thirdary);
+    justify-content: left;
+    align-items: center;
 
-    .pagination {
-        display: flex;
-        gap: 5px;
+    .page {
+        border: 1px solid var(--thirdary);
+        padding: 5px;
+        border-radius: 5px;
 
-        .page {
-            border: 1px solid var(--thirdary);
-            padding: 5px;
-            border-radius: 5px;
-
-            &:hover {
-                color: var(--secondary);
-                border-color: var(--secondary);
-            }
+        &:not(.page--active, .points):hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
         }
-
-        .page--active {
-            background-color: var(--background);
-            border-color: var(--background);
-            color: var(--primary);
-
-            &:not(.pagination):hover {
-                color: var(--primary);
-            }
-        }
-
     }
 
+    .page--active {
+        background-color: var(--background);
+        border-color: var(--background);
+        color: var(--primary);
+    }
+
+    .points {
+        border-width: 0px;
+    }
 
     .arrow-left {
         transform: rotate(-90deg);
