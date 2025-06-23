@@ -84,7 +84,7 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
-			<bread-crumbs-component v-model:items="myItems"/>
+			<bread-crumbs-component v-model:items="myCrumbs"/>
 		</div>
 	</div>
 </template>
@@ -143,7 +143,7 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
-			myItems: [
+			myCrumbs: [
 				{ label: 'крошка 1', url: '' },
 				{ label: 'крошка 2', url: '' },
 				{ label: 'крошка 3', url: '' },

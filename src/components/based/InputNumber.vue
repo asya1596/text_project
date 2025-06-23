@@ -79,6 +79,7 @@ export default {
         color: var(--background);
         border-radius: 6px;
         padding: 5px;
+        appearance: textfield;
 
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;
