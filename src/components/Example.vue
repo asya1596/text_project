@@ -84,7 +84,13 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
-			<range-component v-model:value="exRange"/>
+			<range-component v-model.number="valueRange"
+							 :min="0"
+							 :max="200" />
+			<range-component v-model.number="valueRange1"
+							 :min="0"
+							 :max="200"
+							 :is-disabled="true"/>
 		</div>
 	</div>
 </template>
@@ -143,10 +149,11 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
-			exRange: 0,
+			valueRange: 0,
+			valueRange1: 50,
 		}
 	},
-	
+
 };
 </script>
 
