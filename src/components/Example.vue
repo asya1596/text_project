@@ -72,7 +72,7 @@
 			</div>
 			<hint-component hint-text="Подсказка" />
 			<tabs-component v-model:tab-choose="exTab"
-						   :tabs="tabs" />
+							:tabs="tabs" />
 			<input-number-component v-model:number-value="exInputNumber1"
 									input-number-id="ex-input-number1"
 									label-text="Инпут номерной" />
@@ -84,6 +84,13 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
+			<range-component v-model.number="valueRange"
+							 :min="0"
+							 :max="200" />
+			<range-component v-model.number="valueRange1"
+							 :min="0"
+							 :max="200"
+							 :is-disabled="true"/>
 		</div>
 	</div>
 </template>
@@ -102,6 +109,7 @@ import RadioButtonComponent from "./based/RadioButton.vue";
 import InputNumberComponent from "./based/InputNumber.vue";
 import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
+import RangeComponent from "./based/Range.vue";
 
 </script>
 
@@ -141,8 +149,11 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
+			valueRange: 0,
+			valueRange1: 50,
 		}
 	},
+
 };
 </script>
 
