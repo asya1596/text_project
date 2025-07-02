@@ -114,6 +114,8 @@ export default {
     justify-content: left;
     align-items: center;
     user-select: none;
+    max-width: max-content;
+    cursor: pointer;
 
     .page {
         border: 1px solid var(--thirdary);

@@ -157,7 +157,6 @@ export default {
 			valueRange: 0,
 			valueRange1: 50,
 			currentPage: 1,
-			totalPages: 16,
 		}
 	},
 
