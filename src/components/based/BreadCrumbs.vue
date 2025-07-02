@@ -13,11 +13,13 @@
                 если эта крошка не последний элемент массива -->
                     {{ item.label }}
                 </router-link>
-                <span class="last-crumb" v-else>{{ item.label }}</span>
+                <span class="last-crumb"
+                      v-else>{{ item.label }}</span>
                 <!-- последний элемент крошки -->
-                <span v-if="showLink(itemIndex)"
-                      class="crumb-separator">/</span>
+                <circl-for-crumb v-if="showLink(itemIndex)"
+                                 class="circl-for-crumb" />
             </li>
+
         </ul>
     </nav>
 </template>
@@ -34,7 +36,7 @@ export default {
 </script>
 
 <script setup>
-
+import CirclForCrumb from '@/assets/img/CirclForCrumb.vue';
 defineProps({
     items: {
         type: Array,
@@ -45,7 +47,6 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-
 .bread-crumbs {
 
     ul {
@@ -53,22 +54,28 @@ defineProps({
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        gap: 5px;
+        user-select: none;
+        cursor: pointer;
+
+        .circl-for-crumb {
+            margin-left: 3px;
+
+            &:deep path {
+                fill: var(--bary);
+            }
+        }
 
         li .crumb-link {
-            color: var(--background);
-            gap: 5px;
+            color: var(--bary);
 
             &:hover {
                 color: var(--secondary);
             }
         }
 
-        li .crumb-separator {
+        li .last-crumb {
             color: var(--background);
-            
-        }
-        li .last-crumb{
-            color: var(--hint-border);
         }
     }
 }
