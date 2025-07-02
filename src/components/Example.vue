@@ -84,9 +84,13 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
-			<pagination-component v-model:current-page="currentPage"
-								  :total-pages="16" />
-
+			<range-component v-model.number="valueRange"
+							 :min="0"
+							 :max="200" />
+			<range-component v-model.number="valueRange1"
+							 :min="0"
+							 :max="200"
+							 :is-disabled="true"/>
 		</div>
 	</div>
 </template>
@@ -105,7 +109,8 @@ import RadioButtonComponent from "./based/RadioButton.vue";
 import InputNumberComponent from "./based/InputNumber.vue";
 import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
-import PaginationComponent from "./based/Pagination.vue";
+import RangeComponent from "./based/Range.vue";
+
 
 </script>
 
@@ -145,10 +150,12 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
-			currentPage: 1,
-			totalPages: 16,
+
+			valueRange: 0,
+			valueRange1: 50,
 		}
 	},
+
 };
 </script>
 
