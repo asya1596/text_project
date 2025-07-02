@@ -93,6 +93,13 @@
 							 :min="0"
 							 :max="200"
 							 :is-disabled="true" />
+			<double-range-component v-model="doubleRangeValue"
+									:min="0"
+									:max="100" />
+			<double-range-component v-model="doubleRangeValue1"
+									:min="0"
+									:max="100"
+									:is-disabled="true" />
 		</div>
 	</div>
 </template>
@@ -113,6 +120,7 @@ import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
+import DoubleRangeComponent from "./based/DoubleRange.vue";
 
 
 </script>
@@ -157,6 +165,8 @@ export default {
 			valueRange: 0,
 			valueRange1: 50,
 			currentPage: 1,
+			doubleRangeValue: [20, 80],
+			doubleRangeValue1: [20, 80],
 		}
 	},
 
