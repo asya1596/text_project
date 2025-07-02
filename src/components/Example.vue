@@ -111,6 +111,7 @@ import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
 import RangeComponent from "./based/Range.vue";
 
+
 </script>
 
 <script>
@@ -149,6 +150,7 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
+
 			valueRange: 0,
 			valueRange1: 50,
 		}
