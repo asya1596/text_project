@@ -113,6 +113,7 @@ export default {
     color: var(--thirdary);
     justify-content: left;
     align-items: center;
+    user-select: none;
 
     .page {
         border: 1px solid var(--thirdary);
