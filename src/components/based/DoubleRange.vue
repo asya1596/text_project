@@ -1,24 +1,30 @@
 <template>
-    <div :class="['custom-range', { 'custom-range--disabled': isDisabled }]">
-        <div class="slider-container">
-            <div class="track"
-                 :style="trackStyle"></div>
-            <input type="range"
+    <div class="range-slider">
+        <div class="slider-wrapper">
+            <div class="progress"
+                 :style="{ left: leftProgress + '%', width: progressWidth + '%' }">
+            </div>
+            <input ref="range1"
+                   class="range range-left"
+                   type="range"
                    :min="min"
                    :max="max"
-                   v-model="minValue"
-                   :disabled="isDisabled"
-                   class="slider" />
-            <input type="range"
+                   :step="step"
+                   :value="modelValue[0]"
+                   @input="updateRange1" />
+
+            <input ref="range2"
+                   class="range range-right"
+                   type="range"
                    :min="min"
                    :max="max"
-                   v-model="maxValue"
-                   :disabled="isDisabled"
-                   class="slider" />
+                   :step="step"
+                   :value="modelValue[1]"
+                   @input="updateRange2" />
         </div>
-        <div class="labels">
-            <span>{{ minValue }}</span>
-            <span>{{ maxValue }}</span>
+        <div class="values">
+            <span>{{ modelValue[0] }}</span>
+            <span>{{ modelValue[1] }}</span>
         </div>
     </div>
 </template>
@@ -27,7 +33,7 @@
 defineProps({
     modelValue: {
         type: Array,
-        required: true,
+        default: () => [0, 100]
     },
     min: {
         type: Number,
@@ -37,9 +43,9 @@ defineProps({
         type: Number,
         default: 100
     },
-    isDisabled: {
-        type: Boolean,
-        default: false
+    step: {
+        type: Number,
+        default: 1
     }
 })
 </script>
@@ -48,116 +54,160 @@ defineProps({
 export default {
     data() {
         return {
-            minValue: this.modelValue[0],
-            maxValue: this.modelValue[1]
-        };
-    },
-    watch: {
-        modelValue(newVal) {
-            [this.minValue, this.maxValue] = newVal;
-        },
-        minValue(newVal) {
-            if (newVal > this.maxValue) this.maxValue = newVal;
-            this.emitUpdate();
-        },
-        maxValue(newVal) {
-            if (newVal < this.minValue) this.minValue = newVal;
-            this.emitUpdate();
+            range1: 0,
+            range2: 100,
         }
     },
     computed: {
-        trackStyle() {
-            const minPercent = ((this.minValue - this.min) / (this.max - this.min)) * 100;
-            const maxPercent = ((this.maxValue - this.min) / (this.max - this.min)) * 100;
+        
+        leftProgress() {
+            return ((this.modelValue[0] - this.min) / (this.max - this.min)) * 100
+        },
 
-            return {
-                background: `linear-gradient(
-          to right,
-          var(--bary) 0%,
-          var(--bary) ${minPercent}%,
-          var(--thirdary) ${minPercent}%,
-          var(--thirdary) ${maxPercent}%,
-          var(--bary) ${maxPercent}%,
-          var(--bary) 100%
-        )`
-            };
-        }
+        progressWidth() {
+            return ((this.modelValue[1] - this.modelValue[0]) / (this.max - this.min)) * 100
+        },
     },
     methods: {
-        emitUpdate() {
-            this.$emit('update:modelValue', [this.minValue, this.maxValue]);
+        validateValues(value, otherValue) {
+            return Math.max(
+                this.min,
+                Math.min(
+                    this.max,
+                    Math.round(value / this.step) * this.step
+                )
+            )
+        },
+        // Проверяет, чтобы значение было в пределах min-max .Округляет до заданного шага.
+        updateRange1(e) {
+            let newValue = this.validateValues(e.target.value, this.modelValue[1])
+            // Проверяем, чтобы левый слайдер не превышал правый
+            if (newValue >= this.modelValue[1]) {
+                newValue = this.modelValue[1];
+            }
+            this.$emit('update:modelValue', [newValue, this.modelValue[1]])
+        },
+
+        updateRange2(e) {
+            let newValue = this.validateValues(e.target.value, this.modelValue[0])
+            // Проверяем, чтобы правый слайдер не был меньше левого
+            if (newValue <= this.modelValue[0]) {
+                newValue = this.modelValue[0];
+            }
+            this.$emit('update:modelValue', [this.modelValue[0], newValue])
+        },
+
+        syncValues() {
+            this.$refs.range1.value = this.modelValue[0]
+            this.$refs.range2.value = this.modelValue[1]
         }
+        // синхронизируем значение modulValue с перемещением ручек.
+    },
+
+    watch: {
+        modelValue: {
+            handler() {
+                this.syncValues()
+            },
+            deep: true
+        }
+    },
+    // Следить за изменениями modelValue и синхронизировать значения слайдеров.
+
+    mounted() {
+        this.syncValues()
     }
-};
+    // При инициализации компонента синхронизирует значения слайдеров с modelValue.
+}
 </script>
 
 <style scoped>
-.slider-container {
+.range-slider {
     position: relative;
-    height: 24px;
-    cursor: pointer;
+    width: 30%;
+
 }
 
-.track {
-    position: absolute;
-    top: 50%;
-    width: 50%;
+.slider-wrapper {
+    position: relative;
+    width: 100%;
     height: 4px;
-    border-radius: 2px;
-    background: var(--bary);
 }
 
-.slider {
+.progress {
     position: absolute;
-    width: 50%;
-    top: 14px;
-    left: 0;
-    margin: 0;
-    height: 0;
-    pointer-events: none;
+    height: 4px;
+    background: var(--thirdary);
+    z-index: 2;
+    bottom: 0px;
 }
 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
+.range {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     appearance: none;
     background: transparent;
-    border-width: 0px;
-    width: 6px;
-    height: 20px;
-    background: var(--thirdary);
-    border-radius: 5px;
-    cursor: pointer;
-    pointer-events: auto;
-    margin-top: 0px;
+    pointer-events: all;
 }
 
-.slider::-moz-range-thumb {
+.range::-webkit-slider-runnable-track {
+    height: 4px;
+    background: var(--bary);
+    border-radius: 2px;
+}
+
+.range::-moz-range-track {
+    height: 4px;
+    background: var(--bary);
+    border-radius: 2px;
+}
+
+.range::-webkit-slider-thumb {
     appearance: none;
     width: 6px;
     height: 20px;
-    border-width: 0px;
     background: var(--thirdary);
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    pointer-events: auto;
-    position: absolute;
+    top: 4px;
+    margin-top: calc((4px / 2) - (20px / 2));
+
 }
 
-.slider::-moz-range-thumb:hover {
+.range:hover::-webkit-slider-thumb {
     background: var(--secondary);
 }
 
-.labels {
+.range:focus::-webkit-slider-thumb {
+    background: var(--secondary);
+}
+
+.range::-moz-range-thumb {
+    appearance: none;
+    width: 6px;
+    height: 20px;
+    border-radius: 10px;
+    background: var(--thirdary);
+    cursor: pointer;
+    border-width: 0px;
+}
+
+.range:hover::-moz-range-thumb {
+    background: var(--secondary);
+}
+
+.range:focus::-moz-range-thumb {
+    background: var(--secondary);
+}
+
+
+
+.values {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
-    color: var(--thirdary);
+    width: 100%;
+    margin-top: 10px;
     user-select: none;
-    width: 50%;
-
-}
-.custom-range--disabled {
-    pointer-events: none;
-    opacity: 0.7;
 }
 </style>
