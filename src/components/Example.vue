@@ -71,6 +71,8 @@
 										label-text="Радиокнопка" />
 			</div>
 			<hint-component hint-text="Подсказка" />
+			<pagination-component v-model:current-page="currentPage"
+								  :total-pages="16" />
 			<tabs-component v-model:tab-choose="exTab"
 							:tabs="tabs" />
 			<input-number-component v-model:number-value="exInputNumber1"
@@ -85,6 +87,13 @@
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
 			<bread-crumbs-component v-model:items="myCrumbs"/>
+			<range-component v-model.number="valueRange"
+							 :min="0"
+							 :max="200" />
+			<range-component v-model.number="valueRange1"
+							 :min="0"
+							 :max="200"
+							 :is-disabled="true" />
 		</div>
 	</div>
 </template>
@@ -104,7 +113,8 @@ import InputNumberComponent from "./based/InputNumber.vue";
 import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
 import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
-
+import RangeComponent from "./based/Range.vue";
+import PaginationComponent from "./based/Pagination.vue";
 </script>
 
 <script>
@@ -143,6 +153,7 @@ export default {
 			exInputNumber1: 0,
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
+
 			myCrumbs: [
 				{ label: 'крошка 1', url: '' },
 				{ label: 'крошка 2', url: '' },
@@ -152,8 +163,12 @@ export default {
 				{ label: 'крошка 6', url: '' },
 				{ label: 'крошка 7', url: '' },
 			],
+			valueRange: 0,
+			valueRange1: 50,
+			currentPage: 1,
 		}
 	},
+
 };
 </script>
 
