@@ -97,7 +97,6 @@
 									:min="0"
 									:max="100"
 									:step="1" />
-			
 		</div>
 	</div>
 </template>
@@ -164,7 +163,6 @@ export default {
 			valueRange1: 50,
 			currentPage: 1,
 			doubleRangeValue: [0, 100],
-			
 		}
 	},
 

@@ -59,13 +59,11 @@ export default {
         }
     },
     computed: {
-        
-        leftProgress() {
-            return ((this.modelValue[0] - this.min) / (this.max - this.min)) * 100
-        },
-
         progressWidth() {
             return ((this.modelValue[1] - this.modelValue[0]) / (this.max - this.min)) * 100
+        },
+        leftProgress() {
+            return ((this.modelValue[0] - this.min) / (this.max - this.min)) * 100
         },
     },
     methods: {
@@ -121,7 +119,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .range-slider {
     position: relative;
     width: 30%;
@@ -176,11 +174,11 @@ export default {
 }
 
 .range:hover::-webkit-slider-thumb {
-    background: var(--secondary);
+    border: 1px solid var(--secondary);
 }
 
 .range:focus::-webkit-slider-thumb {
-    background: var(--secondary);
+    border: 1px solid var(--secondary);
 }
 
 .range::-moz-range-thumb {
@@ -194,14 +192,12 @@ export default {
 }
 
 .range:hover::-moz-range-thumb {
-    background: var(--secondary);
+    border: 1px solid var(--secondary);
 }
 
 .range:focus::-moz-range-thumb {
-    background: var(--secondary);
+    border: 1px solid var(--secondary);
 }
-
-
 
 .values {
     display: flex;
