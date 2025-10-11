@@ -86,7 +86,7 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
-			<bread-crumbs-component v-model:items="myCrumbs"/>
+			<bread-crumbs-component v-model:items="myCrumbs" />
 			<range-component v-model.number="valueRange"
 							 :min="0"
 							 :max="200" />
@@ -94,6 +94,17 @@
 							 :min="0"
 							 :max="200"
 							 :is-disabled="true" />
+			<div>
+				<toast-component ref="toast" />
+				<button class="toast-button"
+						@click="showSuccess">Показать успех</button>
+				<button class="toast-button"
+						@click="showError">Показать ошибку</button>
+				<button class="toast-button"
+						@click="showWarning">Показать предупреждение</button>
+				<button class="toast-button"
+						@click="showInfo">Информационное уведомление</button>
+			</div>
 		</div>
 	</div>
 </template>
@@ -115,6 +126,7 @@ import TabsComponent from "./based/Tabs.vue";
 import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
+import ToastComponent from "./based/Toast.vue";
 </script>
 
 <script>
@@ -168,7 +180,20 @@ export default {
 			currentPage: 1,
 		}
 	},
-
+	methods:{
+		showInfo() {
+			this.$refs.toast.show('Это информационное сообщение', 'info');
+		},
+		showSuccess() {
+			this.$refs.toast.show('Операция выполнена успешно!', 'success');
+		},
+		showWarning() {
+			this.$refs.toast.show('Будьте осторожны!', 'warning');
+		},
+		showError() {
+			this.$refs.toast.show('Произошла ошибка.', 'error');
+		}
+	}
 };
 </script>
 
@@ -210,6 +235,13 @@ export default {
 	.radio-button {
 		display: flex;
 
+	}
+	.toast-button{
+		display: flex;
+		border: 2px solid var(--thirdary);
+		border-radius: 5px;
+		padding: 3px;
+		margin: 3px;
 	}
 }
 </style>
