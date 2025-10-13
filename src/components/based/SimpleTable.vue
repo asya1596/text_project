@@ -3,7 +3,10 @@
         <thead>
             <tr>
                 <th v-for="header in headers"
-                    :key="header">{{ header }}</th>
+                    :key="header"
+                    @click="sortByHeader(header)">
+                    {{ header }}
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -17,14 +20,6 @@
     <div class="table-controls">
         <input v-model="filterText"
                placeholder="Поиск по таблице..." />
-        <button v-for="header in headers"
-                :key="header"
-                @click="() => {
-                    sortBy = header;
-                    sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-                }">
-            {{ header }}
-        </button>
     </div>
 </template>
 
@@ -53,24 +48,20 @@ export default {
     },
     computed: {
         filteredAndSortedRows() {
-            // 1. Применяем фильтрацию
+            // Фильтрация
             let result = this.rows.filter(row =>
                 row.some(cell =>
                     cell.toString().toLowerCase().includes(this.filterText.toLowerCase())
                 )
             );
 
-            // 2. Получаем индекс столбца для сортировки
-            const sortIndex = this.headers.indexOf(this.sortBy);
-
-            // 3. Если столбец найден — применяем сортировку
-            if (sortIndex !== -1) {
+            // Сортировка, если задан столбец для сортировки
+            if (this.sortBy) {
+                const sortIndex = this.headers.indexOf(this.sortBy);
                 result = result.sort((a, b) => {
-                    // Получаем значения ячеек по индексу столбца
                     const aValue = a[sortIndex];
                     const bValue = b[sortIndex];
 
-                    // Преобразуем значения для корректного сравнения
                     const aValueProcessed = typeof aValue === 'number'
                         ? aValue
                         : aValue.toLowerCase();
@@ -78,7 +69,6 @@ export default {
                         ? bValue
                         : bValue.toLowerCase();
 
-                    // Выполняем сравнение с учётом направления сортировки
                     if (aValueProcessed < bValueProcessed) {
                         return this.sortDirection === 'asc' ? -1 : 1;
                     }
@@ -90,6 +80,16 @@ export default {
             }
 
             return result;
+        },
+    },
+    methods: {
+        sortByHeader(header) {
+            if (this.sortBy === header) {
+                this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                this.sortBy = header;
+                this.sortDirection = 'asc';
+            }
         },
     },
 };
