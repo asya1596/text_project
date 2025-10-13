@@ -86,7 +86,7 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
-			<bread-crumbs-component v-model:items="myCrumbs"/>
+			<bread-crumbs-component v-model:items="myCrumbs" />
 			<range-component v-model.number="valueRange"
 							 :min="0"
 							 :max="200" />
@@ -94,6 +94,9 @@
 							 :min="0"
 							 :max="200"
 							 :is-disabled="true" />
+			<simple-table-component :headers="headerTable"
+									:rows="rowsTable" />
+
 		</div>
 	</div>
 </template>
@@ -115,6 +118,8 @@ import TabsComponent from "./based/Tabs.vue";
 import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
+import SimpleTableComponent from "./based/SimpleTable.vue";
+import EasyDataTable from 'vue3-easy-data-table';
 </script>
 
 <script>
@@ -166,6 +171,12 @@ export default {
 			valueRange: 0,
 			valueRange1: 50,
 			currentPage: 1,
+			rowsTable: [
+				['Иван', 25, 'Москва'],
+				['Анна', 30, 'Санкт-Петербург'],
+				['Сергей', 22, 'Казань'],
+			],
+			headerTable: ['Имя', 'Возраст', 'Город'],
 		}
 	},
 
