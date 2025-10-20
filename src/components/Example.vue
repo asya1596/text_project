@@ -86,7 +86,7 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
-			<bread-crumbs-component v-model:items="myCrumbs"/>
+			<bread-crumbs-component v-model:items="myCrumbs" />
 			<range-component v-model.number="valueRange"
 							 :min="0"
 							 :max="200" />
@@ -94,6 +94,7 @@
 							 :min="0"
 							 :max="200"
 							 :is-disabled="true" />
+			<chart-component />
 		</div>
 	</div>
 </template>
@@ -115,6 +116,7 @@ import TabsComponent from "./based/Tabs.vue";
 import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
+import ChartComponent from "./based/Chart.vue";
 </script>
 
 <script>
