@@ -4,6 +4,14 @@
                    type="line"
                    :options="chartOptions"
                    :series="series"></apexchart>
+        <apexchart width="500"
+                   type="bar"
+                   :options="chartOptions"
+                   :series="series"></apexchart>
+        <apexchart width="500"
+                   type="area"
+                   :options="chartOptions"
+                   :series="series"></apexchart>
     </div>
 </template>
 
