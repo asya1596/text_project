@@ -119,7 +119,6 @@ import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
 import SimpleTableComponent from "./based/SimpleTable.vue";
-import EasyDataTable from 'vue3-easy-data-table';
 </script>
 
 <script>

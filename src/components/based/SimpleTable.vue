@@ -4,7 +4,11 @@
             <tr>
                 <th v-for="header in headers"
                     :key="header"
-                    @click="sortByHeader(header)">
+                    @click="sortByHeader(header)"
+                    :class="{
+                        'sorted-asc': sortBy === header && sortDirection === 'asc',
+                        'sorted-desc': sortBy === header && sortDirection === 'desc'
+                    }">
                     {{ header }}
                 </th>
             </tr>
@@ -132,11 +136,48 @@ td {
     border: 1px solid var(--thirdary);
     padding: 8px;
     text-align: center;
-
+    color: var(--background);
+    user-select: none;
 }
 
 th {
     border: 2px solid var(--thirdary);
     text-align: center;
+    position: relative;
+    padding-right: 24px;
+    /* Отступ для стрелки сортировки */
+    cursor: pointer;
+}
+
+/* Индикаторы сортировки */
+.table th.sorted-asc,
+.table th.sorted-desc {
+    background-color: var(--thirdary);
+}
+
+.table th.sorted-asc::after {
+    content: '▲';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    
+}
+
+.table th.sorted-desc::after {
+    content: '▼';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: var(--background);
+}
+
+/* Эффект наведения на заголовки */
+.table th:hover {
+    background-color: var(--thirdary);
+    border-color: var(--secondary);
 }
 </style>
