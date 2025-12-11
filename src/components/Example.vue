@@ -94,6 +94,17 @@
 							 :min="0"
 							 :max="200"
 							 :is-disabled="true" />
+			<div>
+				<toast-component ref="toast" />
+				<button class="toast-button"
+						@click="showSuccess">Показать успех</button>
+				<button class="toast-button"
+						@click="showError">Показать ошибку</button>
+				<button class="toast-button"
+						@click="showWarning">Показать предупреждение</button>
+				<button class="toast-button"
+						@click="showInfo">Информационное уведомление</button>
+			</div>
 			<chart-component />
 			<simple-table-component :headers="headerTable"
 									:rows="rowsTable" />
@@ -118,6 +129,7 @@ import TabsComponent from "./based/Tabs.vue";
 import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
+import ToastComponent from "./based/Toast.vue";
 import ChartComponent from "./based/Chart.vue";
 import SimpleTableComponent from "./based/SimpleTable.vue";
 </script>
@@ -179,7 +191,20 @@ export default {
 			headerTable: ['Имя', 'Возраст', 'Город'],
 		}
 	},
-
+	methods:{
+		showInfo() {
+			this.$refs.toast.show('Это информационное сообщение', 'info');
+		},
+		showSuccess() {
+			this.$refs.toast.show('Операция выполнена успешно!', 'success');
+		},
+		showWarning() {
+			this.$refs.toast.show('Будьте осторожны!', 'warning');
+		},
+		showError() {
+			this.$refs.toast.show('Произошла ошибка.', 'error');
+		}
+	}
 };
 </script>
 
@@ -221,6 +246,13 @@ export default {
 	.radio-button {
 		display: flex;
 
+	}
+	.toast-button{
+		display: flex;
+		border: 2px solid var(--thirdary);
+		border-radius: 5px;
+		padding: 3px;
+		margin: 3px;
 	}
 }
 </style>
