@@ -95,6 +95,8 @@
 							 :max="200"
 							 :is-disabled="true" />
 			<chart-component />
+			<simple-table-component :headers="headerTable"
+									:rows="rowsTable" />
 		</div>
 	</div>
 </template>
@@ -117,6 +119,7 @@ import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
 import ChartComponent from "./based/Chart.vue";
+import SimpleTableComponent from "./based/SimpleTable.vue";
 </script>
 
 <script>
@@ -168,6 +171,12 @@ export default {
 			valueRange: 0,
 			valueRange1: 50,
 			currentPage: 1,
+			rowsTable: [
+				['Иван', 25, 'Москва'],
+				['Анна', 30, 'Санкт-Петербург'],
+				['Сергей', 22, 'Казань'],
+			],
+			headerTable: ['Имя', 'Возраст', 'Город'],
 		}
 	},
 
