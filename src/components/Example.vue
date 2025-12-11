@@ -94,9 +94,9 @@
 							 :min="0"
 							 :max="200"
 							 :is-disabled="true" />
+			<chart-component />
 			<simple-table-component :headers="headerTable"
 									:rows="rowsTable" />
-
 		</div>
 	</div>
 </template>
@@ -118,6 +118,7 @@ import TabsComponent from "./based/Tabs.vue";
 import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
+import ChartComponent from "./based/Chart.vue";
 import SimpleTableComponent from "./based/SimpleTable.vue";
 </script>
 
