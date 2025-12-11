@@ -72,7 +72,7 @@ export default {
 
 
 
-<style scoped>
+<style lang="scss" scoped>
 .custom-range {
     display: flex;
     align-items: center;

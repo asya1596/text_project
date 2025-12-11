@@ -94,6 +94,10 @@
 							 :min="0"
 							 :max="200"
 							 :is-disabled="true" />
+			<double-range-component v-model="doubleRangeValue"
+									:min="0"
+									:max="100"
+									:step="1" />
 			<div>
 				<toast-component ref="toast" />
 				<button class="toast-button"
@@ -129,6 +133,7 @@ import TabsComponent from "./based/Tabs.vue";
 import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
+import DoubleRangeComponent from "./based/DoubleRange.vue";
 import ToastComponent from "./based/Toast.vue";
 import ChartComponent from "./based/Chart.vue";
 import SimpleTableComponent from "./based/SimpleTable.vue";
@@ -183,6 +188,7 @@ export default {
 			valueRange: 0,
 			valueRange1: 50,
 			currentPage: 1,
+			doubleRangeValue: [0, 100],
 			rowsTable: [
 				['Иван', 25, 'Москва'],
 				['Анна', 30, 'Санкт-Петербург'],
