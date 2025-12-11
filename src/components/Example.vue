@@ -86,6 +86,7 @@
 									:is-blocked="true"
 									input-number-id="ex-input-number3"
 									label-text="Инпут номерной" />
+			<bread-crumbs-component v-model:items="myCrumbs" />
 			<range-component v-model.number="valueRange"
 							 :min="0"
 							 :max="200" />
@@ -97,6 +98,20 @@
 									:min="0"
 									:max="100"
 									:step="1" />
+			<div>
+				<toast-component ref="toast" />
+				<button class="toast-button"
+						@click="showSuccess">Показать успех</button>
+				<button class="toast-button"
+						@click="showError">Показать ошибку</button>
+				<button class="toast-button"
+						@click="showWarning">Показать предупреждение</button>
+				<button class="toast-button"
+						@click="showInfo">Информационное уведомление</button>
+			</div>
+			<chart-component />
+			<simple-table-component :headers="headerTable"
+									:rows="rowsTable" />
 		</div>
 	</div>
 </template>
@@ -115,11 +130,13 @@ import RadioButtonComponent from "./based/RadioButton.vue";
 import InputNumberComponent from "./based/InputNumber.vue";
 import HintComponent from "./based/Hint.vue"
 import TabsComponent from "./based/Tabs.vue";
+import BreadCrumbsComponent from "./based/BreadCrumbs.vue";
 import RangeComponent from "./based/Range.vue";
 import PaginationComponent from "./based/Pagination.vue";
 import DoubleRangeComponent from "./based/DoubleRange.vue";
-
-
+import ToastComponent from "./based/Toast.vue";
+import ChartComponent from "./based/Chart.vue";
+import SimpleTableComponent from "./based/SimpleTable.vue";
 </script>
 
 <script>
@@ -159,13 +176,41 @@ export default {
 			exInputNumber2: 767763746,
 			exInputNumber3: 0,
 
+			myCrumbs: [
+				{ label: 'крошка 1', url: '' },
+				{ label: 'крошка 2', url: '' },
+				{ label: 'крошка 3', url: '' },
+				{ label: 'крошка 4', url: '' },
+				{ label: 'крошка 5', url: '' },
+				{ label: 'крошка 6', url: '' },
+				{ label: 'крошка 7', url: '' },
+			],
 			valueRange: 0,
 			valueRange1: 50,
 			currentPage: 1,
 			doubleRangeValue: [0, 100],
+			rowsTable: [
+				['Иван', 25, 'Москва'],
+				['Анна', 30, 'Санкт-Петербург'],
+				['Сергей', 22, 'Казань'],
+			],
+			headerTable: ['Имя', 'Возраст', 'Город'],
 		}
 	},
-
+	methods:{
+		showInfo() {
+			this.$refs.toast.show('Это информационное сообщение', 'info');
+		},
+		showSuccess() {
+			this.$refs.toast.show('Операция выполнена успешно!', 'success');
+		},
+		showWarning() {
+			this.$refs.toast.show('Будьте осторожны!', 'warning');
+		},
+		showError() {
+			this.$refs.toast.show('Произошла ошибка.', 'error');
+		}
+	}
 };
 </script>
 
@@ -207,6 +252,13 @@ export default {
 	.radio-button {
 		display: flex;
 
+	}
+	.toast-button{
+		display: flex;
+		border: 2px solid var(--thirdary);
+		border-radius: 5px;
+		padding: 3px;
+		margin: 3px;
 	}
 }
 </style>
