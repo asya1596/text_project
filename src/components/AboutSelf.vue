@@ -1,7 +1,6 @@
 <template>
   <div class="about-self">
-    <img src="@/assets/img/мое_фото.jpg"
-         alt="Мое фото" />
+    <img src="@/assets/img/мое_фото.jpg" alt="Мое фото" />
     <div>
       <h2>О себе</h2>
       <p>
@@ -17,12 +16,12 @@
         <p class="listHead">Сейчас могу сказать что освоила такие навыки как:
         </p>
         <li>Python базовый курс</li>
-        <li>HTML 4 и 5 базовый курс</li>
+        <li>HTML 4 и 5</li>
         <li>Изучаю и придерживаюсь технологии BEM</li>
         <li>Семантическая верстка</li>
-        <li>CSS базовый курс</li>
-        <li>JS базовый курс</li>
-        <li> VUE3 общие принципы</li>
+        <li>CSS</li>
+        <li>JS</li>
+        <li> VUE 3</li>
         <li>Принципы работы в Git- репозиторий</li>
         <li>Английский язык- уровень B1</li>
       </ul>
@@ -70,11 +69,10 @@
     }
 
     li {
-
       padding: 2px 2px 2px 10px;
       list-style-type: disc;
+      color: var(--background);
     }
-
   }
 
 }

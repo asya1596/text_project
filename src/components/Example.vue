@@ -2,16 +2,13 @@
 	<div class="example">
 		<h2>Примеры работ</h2>
 		<div class="works">
-			<switch-component v-model:is-active="exSwitch"
-							  switch-id="ex-switch">
+			<switch-component v-model:is-active="exSwitch" switch-id="ex-switch">
 				<p>Свитч обычный</p>
 			</switch-component>
-			<checkbox-component v-model:is-checked="exCheckbox"
-								checbox-id="ex-checbox">
+			<checkbox-component v-model:is-checked="exCheckbox" checbox-id="ex-checbox">
 				<p>Чекбокс обычный</p>
 			</checkbox-component>
-			<select-component v-model="selectedSort"
-							  :items="sortList"> </select-component>
+			<select-component v-model="selectedSort" :items="sortList"> </select-component>
 			<!-- через директиву мы привязываем переменную к modulValue атрибуту
         и подписываемся а собитие(называется update:modelValue). 
         При поднятии события переменной присваивается новое значение. -->
@@ -37,81 +34,50 @@
 					</p>
 				</template>
 			</accordion-component>
-			<input-component v-model="exInput"
-							 input-id="ex-input"
-							 label-text="Инпут простой" />
+			<input-component v-model="exInput" input-id="ex-input" label-text="Инпут простой" />
 			<!-- добавлен атрибут лейблтекст- для помещения лейбла без слота и возможности 
 				 поместить туда что угодно, через пропсы -->
-			<textarea-component v-model="exTextarea"
-								label-text="Многострочный коментарий" />
+			<textarea-component v-model="exTextarea" label-text="Многострочный коментарий" />
 			<div class="button">
-				<button-component v-for="typeButton in typesButton"
-								  :type-button="typeButton" />
+				<button-component v-for="typeButton in typesButton" :type-button="typeButton" />
 				<!-- черзез цикл перебрали массив классов и отобразили кнопки с разными стилями -->
 			</div>
 			<div class="button">
-				<button-component v-for="typeButton in typesButton"
-								  :type-button="typeButton"
-								  :is-download="true" />
+				<button-component v-for="typeButton in typesButton" :type-button="typeButton" :is-download="true" />
 				<!-- изменили с-во пропса с false на true, чтобы применить с-во isDownload  -->
 			</div>
 			<div class="button">
-				<button-component v-for="typeButton in typesButton"
-								  :type-button="typeButton"
-								  :is-blocked="true" />
+				<button-component v-for="typeButton in typesButton" :type-button="typeButton" :is-blocked="true" />
 				<!-- изменили с-во пропса с false на true, чтобы применить с-во isBlocked -->
 			</div>
 			<div class="radio-button">
-				<radio-button-component v-model:is-active="exRadioButton1"
-										radiButton-id="radio-butto1"
-										label-text="Радиокнопка" />
-				<radio-button-component v-model:is-active="exRadioButton2"
-										radioButton-id="radio-butto2"
-										:is-blocked="true"
-										label-text="Радиокнопка" />
+				<radio-button-component v-model:is-active="exRadioButton1" radiButton-id="radio-butto1"
+					label-text="Радиокнопка" />
+				<radio-button-component v-model:is-active="exRadioButton2" radioButton-id="radio-butto2"
+					:is-blocked="true" label-text="Радиокнопка" />
 			</div>
 			<hint-component hint-text="Подсказка" />
-			<pagination-component v-model:current-page="currentPage"
-								  :total-pages="16" />
-			<tabs-component v-model:tab-choose="exTab"
-							:tabs="tabs" />
-			<input-number-component v-model:number-value="exInputNumber1"
-									input-number-id="ex-input-number1"
-									label-text="Инпут номерной" />
-			<input-number-component v-model:number-value="exInputNumber2"
-									:is-blocked="true"
-									input-number-id="ex-input-number2"
-									label-text="Инпут номерной" />
-			<input-number-component v-model:number-value="exInputNumber3"
-									:is-blocked="true"
-									input-number-id="ex-input-number3"
-									label-text="Инпут номерной" />
+			<pagination-component v-model:current-page="currentPage" :total-pages="16" />
+			<tabs-component v-model:tab-choose="exTab" :tabs="tabs" />
+			<input-number-component v-model:number-value="exInputNumber1" input-number-id="ex-input-number1"
+				label-text="Инпут номерной" />
+			<input-number-component v-model:number-value="exInputNumber2" :is-blocked="true"
+				input-number-id="ex-input-number2" label-text="Инпут номерной" />
+			<input-number-component v-model:number-value="exInputNumber3" :is-blocked="true"
+				input-number-id="ex-input-number3" label-text="Инпут номерной" />
 			<bread-crumbs-component v-model:items="myCrumbs" />
-			<range-component v-model.number="valueRange"
-							 :min="0"
-							 :max="200" />
-			<range-component v-model.number="valueRange1"
-							 :min="0"
-							 :max="200"
-							 :is-disabled="true" />
-			<double-range-component v-model="doubleRangeValue"
-									:min="0"
-									:max="100"
-									:step="1" />
+			<range-component v-model.number="valueRange" :min="0" :max="200" />
+			<range-component v-model.number="valueRange1" :min="0" :max="200" :is-disabled="true" />
+			<double-range-component v-model="doubleRangeValue" :min="0" :max="100" :step="1" />
 			<div>
 				<toast-component ref="toast" />
-				<button class="toast-button"
-						@click="showSuccess">Показать успех</button>
-				<button class="toast-button"
-						@click="showError">Показать ошибку</button>
-				<button class="toast-button"
-						@click="showWarning">Показать предупреждение</button>
-				<button class="toast-button"
-						@click="showInfo">Информационное уведомление</button>
+				<button class="toast-button" @click="showSuccess">Показать успех</button>
+				<button class="toast-button" @click="showError">Показать ошибку</button>
+				<button class="toast-button" @click="showWarning">Показать предупреждение</button>
+				<button class="toast-button" @click="showInfo">Информационное уведомление</button>
 			</div>
 			<chart-component />
-			<simple-table-component :headers="headerTable"
-									:rows="rowsTable" />
+			<simple-table-component :headers="headerTable" :rows="rowsTable" />
 		</div>
 	</div>
 </template>
@@ -197,7 +163,7 @@ export default {
 			headerTable: ['Имя', 'Возраст', 'Город'],
 		}
 	},
-	methods:{
+	methods: {
 		showInfo() {
 			this.$refs.toast.show('Это информационное сообщение', 'info');
 		},
@@ -253,12 +219,14 @@ export default {
 		display: flex;
 
 	}
-	.toast-button{
+
+	.toast-button {
 		display: flex;
 		border: 2px solid var(--thirdary);
 		border-radius: 5px;
 		padding: 3px;
 		margin: 3px;
+		color: var(--background);
 	}
 }
 </style>

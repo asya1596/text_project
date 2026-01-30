@@ -1,26 +1,13 @@
 <template>
     <div class="range-slider">
         <div class="slider-wrapper">
-            <div class="progress"
-                 :style="{ left: leftProgress + '%', width: progressWidth + '%' }">
+            <div class="progress" :style="{ left: leftProgress + '%', width: progressWidth + '%' }">
             </div>
-            <input ref="range1"
-                   class="range range-left"
-                   type="range"
-                   :min="min"
-                   :max="max"
-                   :step="step"
-                   :value="modelValue[0]"
-                   @input="updateRange1" />
+            <input ref="range1" class="range range-left" type="range" :min="min" :max="max" :step="step"
+                :value="modelValue[0]" @input="updateRange1" />
 
-            <input ref="range2"
-                   class="range range-right"
-                   type="range"
-                   :min="min"
-                   :max="max"
-                   :step="step"
-                   :value="modelValue[1]"
-                   @input="updateRange2" />
+            <input ref="range2" class="range range-right" type="range" :min="min" :max="max" :step="step"
+                :value="modelValue[1]" @input="updateRange2" />
         </div>
         <div class="values">
             <span>{{ modelValue[0] }}</span>
@@ -205,5 +192,6 @@ export default {
     width: 100%;
     margin-top: 10px;
     user-select: none;
+    color: var(--background);
 }
 </style>

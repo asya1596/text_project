@@ -2,28 +2,22 @@
     <table class="table">
         <thead>
             <tr>
-                <th v-for="header in headers"
-                    :key="header"
-                    @click="sortByHeader(header)"
-                    :class="{
-                        'sorted-asc': sortBy === header && sortDirection === 'asc',
-                        'sorted-desc': sortBy === header && sortDirection === 'desc'
-                    }">
+                <th v-for="header in headers" :key="header" @click="sortByHeader(header)" :class="{
+                    'sorted-asc': sortBy === header && sortDirection === 'asc',
+                    'sorted-desc': sortBy === header && sortDirection === 'desc'
+                }">
                     {{ header }}
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(row, index) in filteredAndSortedRows"
-                :key="`row-${index}`">
-                <td v-for="cell in row"
-                    :key="cell">{{ cell }}</td>
+            <tr v-for="(row, index) in filteredAndSortedRows" :key="`row-${index}`">
+                <td v-for="cell in row" :key="cell">{{ cell }}</td>
             </tr>
         </tbody>
     </table>
     <div class="table-controls">
-        <input v-model="filterText"
-               placeholder="Поиск по таблице..." />
+        <input v-model="filterText" placeholder="Поиск по таблице..." />
     </div>
 </template>
 
@@ -162,7 +156,7 @@ th {
     top: 50%;
     transform: translateY(-50%);
     font-size: 12px;
-    
+
 }
 
 .table th.sorted-desc::after {
