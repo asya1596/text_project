@@ -19,7 +19,9 @@
     </nav>
     <div class="phone_and_theme">
       <a :href="`tel:${phone}`">{{ phone }}</a>
-      <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme">
+      <switch-component :is-active="isLightTheme"
+                        @update:is-active="changeTheme"
+                        switch-id="theme">
         <div class="icons">
           <light-icon v-if="isLightTheme" />
           <dark-icon v-else />
@@ -102,7 +104,7 @@ header {
     }
   }
 
-  & ::v-deep(.switch) {
+  & ::v-deep .switch {
     border-color: var(--element);
 
     &::before {
@@ -110,7 +112,7 @@ header {
     }
   }
 
-  & ::v-deep (.switch--active) {
+  & ::v-deep .switch--active {
     border-color: var(--element);
 
     &::before {
