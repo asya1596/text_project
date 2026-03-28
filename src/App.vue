@@ -32,7 +32,5 @@ export default {
   position: relative;
   background-color: var(--background-wall);
   min-height: 100vh;
-  // контент не на весь экран браузера резулирует величина vh, % тут не сработают.
-  // граница background появлялась в следствие заданной высоты по высоте контента(а он не на все окно браузера был).
 }
 </style>
