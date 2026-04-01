@@ -17,7 +17,7 @@
           <h3 class="goal-title">Планы на будущее</h3>
           <p class="goal-text">
             Создать свой сайт для обучения, развития и общения медицинских
-            работников и студентов, по мотивам сайта «up‑to‑date».
+            работников и студентов, на основе доказательной медицины, по мотивам сайта «up‑to‑date».
           </p>
         </div>
       </div>
@@ -73,6 +73,7 @@ export default {
   padding: 25px;
   max-width: 900px;
   font-family: 'Inter', sans-serif;
+  margin-bottom: 50px;
 }
 
 .photo-container {
@@ -186,7 +187,7 @@ export default {
   display: inline-flex;
   align-items: center;
   padding: 10px 16px;
-  background: #f8f9fa;
+  background: #F3F1EC;
   border: 1px solid #e9ecef;
   border-radius: 8px;
   transition: all 0.3s ease;
