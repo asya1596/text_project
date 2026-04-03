@@ -1,138 +1,50 @@
-// * {
-//     --black: #0b0b0b;
-//     --gray:#808080;
-//     --white: #f0f0f0;
-//     --gray-light: #A9A9A9;
-//     --dodger-blue: #1E90FF;
-//     --blue: #0000FF;
-//     --dimgrey: #696969;
-//     --aqua: #00FFFF;
-//     --mono: #6c6c6c;
-//     --ghost-white: #F8F8FF;
-//     --gold: #FFD700;
-//     --orange: #FFA500;
-//     --0reen: #008000;
-//     --lime-green: #32CD32;
-//     --dark-red: #8B0000;
-//     --red: #FF0000;
-// }
-
-// .theme {
-//     --secondary: var(--blue);
-//     // border-при включении и изменении состояния
-//     --thirdary: var(--dodger-blue);  
-//     // border элементов
-//     --approval: var(--lime-green);
-//     --approval-hover: var(--green);
-//     --removal: var(--gold);
-//     --removal-hover:var(--orange);
-//     --warning:var(--red);
-//     --warning-hover:var(--dark-red);
-
-
-// }
-
-// .theme--light {
-//     --background: var(--ghost-white);
-//     --primary: var(--black);
-//     // цвет текста светлая тема
-//     --element: var(--blue);
-//     --bary: var(--dimgrey );
-//     // цвет элемента при ховере светлая тема
-//     --background-wall: var(--gray);
-//     --hint-border:var(--black);
-
-// }
-
-// .theme--dark {
-//     --background: var(--black);
-//     --primary: var(--ghost-white);
-//     // цвет текста темная тема
-//     --element: var(--dodger-blue);
-//     --bary: var(--gray-light);
-//     // цвет элемента при ховере темная тема
-//     --background-wall: var(--ghost-white);
-//     --hint-border: var(--mono);
-// }
 /* 1. Базовая палитра цветов */
 :root {
-    --color-black: #0b0b0b;
-    --color-gray: #808080;
-    --color-white: #f0f0f0;
-    --color-gray-light: #A9A9A9;
-    --color-dodger-blue: #1E90FF;
-    --color-blue: #0000FF;
-    --color-dimgrey: #696969;
-    --color-aqua: #00FFFF;
-    --color-mono: #6c6c6c;
-    --color-ghost-white: #F8F8FF;
-    --color-gold: #FFD700;
-    --color-orange: #FFA500;
-    --color-green: #008000;
-    --color-lime-green: #32CD32;
-    --color-dark-red: #8B0000;
-    --color-red: #FF0000;
-}
-
-/* 2. Системные цвета (по умолчанию для светлой темы) */
-:root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
-    --text-primary: #212529;
-    --text-secondary: #495057;
-    --accent-primary: #0d6efd;
-    --accent-primary-hover: #0b5ed7;
-    --border-default: #dee2e6;
-    --action-phone: #198754;
-    --action-phone-hover: #157347;
+    --black: #0b0b0b;
+    --gray: #808080;
+    --white: #f0f0f0;
+    --gray-light: #A9A9A9;
+    --dodger-blue: #1E90FF;
+    --blue: #0000FF;
+    --dimgrey: #696969;
+    --aqua: #00FFFF;
+    --mono: #6c6c6c;
+    --ghost-white: #F8F8FF;
+    --gold: #FFD700;
+    --orange: #FFA500;
+    --green: #008000;
+    --lime-green: #32CD32;
+    --dark-red: #8B0000;
+    --red: #FF0000;
 }
 
 /* 3. Функциональные цвета (действия) */
 .theme {
-    --action-approval: var(--color-lime-green);
-    --action-approval-hover: var(--color-green);
-    --action-removal: var(--color-gold);
-    --action-removal-hover: var(--color-orange);
-    --action-warning: var(--color-red);
-    --action-warning-hover: var(--color-dark-red);
-    --link-nav-hover: var(--color-gray-light);
+    // цвета кнопок
+    --border-approval: var(--lime-green);
+    --border-approval-hover: var(--green);
+    --border-removal: var(--gold);
+    --border-removal-hover: var(--orange);
+    --border-warning: var(--red);
+    --border-warning-hover: var(--dark-red);
+    --background-link-hover: var(--gray-light);
+    --border-hoder: var(--blue);
 }
 
 /* 4. Светлая тема */
 .theme--light {
-    --bg-surface: var(--color-dimgrey);
-    --text-main: var(--color-ghost-white);
-    --element-primary: var(--color-blue);
-    --element-secondary: var(--color-dimgrey);
-    --bg-wall: var(--color-gray);
-    --hint-border: var(--color-black);
-
-    /* Переопределение системных цветов */
-    --bg-primary: #121212;
-    --bg-secondary: #1e1e1e;
-    --text-primary: #ffffff;
-    --text-secondary: #e0e0e0;
-    --accent-primary: #4d90ff;
-    --accent-primary-hover: #3a7be0;
-    --border-default: #333333;
-    --action-phone: #1db954;
-    --action-phone-hover: #16a040;
-    --switch-bg: var(--border-default);
-    --switch-thumb: var(--color-white);
-    --switch-active-bg: var(--accent-primary);
-    --switch-icon: var(--text-secondary);
+    --body-background: var(--ghost-white);
+    --border-primary: var(--dodger-blue);
+    --border-secondary: var(--blue);
+    --text-primary: var(--black);
+    --text-secondary: var(--dimgrey);
 }
 
 /* 5. Тёмная тема */
 .theme--dark {
-    --bg-surface: var(--color-ghost-white);
-    --text-main: var(--color-black);
-    --element-primary: var(--color-dodger-blue);
-    --element-secondary: var(--color-gray-light);
-    --bg-wall: var(--color-ghost-white);
-    --hint-border: var(--color-mono);
-    --switch-bg: var(--element-secondary);
-    --switch-thumb: var(--bg-surface);
-    --switch-active-bg: var(--accent-primary);
-    --switch-icon: var(--text-secondary);
+    --body-background: var(--gray);
+    --border-primary: var(--dodger-blue);
+    --border-secondary: var(--blue);
+    --text-primary: var(--ghost-white);
+    --text-secondary: var(--gray-light);
 }
