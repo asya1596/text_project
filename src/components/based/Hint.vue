@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import HintQuestionIcon from '@/assets/img/HintQuestionIcon';
+import HintQuestionIcon from '../Icons/HintQuestionIcon.vue';
 defineProps({
     hintText: {
         type: String,

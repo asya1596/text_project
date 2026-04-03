@@ -16,7 +16,7 @@
     <div class="header__actions">
       <a :href="`tel:${phone}`" class="header__phone">{{ phone }}</a>
       <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme"
-        class="header__theme-switch">
+        class="header__switch-theme">
         <div class="icons">
           <light-icon v-if="isLightTheme" />
           <dark-icon v-else />
@@ -66,7 +66,7 @@ export default {
   justify-content: space-between;
   width: 100%;
   padding: 16px 40px;
-  background-color: var(--bg-wall);
+  background-color: var(--header-background);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-default);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -128,7 +128,7 @@ export default {
 }
 
 /* Стили для свитча темы с использованием системных переменных */
-.header__theme-switch {
+.header__switch-theme{
   .switch {
     position: relative;
     display: inline-block;

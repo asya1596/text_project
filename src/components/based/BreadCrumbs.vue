@@ -36,7 +36,7 @@ export default {
 </script>
 
 <script setup>
-import CirclForCrumb from '@/assets/img/CirclForCrumb.vue';
+import Chart from './Chart.vue';
 defineProps({
     items: {
         type: Array,

@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import ArrowIcon from '@/assets/img/ArrowIcon.vue';
+import ArrowIcon from '../Icons/ArrowIcon.vue';
 defineProps({
     totalPages: {
         type: Number,
