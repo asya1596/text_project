@@ -3,16 +3,13 @@
     <nav class="nav">
       <ul class="nav__list">
         <li class="nav__item">
-          <router-link to="#" class="nav__link">Обо мне</router-link>
+          <router-link :to="{ name: 'aboutself' }" class="nav__link">Обо мне</router-link>
         </li>
         <li class="nav__item">
-          <router-link to="#" class="nav__link">Примеры работ</router-link>
+          <router-link :to="{ name: 'example' }" class="nav__link">Примеры работ</router-link>
         </li>
         <li class="nav__item">
-          <router-link to="#" class="nav__link">Контакты</router-link>
-        </li>
-        <li class="nav__item">
-          <router-link to="#" class="nav__link">Частые вопросы</router-link>
+          <router-link :to="{ name: 'contacts' }" class="nav__link">Контакты</router-link>
         </li>
       </ul>
     </nav>

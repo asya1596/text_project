@@ -1,7 +1,7 @@
 <template>
   <div class="about-self-card">
     <div class="photo-container">
-      <img src="@/assets/img/мое_фото.jpg" alt="Моё фото" class="profile-photo" />
+      <img src="@/assets/img/profilphoto.jpg" alt="Моё фото" class="profile-photo" />
     </div>
 
     <div class="content-wrapper">
