@@ -16,6 +16,8 @@
     --lime-green: #32CD32;
     --dark-red: #8B0000;
     --red: #FF0000;
+    --light-beige: #ebe7e7;
+    --medium-gray: #A9A9A9;
 }
 
 /* 3. Функциональные цвета (действия) */
@@ -27,8 +29,8 @@
     --border-removal-hover: var(--orange);
     --border-warning: var(--red);
     --border-warning-hover: var(--dark-red);
-    --background-link-hover: var(--gray-light);
-    --border-hoder: var(--blue);
+    --link-hover: var(--gray-light);
+    --border-hover: var(--blue);
 }
 
 /* 4. Светлая тема */
@@ -38,7 +40,8 @@
     --border-secondary: var(--blue);
     --text-primary: var(--black);
     --text-secondary: var(--dimgrey);
-    --header-background:var(--gray-light);
+    --header-background: var(--light-beige);
+    --link-background: var(--medium-gray);
 }
 
 /* 5. Тёмная тема */
@@ -48,4 +51,5 @@
     --border-secondary: var(--blue);
     --text-primary: var(--ghost-white);
     --text-secondary: var(--gray-light);
+    --link-background-: var(--gray-light);
 }

@@ -27,31 +27,21 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 import SwitchComponent from "./based/Switch.vue";
-import { mapState, mapMutations } from "vuex";
 import DarkIcon from "./Icons/Dark.vue";
 import LightIcon from "./Icons/Light.vue";
 
-</script>
+const store = useStore();
 
-<script>
-export default {
-  computed: {
-    ...mapState({
-      theme: (state) => state.theme,
-      phone: (state) => state.phone,
-    }),
-    isLightTheme() {
-      return this.theme === "light";
-    },
-  },
-  methods: {
-    ...mapMutations(["setTheme"]),
-    changeTheme() {
-      const newTheme = this.isLightTheme ? "dark" : "light";
-      this.setTheme(newTheme);
-    },
-  },
+const theme = computed(() => store.state.theme);
+const phone = computed(() => store.state.phone);
+const isLightTheme = computed(() => theme.value === 'light');
+
+const changeTheme = () => {
+  const newTheme = isLightTheme.value ? 'dark' : 'light';
+  store.commit('setTheme', newTheme);
 };
 </script>
 
@@ -68,7 +58,6 @@ export default {
   padding: 16px 40px;
   background-color: var(--header-background);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-default);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
@@ -89,7 +78,7 @@ export default {
   font-family: 'Inter', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: var(--text-main);
+  color: var(--text-primary);
   text-decoration: none;
   padding: 10px 18px;
   border-radius: 8px;
@@ -98,10 +87,10 @@ export default {
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
+  background-color: var(-link-background);
 
   &:hover {
-    background-color: var(--link-nav-hover);
-    color: var(--text-primary);
+    background-color: var(--link-hover);
   }
 }
 
@@ -114,7 +103,7 @@ export default {
 .header__phone {
   font-family: 'Inter', sans-serif;
   font-size: 15px;
-  color: var(--text-main);
+  color: var(--text-primary);
   text-decoration: none;
   transition: all 0.25s ease;
   padding: 8px 16px;
@@ -128,7 +117,7 @@ export default {
 }
 
 /* Стили для свитча темы с использованием системных переменных */
-.header__switch-theme{
+.header__switch-theme {
   .switch {
     position: relative;
     display: inline-block;
