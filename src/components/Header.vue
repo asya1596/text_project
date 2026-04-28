@@ -17,23 +17,16 @@
       </ul>
     </nav>
     <div class="header__actions">
-      <a :href="`tel:${phone}`" class="header__phone">{{ phone }}</a>
-      <switch-component :is-active="isLightTheme" @update:is-active="changeTheme" switch-id="theme"
-        class="header__theme-switch">
-        <div class="icons">
-          <light-icon v-if="isLightTheme" />
-          <dark-icon v-else />
-        </div>
-      </switch-component>
+      <theme-toggle class="header__theme-switch" />
     </div>
   </header>
 </template>
 
 <script setup>
-import SwitchComponent from "./based/Switch.vue";
+import ThemeToggle from "./based/ThemeToggle.vue";
 import { mapState, mapMutations } from "vuex";
-import DarkIcon from "./Icons/Dark.vue";
-import LightIcon from "./Icons/Light.vue";
+
+
 
 </script>
 
@@ -41,19 +34,8 @@ import LightIcon from "./Icons/Light.vue";
 export default {
   computed: {
     ...mapState({
-      theme: (state) => state.theme,
       phone: (state) => state.phone,
     }),
-    isLightTheme() {
-      return this.theme === "light";
-    },
-  },
-  methods: {
-    ...mapMutations(["setTheme"]),
-    changeTheme() {
-      const newTheme = this.isLightTheme ? "dark" : "light";
-      this.setTheme(newTheme);
-    },
   },
 };
 </script>

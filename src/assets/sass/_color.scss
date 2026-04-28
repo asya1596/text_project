@@ -10,41 +10,28 @@
     --aqua: #00FFFF;
     --mono: #6c6c6c;
     --ghost-white: #F8F8FF;
-    --gold: #FFD700;
     --orange: #FFA500;
     --green: #008000;
     --lime-green: #32CD32;
     --dark-red: #8B0000;
     --red: #FF0000;
+    --gold: #D4AF37;
+    --salat:#50c878;
+
+
 }
 
 /* 3. Функциональные цвета (действия) */
 .theme {
     // цвета кнопок
-    --border-approval: var(--lime-green);
-    --border-approval-hover: var(--green);
-    --border-removal: var(--gold);
-    --border-removal-hover: var(--orange);
-    --border-warning: var(--red);
-    --border-warning-hover: var(--dark-red);
-    --background-link-hover: var(--gray-light);
-    --border-hoder: var(--blue);
 }
 
 /* 4. Светлая тема */
 .theme--light {
     --body-background: var(--ghost-white);
-    --border-primary: var(--dodger-blue);
-    --border-secondary: var(--blue);
-    --text-primary: var(--black);
-    --text-secondary: var(--dimgrey);
 }
 
 /* 5. Тёмная тема */
 .theme--dark {
-    --body-background: var(--gray);
-    --border-primary: var(--dodger-blue);
-    --border-secondary: var(--blue);
-    --text-primary: var(--ghost-white);
-    --text-secondary: var(--gray-light);
+    --body-background: var(--black);
 }

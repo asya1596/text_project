@@ -6,6 +6,6 @@
 </template>
 
 <script setup>
-import AboutSelf from "@/components/AboutSelf.vue";
+import AboutSelf from "@/components/mainbloc/AboutSelf.vue";
 import Example from "@/components/Example.vue";
 </script>

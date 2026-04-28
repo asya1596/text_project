@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     theme: "dark",
-    phone: "+79998753456",
+    phone: "+79384227529",
   },
   getters: {
   },
