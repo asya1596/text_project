@@ -17,28 +17,55 @@
     --red: #ff0000;
     --gold: #d4af37;
     --salat: #50c878;
+    --grafit: #262626;
+    --gold-hover: #ffa500;
+    --dark-grey:#333;
+    --milk:#eae1e1;
     }
 
     /* 3. Функциональные цвета (действия) */
     .theme {
     // цвета кнопок
     --nav-link-hover: var(--gold);
+    --call-btn-bg: var(--gold);
+    --call-btn-bg-hover: var(--gold-hover);
+    --gray-btn-bg: var(--dimgrey);
+    --gray-btn-bg-hover: var(--dark-grey);
+    --text-call-btn: var(--black);
+    --text-gray-btn:var(--ghost-white);
     }
 
     /* 4. Светлая тема */
     .theme--light {
+    // цвета заливки
     --body-background: var(--ghost-white);
     --header-bg: var(--ghost-white);
-    --nav-link: var(--black);
     --theme-toggle-bg: var(--gold);
     --logo-bg: var(--black);
+    --arrows-color:var(--dark-grey);
+    
+
+    // цвета текста
+    --nav-link: var(--black);
+    --text-bg: var(--black);
+    --status-tag-bg: var(--milk);
+    --text-main-title: var(--gold);
+    --text-description: var(--gray);
     }
 
     /* 5. Тёмная тема */
     .theme--dark {
+    // цвета заливки
     --body-background: var(--black);
     --header-bg: var(--black);
-    --nav-link: var(--ghost-white);
     --theme-toggle-bg: var(--ghost-white);
     --logo-bg: var(--ghost-white);
+    --arrows-color:var(--green);
+
+    // цвета текста
+    --nav-link: var(--ghost-white);
+    --text-bg: var(--ghost-white);
+    --status-tag-bg: var(--grafit);
+    --text-main-title: var(--gold);
+    --text-description: var(--gray);
     }
