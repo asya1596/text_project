@@ -10,22 +10,22 @@
       <nav class="nav" :class="{ 'mobile-menu-open': isMobileMenuOpen }">
         <ul class="nav__list">
           <li class="nav__item">
-            <router-link to="#" class="nav__link">Главная</router-link>
+            <router-link to="/" class="nav__link">Главная</router-link>
           </li>
           <li class="nav__item">
-            <router-link to="#" class="nav__link">UI/UX Элементы</router-link>
+            <router-link to="/example" class="nav__link">UI/UX Элементы</router-link>
           </li>
           <li class="nav__item">
-            <router-link to="#" class="nav__link">Обо мне</router-link>
+            <router-link to="/aboutself" class="nav__link">Обо мне</router-link>
           </li>
           <li class="nav__item">
-            <router-link to="#" class="nav__link">Услуги</router-link>
+            <router-link to="/services" class="nav__link">Услуги</router-link>
           </li>
           <li class="nav__item">
-            <router-link to="#" class="nav__link">Работы</router-link>
+            <router-link to="/portfolio" class="nav__link">Работы</router-link>
           </li>
           <li class="nav__item">
-            <router-link to="#" class="nav__link">Контакты</router-link>
+            <router-link to="/footer" class="nav__link">Контакты</router-link>
           </li>
         </ul>
       </nav>
@@ -39,7 +39,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import ThemeToggle from "./based/ThemeToggle.vue";
+import ThemeToggle from './UI/ThemeToggle.vue';
 import { mapState, mapMutations } from "vuex";
 import LogoIcon from "./icons/LogoIcon.vue";
 

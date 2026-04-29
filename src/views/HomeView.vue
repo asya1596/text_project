@@ -1,11 +1,13 @@
 <template>
   <div>
+    <header />
     <about-self />
-    <example />
+    <footer />
   </div>
 </template>
 
 <script setup>
-import AboutSelf from "@/components/mainbloc/AboutSelf.vue";
-import Example from "@/components/Example.vue";
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+import AboutSelf from '@/components/mainbloc/AboutSelf.vue';
 </script>
