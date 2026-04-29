@@ -7,8 +7,8 @@
     x="0px"
     y="0px"
     viewBox="0 0 489.039 489.039"
-    width="15"
-    height="15"
+    width="24"
+    height="24"
     xml:space="preserve"
   >
     <g>
@@ -33,7 +33,7 @@ svg {
       border-radius: 10px;
     }
   circle,polygon {
-    fill: var(--element);
+    fill: var(--theme-toggle-bg);
   }
 }
 </style>

@@ -6,8 +6,8 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     x="0px"
     y="0px"
-    width="15"
-    height="16"
+    width="24"
+    height="24"
     viewBox="0 0 502 502"
     xml:space="preserve"
   >
@@ -27,7 +27,7 @@ svg {
       border-radius: 10px;
     }
   path {
-    fill: var(--element);
+    fill: var(--theme-toggle-bg);
   }
 }
 </style>

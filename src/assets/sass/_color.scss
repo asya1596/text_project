@@ -1,37 +1,44 @@
-/* 1. Базовая палитра цветов */
-:root {
+    /* 1. Базовая палитра цветов */
+    :root {
     --black: #0b0b0b;
     --gray: #808080;
     --white: #f0f0f0;
-    --gray-light: #A9A9A9;
-    --dodger-blue: #1E90FF;
-    --blue: #0000FF;
+    --gray-light: #a9a9a9;
+    --dodger-blue: #1e90ff;
+    --blue: #0000ff;
     --dimgrey: #696969;
-    --aqua: #00FFFF;
+    --aqua: #00ffff;
     --mono: #6c6c6c;
-    --ghost-white: #F8F8FF;
-    --orange: #FFA500;
+    --ghost-white: #f8f8ff;
+    --orange: #ffa500;
     --green: #008000;
-    --lime-green: #32CD32;
-    --dark-red: #8B0000;
-    --red: #FF0000;
-    --gold: #D4AF37;
-    --salat:#50c878;
+    --lime-green: #32cd32;
+    --dark-red: #8b0000;
+    --red: #ff0000;
+    --gold: #d4af37;
+    --salat: #50c878;
+    }
 
-
-}
-
-/* 3. Функциональные цвета (действия) */
-.theme {
+    /* 3. Функциональные цвета (действия) */
+    .theme {
     // цвета кнопок
-}
+    --nav-link-hover: var(--gold);
+    }
 
-/* 4. Светлая тема */
-.theme--light {
+    /* 4. Светлая тема */
+    .theme--light {
     --body-background: var(--ghost-white);
-}
+    --header-bg: var(--ghost-white);
+    --nav-link: var(--black);
+    --theme-toggle-bg: var(--gold);
+    --logo-bg: var(--black);
+    }
 
-/* 5. Тёмная тема */
-.theme--dark {
+    /* 5. Тёмная тема */
+    .theme--dark {
     --body-background: var(--black);
-}
+    --header-bg: var(--black);
+    --nav-link: var(--ghost-white);
+    --theme-toggle-bg: var(--ghost-white);
+    --logo-bg: var(--ghost-white);
+    }
