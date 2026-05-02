@@ -1,18 +1,12 @@
 <template>
-    <svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24"
-        height="16" class="arrow-icon">
-        <defs>
-            <clipPath id="clipPath_17">
-                <rect width="16" height="16" x="0" y="0" fill="rgb(255,255,255)" />
-            </clipPath>
-        </defs>
-        <g id="svg" clip-path="url(#clipPath_17)">
-            <path id="4856" d="M12 10.6666L14.6667 7.99992L12 5.33325" fill="var(--arrows-color)"
-                stroke="var(--arrows-color)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.333333" />
-            <path id="4857" d="M3.99967 5.33325L1.33301 7.99992L3.99967 10.6666" fill="var(--arrows-color)"
-                stroke="var(--arrows-color)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.333333" />
-            <path id="4858" d="M9.66634 2.66675L6.33301 13.3334" fill="var(--arrows-color)" stroke="var(--arrows-color)"
-                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.333333" />
-        </g>
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="32.000000" height="32.000000" fill="none">
+        <rect id="svg" width="32.000000" height="32.000000" x="0.000000" y="0.000000" />
+        <path id="4863" d="M24 21.3334L29.3333 16.0001L24 10.6667" fill-rule="nonzero" stroke="rgb(212,175,55)"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2.666667" />
+        <path id="4864" d="M8.00033 10.6667L2.66699 16.0001L8.00033 21.3334" fill-rule="nonzero"
+            stroke="rgb(212,175,55)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.666667" />
+        <path id="4865" d="M19.3337 5.33325L12.667 26.6666" stroke="rgb(212,175,55)" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2.666667" />
     </svg>
 </template>

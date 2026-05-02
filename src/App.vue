@@ -33,4 +33,5 @@ export default {
   background-color: var(--background-wall);
   min-height: 100vh;
 }
+
 </style>

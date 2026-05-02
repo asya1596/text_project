@@ -66,6 +66,7 @@ const navigateToContacts = () => {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 20px;
+    color: var(--text-h1);
 }
 
 .main-title span {

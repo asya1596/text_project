@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <header />
     <main-page />
     <about-self />
@@ -20,3 +20,11 @@ const components = {
   MainPage
 };
 </script>
+
+<style lang="scss" scoped>
+.body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+</style>
