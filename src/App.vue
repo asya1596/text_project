@@ -30,8 +30,8 @@ export default {
 
 .theme {
   position: relative;
-  background-color: var(--background-wall);
+  background-color: var(--body-background);
   min-height: 100vh;
+  padding: 20px;
 }
-
 </style>

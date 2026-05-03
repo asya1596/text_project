@@ -1,10 +1,9 @@
 <template>
   <div class="about-me-container">
-    <h1 class="title">Обомне</h1>
+    <h1 class="title">Обо мне</h1>
     <p class="description">
-      Я увлечённый веб-разработчик, специализирующийся на создании современных интерфейсов.
-      Моя цель — разрабатывать красивые, функциональные сайты и воплощать в жизнь смелые дизайн-идеи,
-      обеспечивая отличный пользовательский опыт.
+      Веб‑разработчик. Создаю современные, функциональные интерфейсы и превращаю дизайн‑идеи в работающие веб‑решения.
+      Гарантирую отличный пользовательский опыт.
     </p>
     <div class="stack-and-grid">
       <div class="tech-stack">
@@ -110,7 +109,7 @@ function getGradientStyle(level) {
   width: 90%;
   margin: 20px auto 40px;
   line-height: 1.6;
-  font-size: 18px;
+  font-size: 20px;
   color: var(--text-description);
   max-width: 60%;
 }
@@ -122,6 +121,7 @@ function getGradientStyle(level) {
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .tech-stack-title {

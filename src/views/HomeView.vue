@@ -3,6 +3,7 @@
     <header />
     <main-page />
     <about-self />
+    <services-grid/>
     <footer />
   </div>
 </template>
@@ -12,19 +13,13 @@ import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import AboutSelf from '@/components/mainbloc/AboutSelf.vue';
 import MainPage from '@/components/mainbloc/MainPage.vue';
+import ServicesGrid from '@/components/mainbloc/ServicesGrid.vue';
 
 const components = {
   Header,
   Footer,
   AboutSelf,
-  MainPage
+  MainPage,
+  ServicesGrid,
 };
 </script>
-
-<style lang="scss" scoped>
-.body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-</style>

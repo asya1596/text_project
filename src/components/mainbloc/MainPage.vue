@@ -5,8 +5,9 @@
             <span class="status-text">Доступен для новых проектов</span>
         </div>
         <h1 class="main-title">Создаю <span>современные</span> веб-решения</h1>
-        <p class="description">Frontend‑разработчик с фокусом на создание быстрых, доступных и визуально безупречных
-            пользовательских интерфейсов.</p>
+        <p class="description">Современные фронтенд‑решения для вашего бизнеса.
+            Разрабатываю интерфейсы с высокой производительностью, продуманной доступностью и безупречным визуалом. Ваш
+            сайт станет быстрее, удобнее и привлекательнее для аудитории.</p>
         <div class="buttons-container">
             <CallBtn class="btn-call button-yellow" buttonContent="Связаться со мной" @click="navigateToContacts" />
         </div>
@@ -74,10 +75,10 @@ const navigateToContacts = () => {
 }
 
 .description {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.6;
     color: var(--text-description);
-    max-width: 600px;
+    max-width: 70%;
     margin: 0 auto 30px;
     padding: 20px;
 }

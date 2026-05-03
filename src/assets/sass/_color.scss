@@ -33,7 +33,7 @@
     --gray-btn-bg-hover: var(--dark-grey);
     --text-call-btn: var(--black);
     --text-gray-btn: var(--ghost-white);
-    --text-h1-green:var(--lime-green);
+    
     }
 
     /* 4. Светлая тема */
@@ -56,6 +56,7 @@
     --text-description: var(--dark-grey);
     --text-h1: var(--black);
     --text-h2: var(--dark-grey);
+    --text-h1-green:var(--dark-grey);
     }
 
     /* 5. Тёмная тема */
@@ -78,4 +79,5 @@
     --text-description: var(--gray);
     --text-h1: var(--white);
     --text-h2: var(--milk);
+    --text-h1-green:var(--lime-green);
     }
