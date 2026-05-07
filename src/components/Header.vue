@@ -25,7 +25,7 @@
             <router-link to="/portfolio" class="nav__link">Работы</router-link>
           </li>
           <li class="nav__item">
-            <router-link to="/footer" class="nav__link">Контакты</router-link>
+            <router-link to="/contactspage" class="nav__link">Контакты</router-link>
           </li>
         </ul>
       </nav>

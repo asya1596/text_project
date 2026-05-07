@@ -4,6 +4,7 @@
     <main-page />
     <about-self />
     <services-grid/>
+    <contacts-page/>
     <footer />
   </div>
 </template>
@@ -14,6 +15,7 @@ import Footer from '@/components/Footer.vue';
 import AboutSelf from '@/components/mainbloc/AboutSelf.vue';
 import MainPage from '@/components/mainbloc/MainPage.vue';
 import ServicesGrid from '@/components/mainbloc/ServicesGrid.vue';
+import ContactsPage from '@/components/mainbloc/ContactsPage.vue';
 
 const components = {
   Header,
@@ -21,5 +23,6 @@ const components = {
   AboutSelf,
   MainPage,
   ServicesGrid,
+  ContactsPage,
 };
 </script>

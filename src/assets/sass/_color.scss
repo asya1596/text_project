@@ -33,7 +33,7 @@
     --gray-btn-bg-hover: var(--dark-grey);
     --text-call-btn: var(--black);
     --text-gray-btn: var(--ghost-white);
-    
+    --cocial-link-text-hover: var(--gold);
     }
 
     /* 4. Светлая тема */
@@ -47,6 +47,7 @@
     --progress-bar-bg: var(--dimgrey);
     --card-block: var(--milk);
     --underscore-text: var(--gray-light);
+    --btn-bg-green: var(--lime-green);
 
     // цвета текста
     --nav-link: var(--black);
@@ -56,7 +57,9 @@
     --text-description: var(--dark-grey);
     --text-h1: var(--black);
     --text-h2: var(--dark-grey);
-    --text-h1-green:var(--dark-grey);
+    --text-h1-green: var(--dark-grey);
+    --text-btn-bg-green: var(--dark-grey);
+    --cocial-link-text: var(--black);
     }
 
     /* 5. Тёмная тема */
@@ -70,6 +73,7 @@
     --progress-bar-bg: var(--dimgrey);
     --card-block: var(--grafit);
     --underscore-text: var(--dimgrey);
+    --btn-bg-green: var(--lime-green);
 
     // цвета текста
     --nav-link: var(--ghost-white);
@@ -79,5 +83,6 @@
     --text-description: var(--gray);
     --text-h1: var(--white);
     --text-h2: var(--milk);
-    --text-h1-green:var(--lime-green);
+    --text-h1-green: var(--lime-green);
+    --text-btn-bg-green: var(--ghost-white);
     }

@@ -5,6 +5,7 @@ import AboutSelf from "@/components/mainbloc/AboutSelf.vue";
 import Footer from "@/components/Footer.vue";
 import ExampleComponents from "@/components/mainbloc/ExampleComponents.vue";
 import ServicesGrid from "@/components/mainbloc/ServicesGrid.vue";
+import ContactsPage from "@/components/mainbloc/ContactsPage.vue";
 
 const routes = [
   {
@@ -40,6 +41,11 @@ const routes = [
     path: "/services",
     name: "servicesgrid",
     component: ServicesGrid,
+  },
+  {
+    path: "/contactspage",
+    name: "contactspage",
+    component: ContactsPage,
   },
 ];
 
