@@ -12,7 +12,6 @@ import FooterComponent from "/src/components/Footer.vue";
 import {
   mapState
 } from "vuex";
-import CookieConsent from "vue-cookieconsent-component";
 </script>
 
 <script>
