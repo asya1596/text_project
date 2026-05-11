@@ -31,7 +31,7 @@ const projects = [
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     padding: 20px;
-    max-width: 1400px; 
+    max-width: 1000px; 
     margin: 0 auto; 
     width: 100%;
     box-sizing: border-box;
@@ -40,11 +40,13 @@ const projects = [
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
         padding: 30px;
+        max-width: 1420px; 
     }
 
     @media (min-width: 1440px) and (max-width: 1599px) {
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
         gap: 35px;
+        max-width: 1400px; 
     }
 
     @media (min-width: 1280px) and (max-width: 1439px) {
@@ -56,12 +58,14 @@ const projects = [
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
         padding: 15px;
+        max-width: 1000px; 
     }
 
     @media (min-width: 768px) and (max-width: 1023px) {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 15px;
+        max-width: 90%;
     }
 
     @media (max-width: 767px) {
