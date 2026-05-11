@@ -21,7 +21,7 @@ import LegalInfo from './cards/LegalInfo.vue';
 
 <style scoped lang="scss">
 .footer {
-    background-color: var(--body-background);
+    background: var(--card-block);
     color: var(--text-bg);
     padding: 40px 0 20px;
 

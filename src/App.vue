@@ -3,12 +3,14 @@
     <header-component />
     <router-view />
     <footer-component/>
+    <cookie-consent-component/>
   </div>
 </template>
 
 <script setup>
 import HeaderComponent from "/src/components/Header.vue";
 import FooterComponent from "/src/components/Footer.vue";
+import CookieConsentComponent from "./components/CookieConsent.vue";
 import {
   mapState
 } from "vuex";
@@ -34,6 +36,5 @@ export default {
   position: relative;
   background-color: var(--body-background);
   min-height: 100vh;
-  padding: 20px;
 }
 </style>

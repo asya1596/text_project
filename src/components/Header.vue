@@ -58,7 +58,7 @@ const toggleMobileMenu = () => {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--header-bg);
+  background: var(--card-block);
   transition: all 0.3s ease;
 }
 
