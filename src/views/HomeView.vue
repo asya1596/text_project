@@ -3,8 +3,9 @@
     <header />
     <main-page />
     <about-self />
-    <services-grid/>
-    <contacts-page/>
+    <services-grid />
+    <portfolio-grid />
+    <contacts-page />
     <footer />
   </div>
 </template>
@@ -16,6 +17,7 @@ import AboutSelf from '@/components/mainbloc/AboutSelf.vue';
 import MainPage from '@/components/mainbloc/MainPage.vue';
 import ServicesGrid from '@/components/mainbloc/ServicesGrid.vue';
 import ContactsPage from '@/components/mainbloc/ContactsPage.vue';
+import PortfolioGrid from '@/components/mainbloc/PortfolioGrid.vue';
 
 const components = {
   Header,
@@ -23,6 +25,7 @@ const components = {
   AboutSelf,
   MainPage,
   ServicesGrid,
+  PortfolioGrid,
   ContactsPage,
 };
 </script>

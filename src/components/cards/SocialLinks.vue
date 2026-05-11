@@ -52,15 +52,15 @@ const links = [
         title: 'ВК',
         value: 'Страница разработчика',
         iconComponent: VkIcon,
-        url: 'https://vk.com/username',
+        url: 'https://vk.com/asya.thagusheva',
         target: '_blank'
     },
     {
         id: 5,
         title: 'Max',
-        value: 'Мессенджер',
+        value: 'Месенджер',
         iconComponent: MaxIcon,
-        url: 'https://max.com/username',
+        url: 'https://max.ru/u/f9LHodD0cOL6K7S2O3s9t_nEELIZobneYJuyWJqLcv9pGwGEPBQCvaL7xHI',
         target: '_blank'
     }
 ];
