@@ -3,7 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import PortfolioGrid from "@/components/mainbloc/PortfolioGrid.vue";
 import AboutSelf from "@/components/mainbloc/AboutSelf.vue";
 import Footer from "@/components/Footer.vue";
-import ExampleComponents from "@/components/mainbloc/ExampleComponents.vue";
+import ExamplePage from "@/components/mainbloc/ExamplePage,.vue";
 import ServicesGrid from "@/components/mainbloc/ServicesGrid.vue";
 import ContactsPage from "@/components/mainbloc/ContactsPage.vue";
 
@@ -33,9 +33,9 @@ const routes = [
     component: Footer,
   },
   {
-    path: "/example",
-    name: "examplecomponents",
-    component: ExampleComponents,
+    path: "/examplepage",
+    name: "examplepage",
+    component: ExamplePage,
   },
   {
     path: "/services",

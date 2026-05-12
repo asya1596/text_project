@@ -13,7 +13,7 @@
             <router-link to="/" class="nav__link">Главная</router-link>
           </li>
           <li class="nav__item">
-            <router-link to="/example" class="nav__link">UI/UX Элементы</router-link>
+            <router-link to="/examplepage" class="nav__link">UI/UX Элементы</router-link>
           </li>
           <li class="nav__item">
             <router-link to="/aboutself" class="nav__link">Обо мне</router-link>

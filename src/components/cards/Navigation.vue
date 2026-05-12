@@ -3,7 +3,7 @@
         <h3 class="section-title">Навигация</h3>
         <ul>
             <li><a href="/">Главная</a></li>
-            <li><a href="/example">UI/UX Элементы</a></li>
+            <li><a href="/examplepage">UI/UX Элементы</a></li>
             <li><a href="/aboutself">Обо мне</a></li>
             <li><a href="/services">Услуги</a></li>
             <li><a href="/portfolio">Работы</a></li>
