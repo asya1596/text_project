@@ -1,4 +1,5 @@
 <template>
+    <h1>Мои работы</h1>
     <div class="portfolio-grid">
         <portfolio-card v-for="project in projects" :key="project.id" :link="project.link" :image="project.image"
             :title="project.title" :overlay-text="project.overlayText" />
@@ -26,13 +27,24 @@ const projects = [
 </script>
 
 <style lang="scss" scoped>
+h1 {
+    text-align: center;
+    color: var(--text-h1);
+    font-weight: 600;
+    font-size: 36px;
+    padding-left: 5%;
+    transition: color 0.2s ease-out;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     padding: 20px;
-    max-width: 1000px; 
-    margin: 0 auto; 
+    max-width: 1000px;
+    margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
 
@@ -40,13 +52,13 @@ const projects = [
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
         padding: 30px;
-        max-width: 1420px; 
+        max-width: 1420px;
     }
 
     @media (min-width: 1440px) and (max-width: 1599px) {
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
         gap: 35px;
-        max-width: 1400px; 
+        max-width: 1400px;
     }
 
     @media (min-width: 1280px) and (max-width: 1439px) {
@@ -58,7 +70,7 @@ const projects = [
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
         padding: 15px;
-        max-width: 1000px; 
+        max-width: 1000px;
     }
 
     @media (min-width: 768px) and (max-width: 1023px) {

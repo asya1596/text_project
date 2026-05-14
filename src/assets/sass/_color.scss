@@ -1,107 +1,117 @@
-/* 1. Базовая палитра цветов */
-:root {
-  --black: #0b0b0b;
-  --gray: #808080;
-  --white: #f0f0f0;
-  --gray-light: #a9a9a9;
-  --dodger-blue: #1e90ff;
-  --blue: #0000ff;
-  --dimgrey: #696969;
-  --aqua: #00ffff;
-  --mono: #6c6c6c;
-  --ghost-white: #f8f8ff;
-  --orange: #ffa500;
-  --green: #008000;
-  --lime-green: #32cd32;
-  --dark-red: #8b0000;
-  --red: #ff0000;
-  --gold: #ffd700;
-  --salat: #50c878;
-  --grafit: #262626;
-  --gold-hover: #ffa500;
-  --dark-grey: #333;
-  --milk: #eae1e1;
-  --blue: #4984eb;
-}
+    /* 1. Базовая палитра цветов */
+    :root {
+    --black: #0b0b0b;
+    --gray: #808080;
+    --white: #f0f0f0;
+    --gray-light: #a9a9a9;
+    --dodger-blue: #1e90ff;
+    --blue: #0000ff;
+    --dimgrey: #696969;
+    --aqua: #00ffff;
+    --mono: #6c6c6c;
+    --ghost-white: #f8f8ff;
+    --orange: #ffa500;
+    --green: #008000;
+    --lime-green: #32cd32;
+    --dark-red: #8b0000;
+    --red: #ff0000;
+    --gold: #ffd700;
+    --salat: #50c878;
+    --grafit: #262626;
+    --gold-hover: #ffa500;
+    --dark-grey: #333;
+    --milk: #eae1e1;
+    --blue: #4984eb;
+    }
 
-/* 3. Функциональные цвета (действия) */
-.theme {
-  // цвета кнопок
-  --nav-link-hover: var(--gold);
-  --call-btn-bg: var(--gold);
-  --call-btn-bg-hover: var(--gold-hover);
-  --gray-btn-bg: var(--dimgrey);
-  --gray-btn-bg-hover: var(--dark-grey);
-  --text-call-btn: var(--black);
-  --text-gray-btn: var(--ghost-white);
-  --cocial-link-text-hover: var(--gold);
-  --text-description-hover: var(--gold-hover);
-  --btn-accept: var(--green);
-  --btn-settings: var(--dodger-blue);
-  --btn-cansel: var(--dark-red);
-  --btn-primary-bg: var(--gray);
-  --modal-bg: var(--milk);
-  --text-modal: var(--black);
-  --switch-bg-gray: #aaa;
-  --switch-bg-active: #666;
-  --switch-bg-yellow: #ffc107;
-  --switch-bg-yellow-active: #ffd700;
-  --switch-bg-green: #4caf50;
-  --switch-bg-green-active: #2ecc71;
-}
+    /* 3. Функциональные цвета (действия) */
+    .theme {
+    // цвета кнопок
+    --nav-link-hover: var(--gold);
+    --call-btn-bg: var(--gold);
+    --call-btn-bg-hover: var(--gold-hover);
+    --gray-btn-bg: var(--dimgrey);
+    --gray-btn-bg-hover: var(--dark-grey);
+    --text-call-btn: var(--black);
+    --text-gray-btn: var(--ghost-white);
+    --cocial-link-text-hover: var(--gold);
+    --text-description-hover: var(--gold-hover);
+    --btn-accept: var(--green);
+    --btn-settings: var(--dodger-blue);
+    --btn-cansel: var(--dark-red);
+    --btn-primary-bg: var(--gray);
+    --modal-bg: var(--milk);
+    --text-modal: var(--black);
+    --switch-thumb-light: var(--gray-light);
+    --switch-thumb-light-disable: var(--milk);
+    --switch-thumb-dark: var(--black);
+    --switch-thumb-dark-disable: var(--gray-light);
+    --switch-thumb-emerald: #28b763;
+    --switch-thumb-emerald-active: #26de2c;
+    --switch-bg-gray: #aaa;
+    --switch-bg-disable: #666;
+    --switch-bg-yellow: #ffc107;
+    --switch-bg-yellow-active: #ffd700;
+    --switch-bg-emerald: #00796B;
+    --switch-bg-emerald-active: #009688;
+    
+    }
 
-/* 4. Светлая тема */
-.theme--light {
-  // цвета заливки
-  --body-background: var(--ghost-white);
-  --header-bg: var(--ghost-white);
-  --theme-toggle-bg: var(--gold);
-  --logo-bg: var(--black);
-  --arrows-color: var(--dark-grey);
-  --progress-bar-bg: var(--dimgrey);
-  --card-block: var(--milk);
-  --underscore-text: var(--gray-light);
-  --btn-bg-green: var(--lime-green);
-  --switch-bg: var(--gold-hover);
-  --switch-bg-content: var(--black);
+    /* 4. Светлая тема */
+    .theme--light {
+    // цвета заливки
+    --body-background: var(--ghost-white);
+    --header-bg: var(--ghost-white);
+    --theme-toggle-bg: var(--gold);
+    --logo-bg: var(--black);
+    --arrows-color: var(--dark-grey);
+    --progress-bar-bg: var(--dimgrey);
+    --card-block: var(--milk);
+    --underscore-text: var(--gray-light);
+    --btn-bg-green: var(--lime-green);
 
-  // цвета текста
-  --nav-link: var(--black);
-  --text-bg: var(--black);
-  --status-tag-bg: var(--milk);
-  --text-main-title: var(--black);
-  --text-description: var(--dark-grey);
-  --text-h1: var(--black);
-  --text-h2: var(--dark-grey);
-  --text-h3: var(--dimgrey);
-  --text-h1-green: var(--dark-grey);
-  --text-btn-bg-green: var(--dark-grey);
-  --cocial-link-text: var(--black);
-}
+    // цвета текста
+    --nav-link: var(--black);
+    --text-bg: var(--black);
+    --status-tag-bg: var(--milk);
+    --text-main-title: var(--black);
+    --text-description: var(--dark-grey);
+    --text-h1: var(--black);
+    --text-h2: var(--dark-grey);
+    --text-h3: var(--dimgrey);
+    --text-h1-green: var(--dark-grey);
+    --text-btn-bg-green: var(--dark-grey);
+    --cocial-link-text: var(--black);
+    --slots: var(--dark-grey);
+    --strong:var(--black);
+    }
 
-/* 5. Тёмная тема */
-.theme--dark {
-  // цвета заливки
-  --body-background: var(--black);
-  --header-bg: var(--black);
-  --theme-toggle-bg: var(--ghost-white);
-  --logo-bg: var(--ghost-white);
-  --arrows-color: var(--green);
-  --progress-bar-bg: var(--dimgrey);
-  --card-block: var(--grafit);
-  --underscore-text: var(--dimgrey);
-  --btn-bg-green: var(--lime-green);
+    /* 5. Тёмная тема */
+    .theme--dark {
+    // цвета заливки
+    --body-background: var(--black);
+    --header-bg: var(--black);
+    --theme-toggle-bg: var(--ghost-white);
+    --logo-bg: var(--ghost-white);
+    --arrows-color: var(--green);
+    --progress-bar-bg: var(--dimgrey);
+    --card-block: var(--grafit);
+    --underscore-text: var(--dimgrey);
+    --btn-bg-green: var(--lime-green);
+    --section-bg: var(--dark-grey);
 
-  // цвета текста
-  --nav-link: var(--ghost-white);
-  --text-bg: var(--ghost-white);
-  --status-tag-bg: var(--grafit);
-  --text-main-title: var(--gold);
-  --text-description: var(--gray);
-  --text-h1: var(--white);
-  --text-h2: var(--milk);
-  --text-h3: var(--lime-green);
-  --text-h1-green: var(--lime-green);
-  --text-btn-bg-green: var(--ghost-white);
-  --cocial-link-text: var(--dimgrey);
-}
+    // цвета текста
+    --nav-link: var(--ghost-white);
+    --text-bg: var(--ghost-white);
+    --status-tag-bg: var(--grafit);
+    --text-main-title: var(--gold);
+    --text-description: var(--gray);
+    --text-h1: var(--white);
+    --text-h2: var(--milk);
+    --text-h3: var(--lime-green);
+    --text-h1-green: var(--lime-green);
+    --text-btn-bg-green: var(--ghost-white);
+    --cocial-link-text: var(--dimgrey);
+    --slots: var(--ghost-white);
+    --strong:var(--ghost-white);
+    }

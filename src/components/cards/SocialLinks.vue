@@ -131,5 +131,7 @@ const links = [
     color: var(--text-description);
     font-size: 14px;
 }
-
+strong{
+    color:var(--strong);
+}
 </style>
