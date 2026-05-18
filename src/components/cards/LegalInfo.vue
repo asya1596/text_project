@@ -30,10 +30,6 @@ const legalLinks = [
         href: "/assets/documents/privacypoicy.pdf",
     },
     {
-        text: "Информация по самозанятости",
-        href: "/assets/documents/self-employment.pdf",
-    },
-    {
         text: "Стандартный договор на оказание услуг",
         href: "/assets/documents/service-agreement.pdf",
     },

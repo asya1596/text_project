@@ -6,12 +6,14 @@
         </p>
         <div class="contact-grid">
             <social-links class="social-links-component" />
+            <feedback-form class="feedback-form-component" />
         </div>
     </div>
 </template>
 
 <script setup>
 import SocialLinks from '../cards/SocialLinks.vue';
+import FeedbackForm from '../cards/FeedbackForm.vue';
 </script>
 
 <style lang="scss" scoped>

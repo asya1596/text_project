@@ -4,7 +4,6 @@
             <div class="portfolio-image">
                 <img :src="image" :alt="title" />
             </div>
-            <span>Посмотреть сайт</span>
             <div class="portfolio-title">{{ title }}</div>
         </a>
     </div>
@@ -106,30 +105,4 @@ const props = defineProps({
     }
 }
 
-span {
-    display: block;
-    text-align: center;
-    color: var(--text-description);
-    font-size: 16px;
-    font-weight: 400;
-    margin: 10px 0;
-    padding: 0 15px;
-    line-height: 1.4;
-    transition: color 0.3s ease;
-    &:hover{
-        color: var(--text-description-hover);
-    }
-
-    @media (max-width: 767px) {
-        font-size: 13px;
-        margin: 8px 0;
-        padding: 0 10px;
-    }
-
-    @media (max-width: 480px) {
-        font-size: 12px;
-        margin: 6px 0;
-        padding: 0 8px;
-    }
-}
 </style>

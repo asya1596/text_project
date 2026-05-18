@@ -1,90 +1,120 @@
 <template>
-    <div class="example">
-        <h1>Радиокнопки · Чекбоксы · Свитчи</h1>
-        <div class="controls-panel">
-            <div class="section">
-                <h2>Радиокнопки</h2>
-                <div class="radio-group"></div>
-            </div>
+	<div class="example">
+		<h1>Радиокнопки · Чекбоксы · Свитчи</h1>
+		<div class="controls-panel">
+			<div class="section">
+				<h2>Радиокнопки</h2>
+				<div class="radio-group"></div>
+			</div>
 
-            <div class="section">
-                <h2>Чекбоксы</h2>
-                <div class="checkbox-group"></div>
-            </div>
+			<div class="section">
+				<h2>Чекбоксы</h2>
+				<div class="checkbox-group">
+					<!-- Выбранный чекбокс -->
+					<Checkbox v-model="isChecked1" checkbox-id="checkbox1">
+						Выбранный чекбокс
+					</Checkbox>
 
-            <div class="section">
-                <h2>Свитчи</h2>
-                <div class="switch-group">
-                    <Switch :isActive="isYellowActive" color="yellow" @update:isActive="isYellowActive = $event">
-                        Включен 
-                    </Switch>
+					<!-- Невыбранный чекбокс -->
+					<Checkbox v-model="isChecked2" checkbox-id="checkbox2">
+						Невыбранный чекбокс
+					</Checkbox>
 
-                    <Switch :isActive="isGrayActive" color="gray"  type="disablet">
-                        Выключен 
-                    </Switch>
+					<!-- Выбранный, но неактивный чекбокс -->
+					<Checkbox v-model="isChecked3" disabled checkbox-id="checkbox3">
+						Выбранный, но неактивный
+					</Checkbox>
+				</div>
+			</div>
 
-                    <Switch :isActive="isEmeraldActive" color="emerald" @update:isActive="isEmeraldActive = $event">
-                        Изумрудный
-                    </Switch>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="section">
+				<h2>Свитчи</h2>
+				<div class="switch-group">
+					<Switch :isActive="isYellowActive" color="yellow" @update:isActive="isYellowActive = $event">
+						Включен
+					</Switch>
+
+					<Switch :isActive="isGrayActive" color="gray" type="disabled">
+						Выключен
+					</Switch>
+
+					<Switch :isActive="isEmeraldActive" color="emerald" @update:isActive="isEmeraldActive = $event">
+						Изумрудный
+					</Switch>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script setup>
-import Switch from '../UI/Switch.vue';
-import { ref } from 'vue';
+import Switch from '../UI/Switch.vue'
+import Checkbox from '../UI/Checkbox.vue'
+import { ref } from 'vue'
 
-const isYellowActive = ref(true);
-const isGrayActive = ref(false);
-const isEmeraldActive = ref(true);
+const isYellowActive = ref(true)
+const isGrayActive = ref(false)
+const isEmeraldActive = ref(true)
 
-const exSwitch = ref(false);
+// Состояния для трёх чекбоксов
+const isChecked1 = ref(true)   // Выбранный
+const isChecked2 = ref(false)  // Невыбранный
+const isChecked3 = ref(true)  // Выбранный, но неактивный
 </script>
 
 <style lang="scss" scoped>
 .example {
-    h1 {
-        text-align: center;
-        color: var(--text-h1);
-        font-weight: 600;
-        font-size: 20px;
-        padding-left: 5%;
-        transition: color 0.2s ease-out;
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
+	h1 {
+		text-align: center;
+		color: var(--text-h1);
+		font-weight: 600;
+		font-size: 20px;
+		padding-left: 5%;
+		transition: color 0.2s ease-out;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
 }
 
 .controls-panel {
-    display: flex;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+	display: flex;
+	gap: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
 }
 
 .section {
-    background-color: var(--section-bg);
-    border-radius: 8px;
-    padding: 20px;
-    box-sizing: border-box;
-    width: 30%;
-    height: 180px;
+	background-color: var(--card-block);
+	border-radius: 8px;
+	padding: 20px;
+	box-sizing: border-box;
+	width: 30%;
+	height: 180px;
 }
 
 h2 {
-    color: var(--text-h2);
-    font-size: 18px;
-    margin-bottom: 15px;
-
+	color: var(--text-h2);
+	font-size: 18px;
+	margin-bottom: 15px;
 }
 
 .switch-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.checkbox-group {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.radio-group {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 </style>
 

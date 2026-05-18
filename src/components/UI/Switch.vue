@@ -101,7 +101,7 @@ const thumbStyle = computed(() => {
   height: 18px;
   border-radius: 50%;
   transition:  transform 0.3s ease, 
-    background-color 0.3s ease;
+  background-color 0.3s ease;
   z-index: 2;
 }
 
