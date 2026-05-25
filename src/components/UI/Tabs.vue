@@ -41,25 +41,25 @@ defineProps({
 
     .tab-element {
         display: inline-block;
-        border: 2px solid var(--thirdary);
+        border: 2px solid var(--tabs-border);
         border-radius: 5px;
         padding: 5px;
         font-size: 16px;
-        color: var(--background);
+        color: var(--tabs-text);
         cursor: pointer;
         user-select: none;
 
         &:hover {
-            border-color: var(--secondary);
+            border-color: var(--tabs-border-hover);
         }
     }
 
     .tab-element--active {
-        background-color: var(--background);
-        border-color: var(--background);
-        color: var(--primary);
+        background-color: var(--tabs-bg-active);
+        border-color: var(--tabs-border-active);
+        color: var(--tabs-text-active);
         &:hover {
-                border-color: var(--background);
+                border-color: var(--tabs-border-active);
             }
     }
 

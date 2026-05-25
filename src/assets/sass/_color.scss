@@ -5,32 +5,18 @@
     --white: #f0f0f0;
     --gray-light: #a9a9a9;
     --dodger-blue: #1e90ff;
-    --blue: #0000ff;
     --dimgrey: #696969;
-    --aqua: #00ffff;
     --mono: #6c6c6c;
     --ghost-white: #f8f8ff;
     --orange: #ffa500;
     --green: #008000;
     --lime-green: #32cd32;
     --dark-red: #8b0000;
-    --red: #ff0000;
     --gold: #ffd700;
-    --salat: #50c878;
     --grafit: #262626;
-    --gold-hover: #ffa500;
     --dark-grey: #333;
     --milk: #eae1e1;
-    --blue: #4984eb;
     --yellow: #ffc107;
-    --emerald: #28b763;
-    --emerald-active: #26de2c;
-    --yellow-active: #ffd700;
-    --disable: #666;
-    --disabled-control-bg: #b0b0b0;
-    --disabled-control-border: #8c8c8c;
-    --checkbox-unable-bg: var(--disabled-control-bg);
-    --checkbox-unable-border: var(--disabled-control-border);
     }
 
     /* 3. Функциональные цвета (действия) */
@@ -38,25 +24,21 @@
     // цвета кнопок
     --nav-link-hover: var(--gold);
     --call-btn-bg: var(--gold);
-    --call-btn-bg-hover: var(--gold-hover);
+    --call-btn-bg-hover: var(--orange);
     --gray-btn-bg: var(--dimgrey);
     --gray-btn-bg-hover: var(--dark-grey);
     --text-call-btn: var(--black);
     --text-gray-btn: var(--ghost-white);
     --cocial-link-text-hover: var(--gold);
-    --text-description-hover: var(--gold-hover);
+    --text-description-hover: var(--orange);
     --modal-bg: var(--milk);
     --text-modal: var(--black);
     --btn-accept: var(--green);
     --btn-settings: var(--dodger-blue);
     --btn-cansel: var(--dark-red);
     --btn-primary-bg: var(--gray);
-    --switch-thumb-light: var(--gray-light);
-    --switch-thumb-light-disable: var(--milk);
-    --switch-thumb-dark: var(--black);
-    --switch-thumb-dark-disable: var(--gray-light);
-    --switch-thumb-emerald:var(--emerald);
-    --switch-thumb-emerald-active:var(--emerald-active);
+    --disabled-control-bg: #b0b0b0;
+    --disabled-control-border: #8c8c8c;
     --switch-bg-checked: var(--yellow);
     --switch-bg-unchecked: transparent;
     --switch-bg-disabled: var(--disabled-control-bg);
@@ -66,6 +48,8 @@
     --switch-thumb-checked: var(--white);
     --switch-thumb-unchecked: var(--gray-light);
     --switch-thumb-disabled: var(--gray);
+    --checkbox-unable-bg: var(--disabled-control-bg);
+    --checkbox-unable-border: var(--disabled-control-border);
     --checkbox-bg-gray:var(--gray-btn-bg);
     --checkbox-bg-disabled:var(--checkbox-unable-bg);
     --checkbox-border-disabled:var(--checkbox-unable-border);
@@ -88,11 +72,32 @@
     --textarea-bg-disabled: var(--disabled-control-bg);
     --textarea-border-disabled: var(--disabled-control-border);
     --textarea-text-disabled: var(--gray);
+    --accordion-border: var(--gray-btn-bg);
+    --accordion-border-active: var(--yellow);
+    --select-border: var(--gray-btn-bg);
+    --select-border-active: var(--yellow);
+    --tabs-border: var(--gray-btn-bg);
+    --tabs-border-active: var(--yellow);
     --submit-button-bg:var(--green);
     --success-message:var(--green);
     --error-message:var(--dark-red);
     --message-bg:var(--milk);
-    
+    --hint-border-color:var(--gray);
+    --hint-background-color:var(--milk);
+    --hint-text-color:var(--black);
+    --hint-icon-color:var(--gray);
+    --pagination-border-color: var(--mono);
+    --pagination-hover-border-color: var(--gold);
+    --pagination-active-background-color: var(--gold);
+    --pagination-active-border-color: var(--gold);
+    --pagination-active-text-color: var(--black);
+    --pagination-arrow-hover-color: var(--gold);
+    --breadcrumbs-link-color: var(--dimgrey);
+    --breadcrumbs-link-hover-color: var(--black);
+    --breadcrumbs-current-color: var(--black);
+    --breadcrumbs-separator-color: var(--gray-light);
+    --breadcrumbs-separator-hover-color: var(--gold);
+    --breadcrumbs-focus-color: var(--gold);
     }
 
     /* 4. Светлая тема */
@@ -125,6 +130,19 @@
     --textarea-text: var(--black);
     --textarea-placeholder: var(--gray);
     --textarea-label: var(--grafit);
+    --accordion-border-hover: var(--grafit);
+    --accordion-text: var(--black);
+    --select-bg-default: var(--ghost-white);
+    --select-bg-list: var(--ghost-white);
+    --select-bg-active: var(--ghost-white);
+    --select-bg-option-hover: var(--milk);
+    --select-border-hover: var(--grafit);
+    --select-text: var(--black);
+    --select-option-hover-text: var(--black);
+    --tabs-bg-active: var(--black);
+    --tabs-border-hover: var(--grafit);
+    --tabs-text: var(--black);
+    --tabs-text-active: var(--ghost-white);
     
 
     // цвета текста
@@ -145,6 +163,8 @@
     --strong:var(--black);
     --text-label:var(--grafit);
     --status-text:var(--black);
+    --pagination-hover-text-color: var(--black);
+    --pagination-text-color: var(--grafit);
     }
 
     /* 5. Тёмная тема */
@@ -179,6 +199,25 @@
     --textarea-text: var(--milk);
     --textarea-placeholder: var(--gray);
     --textarea-label: var(--milk);
+    --accordion-border-hover: var(--milk);
+    --accordion-text: var(--milk);
+    --select-bg-default: var(--black);
+    --select-bg-list: var(--black);
+    --select-bg-active: var(--black);
+    --select-bg-option-hover: var(--grafit);
+    --select-border-hover: var(--milk);
+    --select-text: var(--milk);
+    --select-option-hover-text: var(--white);
+    --tabs-bg-active: var(--milk);
+    --tabs-border-hover: var(--milk);
+    --tabs-text: var(--milk);
+    --tabs-text-active: var(--black);
+    --breadcrumbs-link-color: var(--milk);
+    --breadcrumbs-link-hover-color: var(--gold);
+    --breadcrumbs-current-color: var(--gold);
+    --breadcrumbs-separator-color: var(--mono);
+    --breadcrumbs-separator-hover-color: var(--gold);
+    --breadcrumbs-focus-color: var(--gold);
 
     // цвета текста
     --nav-link: var(--ghost-white);
@@ -198,4 +237,6 @@
     --strong:var(--ghost-white);
     --text-label:var(--milk);
     --status-text: var(--white);
+    --pagination-hover-text-color: var(--gold);
+    --pagination-text-color: var(--milk);
     }

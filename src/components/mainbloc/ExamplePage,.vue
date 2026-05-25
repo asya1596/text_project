@@ -2,12 +2,16 @@
 	<div class="example-page">
 		<CheckboxToggleSection/>
 		<InputsTextareaSection/>
+		<AccordionSelectTabsSection/>
+		<HintMessageCrumbSection/>
 	</div>
 </template>
 
 <script setup>
 import CheckboxToggleSection from '../uisections/CheckboxToggleSection.vue';
 import InputsTextareaSection from '../uisections/InputsTextareaSection.vue';
+import AccordionSelectTabsSection from '../uisections/AccordionSelectTabsSection.vue';
+import HintMessageCrumbSection from '../uisections/HintMessageCrumbSection.vue';
 </script>
 
 <style lang="scss" scoped>

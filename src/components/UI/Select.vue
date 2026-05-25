@@ -55,22 +55,24 @@ defineProps({
 .select {
     position: relative;
     display: inline-block;
-    /* Чтобы не растягивался на всю ширину */
     width: 401px;
+    box-sizing: border-box;
 }
 
 .dropdown-list {
-    border: 2px solid var(--thirdary);
+    background-color: var(--select-bg-default);
+    border: 2px solid var(--select-border);
     border-radius: 5px;
     padding: 3px;
     width: 100%;
+    box-sizing: border-box;
     text-align: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: var(--background);
+    color: var(--select-text);
 
     &:hover {
-        border-color: var(--secondary);
+        border-color: var(--select-border-hover);
     }
 
     p {
@@ -80,23 +82,20 @@ defineProps({
 }
 
 .dropdown-list-element {
-    background-color: var(--backgroundwall);
+    background-color: var(--select-bg-list);
     position: absolute;
     top:80%;
-    /* Сразу под полем ввода */
     left: 0;
     right: 0;
     z-index: 1000;
-    /* Выше всего контента */
     margin-top: 2px;
-    border: 2px solid var(--thirdary);
+    border: 2px solid var(--select-border);
     border-top: 0;
     border-radius: 0 0 5px 5px;
     padding: 5px 0;
+    box-sizing: border-box;
     overflow-y: auto;
-    /* Если список длинный */
     max-height: 200px;
-    /* Ограничение высоты */
     transform-origin: top;
     transform: scaleY(0);
     opacity: 0;
@@ -105,29 +104,34 @@ defineProps({
     li {
         margin: 0 5px;
         padding: 8px 15px;
-        border: 1px solid var(--thirdary);
+        border: 1px solid var(--select-border);
         border-radius: 4px;
+        box-sizing: border-box;
         list-style: none;
         cursor: pointer;
 
         &:hover {
-            background: var(--bary);
-            border-color: var(--secondary);
-            color: white;
+            background: var(--select-bg-option-hover);
+            border-color: var(--select-border-hover);
+            color: var(--select-option-hover-text);
         }
     }
 }
 
 .dropdown-list--active {
     border-radius: 5px 5px 0 0;
-    border-color: var(--secondary);
-    background-color: var(--background-wall);
+    border-color: var(--select-border-active);
+    background-color: var(--select-bg-active);
+
+    &:hover {
+        border-color: var(--select-border-active);
+    }
 
     .dropdown-list-element {
         transform: scaleY(1);
         opacity: 1;
-        border-color: var(--secondary);
-        background-color: var(--background-wall);
+        border-color: var(--select-border-active);
+        background-color: var(--select-bg-list);
     }
 }
 </style>

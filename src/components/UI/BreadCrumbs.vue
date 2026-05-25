@@ -1,82 +1,111 @@
 <template>
-    <nav v-if="items && items.length"
-         class="bread-crumbs">
-        <!--отображать если есть массив и длина массива(он не пустой) -->
+    <nav
+        v-if="items && items.length"
+        class="bread-crumbs"
+        aria-label="Хлебные крошки"
+    >
         <ul>
-            <li v-for="(item, itemIndex) in items"
-                :key="itemIndex">
-                <!-- отрисовать элементы массива и использовать ключ, для отслеживания изменений в массиве -->
-                <router-link v-if="showLink(itemIndex)"
-                             to="item.url || myCrumbs.url"
-                             class="crumb-link">
-                    <!-- ссылка в крошке, в которой она отобржается,
-                если эта крошка не последний элемент массива -->
+            <li
+                v-for="(item, itemIndex) in items"
+                :key="itemIndex"
+            >
+                <router-link
+                    v-if="showLink(itemIndex)"
+                    :to="item.url"
+                    class="crumb-link"
+                >
                     {{ item.label }}
                 </router-link>
-                <span class="last-crumb"
-                      v-else>{{ item.label }}</span>
-                <!-- последний элемент крошки -->
-                <circl-for-crumb v-if="showLink(itemIndex)"
-                                 class="circl-for-crumb" />
-            </li>
 
+                <span
+                    v-else
+                    class="last-crumb"
+                >
+                    {{ item.label }}
+                </span>
+
+                <circl-for-crumb
+                    v-if="showLink(itemIndex)"
+                    class="circl-for-crumb"
+                />
+            </li>
         </ul>
     </nav>
 </template>
 
-<script>
-
-export default {
-    computed: {
-        showLink() {
-            return (itemIndex) => itemIndex !== this.items.length - 1;
-        }
-    }
-}
-</script>
-
 <script setup>
 import CirclForCrumb from '@/assets/img/CirclForCrumb.vue';
-defineProps({
+
+const props = defineProps({
     items: {
         type: Array,
-        required: true
-    }
-})
+        required: true,
+        default: () => [],
+    },
+});
 
+function showLink(itemIndex) {
+    return itemIndex !== props.items.length - 1;
+}
 </script>
 
 <style lang="scss" scoped>
 .bread-crumbs {
-
     ul {
         list-style-type: none;
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: 5px;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 0;
+        margin: 0;
         user-select: none;
-        cursor: pointer;
+    }
 
-        .circl-for-crumb {
-            margin-left: 3px;
+    li {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
 
-            &:deep path {
-                fill: var(--bary);
-            }
+    .crumb-link {
+        color: var(--breadcrumbs-link-color);
+        text-decoration: none;
+        transition:
+            color 0.2s ease,
+            text-decoration-color 0.2s ease;
+
+        &:hover {
+            color: var(--breadcrumbs-link-hover-color);
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
-        li .crumb-link {
-            color: var(--bary);
-
-            &:hover {
-                color: var(--secondary);
-            }
+        &:focus-visible {
+            outline: 2px solid var(--breadcrumbs-focus-color);
+            outline-offset: 3px;
+            border-radius: 4px;
         }
+    }
 
-        li .last-crumb {
-            color: var(--background);
+    .last-crumb {
+        color: var(--breadcrumbs-current-color);
+        font-weight: 600;
+        cursor: default;
+    }
+
+    .circl-for-crumb {
+        flex-shrink: 0;
+
+        &:deep(path) {
+            fill: var(--breadcrumbs-separator-color);
+            transition: fill 0.2s ease;
         }
+    }
+
+    li:hover .circl-for-crumb:deep(path) {
+        fill: var(--breadcrumbs-separator-hover-color);
     }
 }
 </style>

@@ -11,7 +11,9 @@
         </h3>
         <div class="accordion-item-body"
              :class="{ 'accordion-item-body--deactive': !isOpen }">
-            <slot name="content"></slot>
+            <div class="accordion-item-content">
+                <slot name="content"></slot>
+            </div>
         </div>
     </div>
 </template>
@@ -38,17 +40,18 @@ export default {
 <style lang="scss" scoped>
 .accordion-elem {
     display: block;
-    border: 2px solid var(--thirdary);
+    border: 2px solid var(--accordion-border);
     width: 400px;
+    overflow: hidden;
     border-radius: 10px;
     &:hover {
-            border-color: var(--secondary);
+            border-color: var(--accordion-border-hover);
         }
     
 }
 
 .accordion-item-head {
-    color: var(--background);
+    color: var(--accordion-text);
     cursor: pointer;
     font-size: 18px;
     width: 100%;
@@ -57,34 +60,48 @@ export default {
     transition: all 0.2s ease-out;
     border-radius: 10px;
     padding: 10px;
-    border-bottom: 0px solid var(--thirdary);
+    border-bottom: 0px solid var(--accordion-border);
     user-select: none;
     
 }
 
 .accordion-item-body {
     font-size: 14px;
-    color: var(--background);
+    color: var(--accordion-text);
     cursor: pointer;
     width: 100%;
-    transition: all 0.2s ease;
-    transform: scaleY(1) translateY(0);
-    height: 210px;
-    padding: 5px;
+    box-sizing: border-box;
+    max-height: 500px;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition: max-height 0.36s ease, padding 0.36s ease, opacity 0.24s ease;
+    padding: 10px;
+}
+
+.accordion-item-content {
+    transform: translateY(0);
+    transition: transform 0.3s ease, opacity 0.28s ease;
 }
 
 .accordion-elem--active {
-    border: 2px solid var(--secondary);
+    border: 2px solid var(--accordion-border-active);
 
     .accordion-item-head {
-        border-bottom: 2px solid var(--secondary);
+        border-bottom: 2px solid var(--accordion-border-active);
     }
 }
 
 .accordion-item-body--deactive {
-    transform: scaleY(0) translateY(-100%);
-    height: 0;
+    max-height: 0;
     padding: 0px;
+    opacity: 0;
+    visibility: hidden;
+
+    .accordion-item-content {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
 
     p {
         margin: 0;

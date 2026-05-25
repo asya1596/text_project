@@ -1,141 +1,149 @@
 <template>
     <ul class="pagination">
         <li>
-            <button :class="['btn-arrow', { 'btn-arrow--disabled': currentPage === 1 }]"
-                    @click="prevPage">
+            <button
+                :class="[
+                    'btn-arrow',
+                    { 'btn-arrow--disabled': currentPage === 1 }
+                ]"
+                @click="prevPage"
+            >
                 <arrow-icon class="arrow-left" />
             </button>
         </li>
-        <li v-for="(page, index) in visiblePages"
+
+        <li
+            v-for="(page, index) in visiblePages"
             :key="index"
-            :class="['page', { 'points': points === page }, { 'page--active': currentPage === page }]"
-            @click="changePage(page)">
-            <!-- отображение всех страниц с помощью v-for, 
-                 добавление обработчика события клика по странице, 
-                 добавление  активного класса при клике на страницу-->
+            :class="[
+                'page',
+                { points: page === points },
+                { 'page--active': currentPage === page }
+            ]"
+            @click="changePage(page)"
+        >
             {{ page }}
         </li>
+
         <li>
-            <button :class="['btn-arrow', { 'btn-arrow--disabled': currentPage === totalPages }]"
-                    @click="nextPage">
+            <button
+                :class="[
+                    'btn-arrow',
+                    { 'btn-arrow--disabled': currentPage === totalPages }
+                ]"
+                @click="nextPage"
+            >
                 <arrow-icon class="arrow-right" />
             </button>
         </li>
     </ul>
-
-
-
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import ArrowIcon from '@/assets/img/ArrowIcon.vue';
-defineProps({
+
+const props = defineProps({
     totalPages: {
         type: Number,
         required: true,
     },
-    // всего траниц для пагинации
     currentPage: {
         type: Number,
         default: 1,
     },
-    // текущая страница, по дефолту 1
+});
 
-})
-</script>
+const emit = defineEmits(['update:current-page']);
 
-<script>
-export default {
-    data() {
-        return {
-            points: '...',
-        }
-    },
-    computed: {
-        visiblePages() {
-            const pages = [];
-            // объявили константу(не изменяемую пременную, которая содержит в себе пустой массив)
-            pages.push(1);
-            // добавили в пустой массив первую страницу
-            if (this.currentPage > 3) {
+const points = '...';
 
-                pages.push(this.points);
-            }
-            // добавляем точки в массив,если есть пропуск (если текущая страница больше 3)
-            const start = Math.max(2, this.currentPage - 1);
-            // добавляем страницу до текущей 
-            const end = Math.min(this.totalPages - 1, this.currentPage + 1);
-            // добавляем страницу после  текущей 
-            for (let i = start; i <= end; i++) {
-                pages.push(i);
-                // c помощью цикла for заполняем наш массив pages числами в диапазоне от start до end включительно
-            }
-            if (this.totalPages - this.currentPage > 3) {
-                pages.push(this.points);
-                // добавляем точки в массив,если есть пропуск(в конце)
-            }
-            if (this.totalPages > 1) {
-                pages.push(this.totalPages);
-            }
-            // добавляем последнюю страницу в массив
-            return pages;
-        }
-    },
-    methods: {
-        prevPage() {
-            if (this.currentPage > 1) {
-                this.$emit('update:current-page', this.currentPage - 1);
-            }
-            // метод, который поднимает событие перехода на предидущую страницу(клик по кнопкам-стрелкам)
-        },
-        nextPage() {
-            if (this.currentPage < this.totalPages) {
-                this.$emit('update:current-page', this.currentPage + 1);
-            }
-            // метод, который поднимает событие перехода на следующую страницу(клик по кнопкам-стрелкам)
-        },
-        changePage(page) {
-            if (typeof page === 'number') {
-                // условие -проверка на тип страницы в методе.
-                this.$emit('update:current-page', page);
-            }
-        }
-        // метод, для обработки клика по номеру страницы, ей же присваивается активный класс. 
-    },
+const visiblePages = computed(() => {
+    const pages = [];
+
+    pages.push(1);
+
+    if (props.currentPage > 3) {
+        pages.push(points);
+    }
+
+    const start = Math.max(2, props.currentPage - 1);
+    const end = Math.min(
+        props.totalPages - 1,
+        props.currentPage + 1
+    );
+
+    for (let i = start; i <= end; i++) {
+        pages.push(i);
+    }
+
+    if (props.totalPages - props.currentPage > 3) {
+        pages.push(points);
+    }
+
+    if (props.totalPages > 1) {
+        pages.push(props.totalPages);
+    }
+
+    return pages;
+});
+
+function prevPage() {
+    if (props.currentPage > 1) {
+        emit(
+            'update:current-page',
+            props.currentPage - 1
+        );
+    }
+}
+
+function nextPage() {
+    if (props.currentPage < props.totalPages) {
+        emit(
+            'update:current-page',
+            props.currentPage + 1
+        );
+    }
+}
+
+function changePage(page) {
+    if (typeof page === 'number') {
+        emit('update:current-page', page);
+    }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .pagination {
     display: flex;
     gap: 5px;
-    color: var(--thirdary);
+    color: var(--pagination-text-color);
     justify-content: left;
     align-items: center;
     user-select: none;
     max-width: max-content;
-    cursor: pointer;
 
     .page {
-        border: 1px solid var(--thirdary);
+        border: 1px solid var(--pagination-border-color);
         padding: 5px;
         border-radius: 5px;
+        cursor: pointer;
 
         &:not(.page--active, .points):hover {
-            border-color: var(--secondary);
-            color: var(--secondary);
+            border-color: var(--pagination-hover-border-color);
+            color: var(--pagination-hover-text-color);
         }
     }
 
     .page--active {
-        background-color: var(--background);
-        border-color: var(--background);
-        color: var(--primary);
+        background-color: var(--pagination-active-background-color);
+        border-color: var(--pagination-active-border-color);
+        color: var(--pagination-active-text-color);
     }
 
     .points {
-        border-width: 0px;
+        border-width: 0;
+        cursor: default;
     }
 
     .arrow-left {
@@ -147,10 +155,18 @@ export default {
     }
 
     .btn-arrow {
+        cursor: pointer;
+        background: none;
+        border: none;
 
-        &:hover:deep path {
-            fill: var(--secondary);
+        &:hover:deep(path) {
+            fill: var(--pagination-arrow-hover-color);
         }
+    }
+
+    .btn-arrow--disabled {
+        opacity: 0.5;
+        pointer-events: none;
     }
 }
 </style>
