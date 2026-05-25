@@ -1,8 +1,8 @@
 <template>
-    <div class="input-box" :class="{ 'input-box--active': modelValue }">
+    <div class="input-box" :class="{ 'input-box--active': modelValue, 'input-box--disabled': disabled }">
         <!-- присвоен класс для обозначения активного состояния. -->
         <label :for="inputId">{{ labelText }}</label>
-        <input :value="modelValue" @input="handleInput" type="text" placeholder="Введите текст" :id="inputId" />
+        <input :value="modelValue" @input="handleInput" type="text" placeholder="Введите текст" :id="inputId" :disabled="disabled" />
     </div>
 </template>
 
@@ -12,7 +12,9 @@ export default {
     methods: {
         // это метод, который поднимает собитие(update:modelValue)
         handleInput(event) {
-            this.$emit("update:modelValue", event.target.value)
+            if (!this.disabled) {
+                this.$emit("update:modelValue", event.target.value)
+            }
         }
     }
 
@@ -32,6 +34,10 @@ defineProps({
     labelText: {
         type: String,
         default: "",
+    },
+    disabled: {
+        type: Boolean,
+        default: false,
     }
 
 })
@@ -48,21 +54,22 @@ defineProps({
     
 
     input {
-        border: 2px solid var(--thirdary);
+        background-color: var(--input-bg-default);
+        border: 2px solid var(--input-border);
         width: 400px;
         transition: all 0.2s ease-out;
-        color: var(--background);
+        color: var(--input-text);
         border-radius: 6px;
         padding: 5px;
         &:hover {
-            border-color: var(--secondary);
+            border-color: var(--input-border-hover);
         }
     
         &:focus{
-            border: 2px solid var(--secondary);
+            border: 2px solid var(--input-border-active);
         }
         &::placeholder {
-            color: var(--background);
+            color: var(--input-placeholder);
         }
     }
     
@@ -73,13 +80,28 @@ defineProps({
         top: -2px;
         right: 0;
         transition: all 0.2s ease-out;
-        color: var(--background);
+        color: var(--input-label);
         user-select: none;
     }
 }
 .input-box--active{
     input{
-        border: 2px solid var(--secondary);
+        border: 2px solid var(--input-border-active);
+    }
+}
+
+.input-box--disabled {
+    input {
+        background-color: var(--input-bg-disabled);
+        border-color: var(--input-border-disabled);
+        color: var(--input-text-disabled);
+        cursor: not-allowed;
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    label {
+        cursor: not-allowed;
     }
 }
 </style>

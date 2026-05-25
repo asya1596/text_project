@@ -23,103 +23,51 @@ import LegalInfo from './cards/LegalInfo.vue';
 .footer {
     background: var(--card-block);
     color: var(--text-bg);
-    padding: 40px 0 20px;
-
-    @media (max-width: 767px) {
-        padding: 20px 0 15px;
-    }
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-        padding: 30px 0 18px;
-    }
-
-    @media (min-width: 1024px) and (max-width: 1399px) {
-        padding: 35px 0 19px;
-    }
-
-    @media (min-width: 1400px) {
-        padding: 45px 0 22px;
-    }
+    padding: clamp(24px, 4vw, 52px) 0 clamp(16px, 2vw, 24px);
 }
 
 .container {
-    max-width: 1400px;
+    width: min(100%, 1440px);
     margin: 0 auto;
-    padding: 0 20px;
-
-    @media (max-width: 767px) {
-        padding: 0 16px;
-    }
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-        padding: 0 24px;
-    }
-
-    @media (min-width: 1024px) and (max-width: 1399px) {
-        padding: 0 40px;
-    }
-
-    @media (min-width: 1400px) {
-        padding: 0 60px;
-    }
+    padding: 0 clamp(16px, 3vw, 56px);
+    box-sizing: border-box;
 }
 
 .footer-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 32px;
-    flex-wrap: wrap;
-
-    @media (max-width: 767px) {
-        flex-direction: column;
-        gap: 24px;
-        text-align: center;
-    }
-
-    @media (min-width: 768px) {
-        flex-direction: row;
-        justify-content: flex-start;
-    }
-
-    @media (min-width: 1024px) {
-        justify-content: space-between;
-    }
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(20px, 4vw, 48px);
+    align-items: start;
 }
 
 .footer-row>* {
-    flex: 1 1 300px;
-    min-width: 280px;
-
-    @media (max-width: 767px) {
-        min-width: auto;
-        width: 100%;
-    }
+    min-width: 0;
 }
 
 .footer-bottom {
     text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
+    margin-top: clamp(18px, 3vw, 34px);
+    font-size: clamp(13px, 1.2vw, 15px);
     width: 100%;
+    color: var(--nav-link);
+}
 
-    @media (max-width: 767px) {
-        margin-top: 10px;
-        font-size: 13px;
+@media (max-width: 900px) {
+    .footer-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+}
 
-    @media (min-width: 768px) and (max-width: 1023px) {
-        margin-top: 25px;
-        font-size: 13.5px;
+@media (max-width: 640px) {
+    .footer-row {
+        grid-template-columns: 1fr;
+        text-align: center;
     }
+}
 
-    @media (min-width: 1024px) and (max-width: 1399px) {
-        margin-top: 28px;
-        font-size: 14px;
-    }
-
-    @media (min-width: 1400px) {
-        margin-top: 32px;
-        font-size: 15px;
+@media (min-width: 1600px) {
+    .container {
+        width: min(100%, 1600px);
     }
 }
 </style>

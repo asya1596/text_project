@@ -1,26 +1,37 @@
 <template>
-    <div :class="['radio-button', {
-        'radio-button--active': isActive,
-        'radio-button--disabled': isBlocked,
-    }]">
-        <div class="radio-button-box"
-             @click="checkbox">
-            <input type="checkbox"
-                   :id="radioButtonId"
-                   :value="isActive" />
+    <div
+        :class="[
+            'radio-button',
+            {
+                'radio-button--checked': isActive,
+                'radio-button--unchecked': !isActive && !isDisabled,
+                'radio-button--disabled': isDisabled,
+            }
+        ]"
+        @click="toggleRadio"
+    >
+        <div class="radio-button-box">
+            <input
+                type="radio"
+                :id="radioButtonId"
+                :checked="isActive"
+                :disabled="isDisabled"
+                class="radio-button-input"
+            />
         </div>
-        <label :for="radioButtonId">
-            {{ labelText }}
-            <slot></slot>
+        <label :for="radioButtonId" class="radio-button-label">
+            <slot>{{ labelText }}</slot>
         </label>
     </div>
 </template>
 
 <script setup>
-defineProps({
+import { computed, defineEmits, defineProps } from 'vue'
+
+const props = defineProps({
     isActive: {
         type: Boolean,
-        required: true,
+        default: false,
     },
     radioButtonId: {
         type: String,
@@ -33,49 +44,52 @@ defineProps({
     isBlocked: {
         type: Boolean,
         default: false,
+    },
+    disabled: {
+        type: Boolean,
+        default: false,
     }
 })
-</script>
 
-<script>
-export default {
-    methods: {
-        checkbox() {
-            if (!this.isBlocked) {
-                this.$emit("update:is-active", !this.isActive);
-            }
-            // с помощью конструкции if применили условие (если не isBlocked (он не true), 
-            // то мы поднимаем событие update)
-            //  в противном случае событие не поднимается.
-        },
-    },
+const emit = defineEmits(['update:is-active'])
+
+const isDisabled = computed(() => props.disabled || props.isBlocked)
+
+function toggleRadio() {
+    if (!isDisabled.value) {
+        emit('update:is-active', !props.isActive)
+    }
 }
 </script>
 
 <style lang="scss" scoped>
+.radio-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
 .radio-button-box {
     position: relative;
-    height: 20px;
     width: 20px;
-    border: 2px solid var(--thirdary);
-    cursor: pointer;
-    border-radius: 50px;
-    min-width: max-content;
-
-    &:hover {
-        border-color: var(--secondary);
-    }
+    min-width: 20px;
+    height: 20px;
+    border: 2px solid var(--radio-bg-gray);
+    border-radius: 50%;
+    transition: all 0.2s ease-out;
 
     &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 2px;
         left: 2px;
         width: 12px;
         height: 12px;
-        border-radius: 50px;
-        background-color: var(--secondary);
+        border-radius: 50%;
+        background-color: var(--radio-mark);
         opacity: 0;
+        transition: opacity 0.2s ease-out;
     }
 
     input {
@@ -86,44 +100,65 @@ export default {
     }
 }
 
-.radio-button--active {
-    border-color: var(--secondary);
-
+.radio-button--checked {
     .radio-button-box {
-        border-color: var(--secondary);
+        background-color: var(--radio-bg-yellow);
+        border-color: var(--radio-bg-gray);
+
         &::before {
             opacity: 1;
         }
-    }
 
+        &:hover {
+            border-color: var(--radio-hover);
+        }
+    }
 }
 
-.radio-button {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin: 5px;
+.radio-button--unchecked {
+    .radio-button-box {
+        background-color: transparent;
+        border-color: var(--radio-mark-disabled);
 
-    label {
-        user-select: none;
-        color:var(--background);
+        &:hover {
+            border-color: var(--radio-hover);
+        }
     }
 }
 
 .radio-button--disabled {
     cursor: not-allowed;
-    opacity: 0.5;
-
-    label {
-        cursor: not-allowed;
-    }
 
     .radio-button-box {
+        background-color: var(--radio-bg-disabled);
+        border-color: var(--radio-border-disabled);
         cursor: not-allowed;
 
-        &:not(.radio-button--disabled):hover {
-            border-color: var(--thirdary);
+        &::before {
+            background-color: var(--radio-bg-disabled);
         }
     }
+}
+
+.radio-button--disabled.radio-button--checked {
+    .radio-button-box {
+        background-color: var(--radio-bg-disabled);
+        border-color: var(--radio-border-disabled);
+
+        &::before {
+            opacity: 1;
+            background-color: var(--radio-mark-disabled);
+        }
+    }
+}
+
+.radio-button-label {
+    color: var(--slots);
+    user-select: none;
+    font-size: 14px;
+}
+
+.radio-button--disabled .radio-button-label {
+    cursor: not-allowed;
 }
 </style>

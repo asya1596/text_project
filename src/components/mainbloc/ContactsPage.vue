@@ -1,6 +1,6 @@
 <template>
     <div class="contact-container">
-        <h1 class="title">Давайте сотрудничать</h1>
+        <h1 class="title">Давайте <span>сотрудничать</span></h1>
         <p class="description">
             Свяжитесь со мной, если у вас есть вопросы или вы хотите обсудить ваш проект.
         </p>
@@ -28,7 +28,7 @@ import FeedbackForm from '../cards/FeedbackForm.vue';
 
 .title {
     text-align: center;
-    color: var(--text-h1-green);
+    color: var(--title-h1);
     margin-top: 0;
     font-size: 36px;
     font-weight: 700;
@@ -37,6 +37,10 @@ import FeedbackForm from '../cards/FeedbackForm.vue';
         font-size: 28px;
         padding: 0 10px;
     }
+}
+
+.title span {
+    color: var(--title-h1-accent);
 }
 
 .description {
@@ -106,12 +110,12 @@ import FeedbackForm from '../cards/FeedbackForm.vue';
         }
 
         .social-link {
-            flex: 0 1 calc(33.333% - 8px); 
+            flex: 0 1 calc(33.333% - 8px);
             max-width: calc(33.333% - 8px);
             text-align: center;
 
             @media (max-width: 360px) {
-                flex: 0 1 calc(50% - 6px); 
+                flex: 0 1 calc(50% - 6px);
                 max-width: calc(50% - 6px);
             }
         }

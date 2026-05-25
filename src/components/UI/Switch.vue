@@ -76,7 +76,7 @@ const handleSwitch = () => {
 .switch-box {
   position: relative;
   width: 44px;
-  height: 24px;
+  height: 25px;
   box-sizing: border-box;
   border: 2px solid var(--switch-border-unchecked);
   border-radius: 25px;

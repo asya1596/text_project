@@ -1,6 +1,6 @@
 <template>
     <div class="serveses-container">
-        <h1 class="title">Мои услуги</h1>
+        <h1 class="title">Мои <span>услуги</span></h1>
         <p class="description">
             От идеи — к работающему продукту. Быстро, качественно, с фокусом на результат
         </p>
@@ -70,10 +70,14 @@ const serveses = [
 
 .title {
     text-align: center;
-    color: var(--text-h1-green);
+    color: var(--title-h1);
     margin-top: 0;
     font-size: 36px;
     font-weight: 700;
+}
+
+.title span {
+    color: var(--title-h1-accent);
 }
 
 .description {

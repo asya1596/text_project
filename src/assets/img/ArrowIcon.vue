@@ -20,7 +20,7 @@
 
     &:deep path {
         transition: fill 0.2s ease-out;
-        fill: var(--thirdary);
+        fill: currentColor;
     }
 }
 </style>

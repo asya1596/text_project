@@ -72,6 +72,22 @@
     --checkbox-bg-yellow:var(--yellow);
     --checkbox-mark:var(--white);
     --checkbox-mark-disabled:var(--gray);
+    --radio-bg-gray: var(--gray-btn-bg);
+    --radio-bg-disabled: var(--disabled-control-bg);
+    --radio-border-disabled: var(--disabled-control-border);
+    --radio-bg-yellow: var(--yellow);
+    --radio-mark: var(--white);
+    --radio-mark-disabled: var(--gray);
+    --input-border: var(--gray-btn-bg);
+    --input-border-active: var(--yellow);
+    --input-bg-disabled: var(--disabled-control-bg);
+    --input-border-disabled: var(--disabled-control-border);
+    --input-text-disabled: var(--gray);
+    --textarea-border: var(--gray-btn-bg);
+    --textarea-border-active: var(--yellow);
+    --textarea-bg-disabled: var(--disabled-control-bg);
+    --textarea-border-disabled: var(--disabled-control-border);
+    --textarea-text-disabled: var(--gray);
     --submit-button-bg:var(--green);
     --success-message:var(--green);
     --error-message:var(--dark-red);
@@ -96,6 +112,19 @@
     --form-border-focus:var(--black);
     --input-bg:var(--ghost-white);
     --checkbox-hover:var(--grafit);
+    --radio-hover: var(--grafit);
+    --input-bg-default: var(--ghost-white);
+    --input-border-hover: var(--grafit);
+    --input-text: var(--black);
+    --input-placeholder: var(--gray);
+    --input-label: var(--grafit);
+    --input-icon: var(--gray-btn-bg);
+    --input-icon-hover: var(--grafit);
+    --textarea-bg-default: var(--ghost-white);
+    --textarea-border-hover: var(--grafit);
+    --textarea-text: var(--black);
+    --textarea-placeholder: var(--gray);
+    --textarea-label: var(--grafit);
     
 
     // цвета текста
@@ -104,7 +133,9 @@
     --status-tag-bg: var(--milk);
     --text-main-title: var(--black);
     --text-description: var(--dark-grey);
-    --text-h1: var(--black);
+    --title-h1: var(--black);
+    --title-h1-accent: var(--gold);
+    --text-h1:var(--black);
     --text-h2: var(--dark-grey);
     --text-h3: var(--dimgrey);
     --text-h1-green: var(--dark-grey);
@@ -113,6 +144,7 @@
     --slots: var(--dark-grey);
     --strong:var(--black);
     --text-label:var(--grafit);
+    --status-text:var(--black);
     }
 
     /* 5. Тёмная тема */
@@ -134,6 +166,19 @@
     --form-border-success:var(--lime-green);
     --input-bg:var(--black);
     --checkbox-hover:var(--milk);
+    --radio-hover: var(--milk);
+    --input-bg-default: var(--black);
+    --input-border-hover: var(--milk);
+    --input-text: var(--milk);
+    --input-placeholder: var(--gray);
+    --input-label: var(--milk);
+    --input-icon: var(--gray-light);
+    --input-icon-hover: var(--milk);
+    --textarea-bg-default: var(--black);
+    --textarea-border-hover: var(--milk);
+    --textarea-text: var(--milk);
+    --textarea-placeholder: var(--gray);
+    --textarea-label: var(--milk);
 
     // цвета текста
     --nav-link: var(--ghost-white);
@@ -141,7 +186,9 @@
     --status-tag-bg: var(--grafit);
     --text-main-title: var(--gold);
     --text-description: var(--gray);
-    --text-h1: var(--white);
+    --title-h1: var(--white);
+    --title-h1-accent: var(--lime-green);
+    --text-h1:var(--gold);
     --text-h2: var(--milk);
     --text-h3: var(--lime-green);
     --text-h1-green: var(--lime-green);
@@ -150,4 +197,5 @@
     --slots: var(--ghost-white);
     --strong:var(--ghost-white);
     --text-label:var(--milk);
+    --status-text: var(--white);
     }

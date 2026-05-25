@@ -1,15 +1,15 @@
 <template>
   <div class="about-me-container">
-    <h1 class="title">Обо мне</h1>
+    <h1 class="title">Обо <span>мне</span></h1>
     <p class="description">
       Веб‑разработчик. Создаю современные, функциональные интерфейсы и превращаю дизайн‑идеи в работающие веб‑решения.
       Гарантирую отличный пользовательский опыт.
     </p>
     <div class="stack-and-grid">
       <div class="tech-stack">
-        <h2 class="tech-stack-title">Технологический стек</h2>
+        <h1 class="tech-stack-title">Технологический стек</h1>
         <div v-for="tech in techStack" :key="tech.name" class="tech-item">
-          <h3 class="tech-name">{{ tech.name }}</h3>
+          <h1 class="tech-name">{{ tech.name }}</h1>
           <div class="progress-bar" :style="getGradientStyle(tech.level)">
             <div class="progress-fill" :style="{ width: tech.level + '%' }"></div>
           </div>
@@ -19,7 +19,7 @@
       <div class="skills-grid">
         <div v-for="skill in skills" :key="skill.title" class="skill-card">
           <component :is="skill.icon" class="skill-icon" />
-          <div class="skill-title">{{ skill.title }}</div>
+          <h1 class="skill-title">{{ skill.title }}</h1>
           <div class="skill-description">{{ skill.description }}</div>
         </div>
       </div>
@@ -98,10 +98,14 @@ function getGradientStyle(level) {
 
 .title {
   text-align: center;
-  color: var(--text-h1-green);
+  color: var(--title-h1);
   margin-top: 0;
   font-size: 36px;
   font-weight: 700;
+}
+
+.title span {
+  color: var(--title-h1-accent);
 }
 
 .description {
@@ -127,6 +131,7 @@ function getGradientStyle(level) {
 .tech-stack-title {
   color: var(--text-h2);
   font-size: 24px;
+  margin-top: 0;
   margin-bottom: 30px;
   border-bottom: 2px solid var(--underscore-text);
   padding-bottom: 10px;
@@ -148,6 +153,7 @@ function getGradientStyle(level) {
 
 .tech-name {
   color: var(--text-h2);
+  margin-top: 0;
   margin-bottom: 10px;
   font-size: 18px;
   font-weight: 400;
@@ -198,7 +204,7 @@ function getGradientStyle(level) {
 .skill-title {
   font-size: 18px;
   color: var(--text-h2);
-  margin-bottom: 5px;
+  margin: 0 0 5px;
   font-weight: 600;
   text-transform: uppercase;
 }

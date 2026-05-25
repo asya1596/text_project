@@ -38,24 +38,26 @@ const legalLinks = [
 
 <style scoped>
 .legal-info {
-    width: 40%;
+    width: 100%;
+    min-width: 0;
 }
 
 .section-title {
-    margin-bottom: 20px;
-    font-size: 18px;
+    margin: 0 0 clamp(12px, 2vw, 20px);
+    font-size: clamp(17px, 1.5vw, 20px);
     color: var(--text-h3);
 }
 
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 li {
-    margin-bottom: 10px;
+    margin-bottom: clamp(8px, 1vw, 10px);
     color: var(--cocial-link-text);
-    font-size: 16px;
+    font-size: clamp(14px, 1.2vw, 16px);
 }
 
 a {
@@ -72,7 +74,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 20px;
+    margin-top: clamp(14px, 2vw, 20px);
     gap: 8px;
 
     @media (max-width: 576px) {
@@ -92,7 +94,8 @@ a:hover {
 .email {
     color: var(--nav-link);
     text-decoration: none;
-    font-size: 16px;
+    font-size: clamp(14px, 1.2vw, 16px);
     line-height: 1.2;
+    overflow-wrap: anywhere;
 }
 </style>

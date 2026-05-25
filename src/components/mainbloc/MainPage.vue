@@ -43,7 +43,6 @@ const navigateToContacts = () => {
     gap: 8px;
     justify-content: center;
     background-color: var(--status-tag-bg);
-    color: var(--text-bg);
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 12px;
@@ -60,6 +59,7 @@ const navigateToContacts = () => {
 
 .status-text {
     white-space: nowrap;
+    color: var(--status-text);
 }
 
 .main-title {
@@ -67,11 +67,11 @@ const navigateToContacts = () => {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 20px;
-    color: var(--text-h1);
+    color: var(--title-h1);
 }
 
 .main-title span {
-    color: var(--text-main-title);
+    color: var(--title-h1-accent);
 }
 
 .description {

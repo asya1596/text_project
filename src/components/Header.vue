@@ -63,35 +63,15 @@ const toggleMobileMenu = () => {
 }
 
 .header__content {
-  max-width: 1400px;
+  width: min(100%, 1440px);
   margin: 0 auto;
-  padding: 16px 20px;
+  padding: clamp(12px, 2vw, 24px) clamp(14px, 3vw, 48px);
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: clamp(12px, 2vw, 32px);
   transition: all 0.3s ease;
-
-  @media (max-width: 767px) {
-    flex-direction: column;
-    padding: 12px 16px;
-    gap: 12px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    padding: 14px 24px;
-    gap: 20px;
-  }
-
-  @media (min-width: 1024px) and (max-width: 1399px) {
-    padding: 16px 40px;
-    gap: 32px;
-  }
-
-  @media (min-width: 1400px) {
-    padding: 20px 60px;
-    gap: 40px;
-  }
 }
 
 .mobile-menu-toggle {
@@ -104,7 +84,7 @@ const toggleMobileMenu = () => {
   right: 16px;
   z-index: 101;
 
-  @media (min-width: 250px) and (max-width: 468px) {
+  @media (max-width: 640px) {
     display: block;
   }
 }
@@ -139,42 +119,34 @@ const toggleMobileMenu = () => {
   display: flex;
   margin: 0;
   padding: 0;
-  gap: 28px;
+  gap: clamp(8px, 1.5vw, 28px);
   list-style: none;
   flex-wrap: wrap;
   justify-content: center;
-
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    gap: 20px;
-    justify-content: space-around; 
-  }
-
-  @media (max-width: 900px) {
-    gap: 16px;
-    padding: 0 20px;
-  }
-
-  @media (max-width: 468px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-  }
 }
 
 .nav {
-  @media (max-width: 468px) {
+  flex: 1 1 auto;
+
+  @media (max-width: 640px) {
     display: none; 
 
     &.mobile-menu-open {
-      display: block; 
+      display: block;
       position: absolute;
       top: 100%;
       left: 0;
       right: 0;
       background-color: var(--header-bg);
-      padding: 20px 0;
+      padding: clamp(16px, 5vw, 24px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav__list {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
     }
   }
 }
@@ -185,11 +157,11 @@ const toggleMobileMenu = () => {
 
 .nav__link {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: clamp(14px, 1.2vw, 16px);
   font-weight: 500;
   color: var(--nav-link);
   text-decoration: none;
-  padding: 10px 18px;
+  padding: clamp(8px, 1vw, 11px) clamp(10px, 1.4vw, 20px);
   border-radius: 8px;
   transition: all 0.25s ease;
   position: relative;
@@ -200,51 +172,37 @@ const toggleMobileMenu = () => {
   &:hover {
     color: var(--nav-link-hover);
   }
-
-  @media (max-width: 767px) {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    font-size: 14px;
-    padding: 9px 15px;
-  }
-
-  @media (min-width: 1400px) {
-    font-size: 16px;
-    padding: 11px 20px;
-  }
 }
 
 .header__actions {
   display: flex;
   align-items: center;
-  gap: 24px;
-
-  @media (max-width: 767px) {
-    gap: 16px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    gap: 20px;
-  }
-
-  @media (min-width: 1400px) {
-    gap: 28px;
-  }
+  gap: clamp(12px, 2vw, 28px);
+  flex: 0 0 auto;
 }
 
 .logo-icon {
+  width: clamp(40px, 5vw, 60px);
+  height: clamp(40px, 5vw, 60px);
+  flex: 0 0 auto;
+}
 
-  @media (max-width: 767px) {
-    width: 40px;
-    height: 40px;
+@media (max-width: 640px) {
+  .header__content {
+    justify-content: center;
+    min-height: 64px;
   }
 
-  @media (min-width: 1400px) {
-    width: 60px;
-    height: 60px;
+  .header__actions {
+    position: absolute;
+    left: 16px;
+    top: 14px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .header__content {
+    width: min(100%, 1600px);
   }
 }
 </style>

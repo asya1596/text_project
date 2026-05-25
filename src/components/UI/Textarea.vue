@@ -1,7 +1,7 @@
 <template>
-    <div class="textarea-box" :class="{'textarea-box--active': modelValue}">
+    <div class="textarea-box" :class="{'textarea-box--active': modelValue, 'textarea-box--disabled': disabled}">
         <label>{{ labelText }}</label>
-        <textarea :value="modelValue" @input="handleInput" placeholder="Введите несколько строчек" rows="5" cols="10">
+        <textarea :value="modelValue" @input="handleInput" placeholder="Введите несколько строчек" rows="5" cols="10" :disabled="disabled">
         </textarea>
     </div>
 </template>
@@ -10,7 +10,9 @@
 export default {
     methods: {
         handleInput(event) {
-            this.$emit("update:modelValue", event.target.value)
+            if (!this.disabled) {
+                this.$emit("update:modelValue", event.target.value)
+            }
         }
 
     },
@@ -27,6 +29,10 @@ defineProps({
         type: String,
         default: "",
     },
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
 
 })
 </script>
@@ -40,23 +46,24 @@ defineProps({
     transition: all 0.2s ease-out;
     
     textarea {
-        border: 2px solid var(--thirdary);
+        background-color: var(--textarea-bg-default);
+        border: 2px solid var(--textarea-border);
         width: 400px;
         transition: all 0.2s ease-out;
-        color: var(--background);
+        color: var(--textarea-text);
         border-radius: 10px;
         outline: none;
         padding: 5px;
         resize:none;
         &:hover {
-            border-color: var(--secondary);
+            border-color: var(--textarea-border-hover);
         }
     
         &:focus{
-            border: 2px solid var(--secondary);
+            border: 2px solid var(--textarea-border-active);
         }
         &::placeholder {
-            color: var(--background);
+            color: var(--textarea-placeholder);
         }
     }
 
@@ -65,13 +72,28 @@ defineProps({
         top: -2px;
         right: 0;
         transition: all 0.2s ease-out;
-        color: var(--background);
+        color: var(--textarea-label);
         user-select: none;
     }
 }
 .textarea-box--active{
     textarea{
-        border: 2px solid var(--secondary);
+        border: 2px solid var(--textarea-border-active);
+    }
+}
+
+.textarea-box--disabled {
+    textarea {
+        background-color: var(--textarea-bg-disabled);
+        border-color: var(--textarea-border-disabled);
+        color: var(--textarea-text-disabled);
+        cursor: not-allowed;
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    label {
+        cursor: not-allowed;
     }
 }
 </style>

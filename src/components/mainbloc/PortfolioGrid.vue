@@ -1,5 +1,5 @@
 <template>
-    <h1>Мои работы</h1>
+    <h1>Мои <span>работы</span></h1>
     <div class="portfolio-grid">
         <portfolio-card v-for="project in projects" :key="project.id" :link="project.link" :image="project.image"
             :title="project.title" :overlay-text="project.overlayText" />
@@ -29,13 +29,17 @@ const projects = [
 <style lang="scss" scoped>
 h1 {
     text-align: center;
-    color: var(--text-h1);
+    color: var(--title-h1);
     font-weight: 600;
     font-size: 36px;
     padding-left: 5%;
     transition: color 0.2s ease-out;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+h1 span {
+    color: var(--title-h1-accent);
 }
 
 .portfolio-grid {

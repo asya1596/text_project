@@ -1,17 +1,12 @@
 <template>
-    <div class="input-number-box"
-         :class="[{ 'input-number-box--disabled': isBlocked }]">
+    <div class="input-number-box" :class="[{ 'input-number-box--disabled': isBlocked }]">
         <label> {{ labelText }}</label>
-        <input :value="numberValue"
-               type="number"
-               @input="handlInput" />
+        <input :value="numberValue" type="number" @input="handlInput" />
 
-        <button class="btn-arrow arrow-up"
-                @click="handlClickOnIncrementButton"><arrow-icon
-                        class="icon-arrow" /></button>
-        <button class="btn-arrow arrow-down"
-                @click="handlClickOnDecrementButton"><arrow-icon
-                        class="icon-arrow" /></button>
+        <button class="btn-arrow arrow-up" @click="handlClickOnIncrementButton"><arrow-icon
+                class="icon-arrow" /></button>
+        <button class="btn-arrow arrow-down" @click="handlClickOnDecrementButton"><arrow-icon
+                class="icon-arrow" /></button>
     </div>
 
 </template>
@@ -72,10 +67,11 @@ export default {
     margin-bottom: 10px;
 
     input {
-        border: 2px solid var(--thirdary);
+        background-color: var(--input-bg-default);
+        border: 2px solid var(--input-border);
         width: 400px;
         transition: all 0.2s ease-out;
-        color: var(--background);
+        color: var(--input-text);
         border-radius: 6px;
         padding: 5px;
         appearance: textfield;
@@ -87,15 +83,15 @@ export default {
         }
 
         &:hover {
-            border-color: var(--secondary);
+            border-color: var(--input-border-hover);
         }
 
         &:focus {
-            border: 2px solid var(--secondary);
+            border: 2px solid var(--input-border-active);
         }
 
         &::placeholder {
-            color: var(--background);
+            color: var(--input-placeholder);
         }
     }
 
@@ -104,7 +100,7 @@ export default {
         top: -5px;
         right: 0;
         transition: all 0.2s ease-out;
-        color: var(--background);
+        color: var(--input-label);
         user-select: none;
     }
 
@@ -126,22 +122,30 @@ export default {
         position: absolute;
         width: 20px;
         height: 20px;
+        color: var(--input-icon);
+        transition: color 0.2s ease-out;
 
-        &:hover:deep path {
-            fill: var(--secondary);
+        &:hover {
+            color: var(--input-icon-hover);
         }
     }
 }
+
 .input-number-box--disabled {
     input {
+        background-color: var(--input-bg-disabled);
+        border-color: var(--input-border-disabled);
+        color: var(--input-text-disabled);
         pointer-events: none;
         opacity: 0.5;
     }
 
     .btn-arrow {
+        color: var(--input-icon);
+        cursor: not-allowed;
 
-        &:not(input-number-box--disabled):hover:deep path {
-            fill: var(--thirdary);
+        &:hover {
+            color: var(--input-icon);
         }
     }
 }
