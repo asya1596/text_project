@@ -12,17 +12,17 @@
 				<div class="checkbox-group">
 					<!-- Выбранный чекбокс -->
 					<Checkbox v-model="isChecked1" checkbox-id="checkbox1">
-						Выбранный чекбокс
+						Включен
 					</Checkbox>
 
 					<!-- Невыбранный чекбокс -->
 					<Checkbox v-model="isChecked2" checkbox-id="checkbox2">
-						Невыбранный чекбокс
+						Выключен
 					</Checkbox>
 
 					<!-- Выбранный, но неактивный чекбокс -->
 					<Checkbox v-model="isChecked3" disabled checkbox-id="checkbox3">
-						Выбранный, но неактивный
+						Неактивен
 					</Checkbox>
 				</div>
 			</div>
@@ -30,17 +30,18 @@
 			<div class="section">
 				<h2>Свитчи</h2>
 				<div class="switch-group">
-					<Switch :isActive="isYellowActive" color="yellow" @update:isActive="isYellowActive = $event">
+					<Switch :isActive="isSwitchActive" @update:isActive="isSwitchActive = $event">
 						Включен
 					</Switch>
 
-					<Switch :isActive="isGrayActive" color="gray" type="disabled">
+					<Switch :isActive="isSwitchInactive" @update:isActive="isSwitchInactive = $event">
 						Выключен
 					</Switch>
 
-					<Switch :isActive="isEmeraldActive" color="emerald" @update:isActive="isEmeraldActive = $event">
-						Изумрудный
+					<Switch :isActive="isSwitchDisabled" disabled>
+						Неактивен
 					</Switch>
+
 				</div>
 			</div>
 		</div>
@@ -52,9 +53,9 @@ import Switch from '../UI/Switch.vue'
 import Checkbox from '../UI/Checkbox.vue'
 import { ref } from 'vue'
 
-const isYellowActive = ref(true)
-const isGrayActive = ref(false)
-const isEmeraldActive = ref(true)
+const isSwitchActive = ref(true)
+const isSwitchInactive = ref(false)
+const isSwitchDisabled = ref(false)
 
 // Состояния для трёх чекбоксов
 const isChecked1 = ref(true)   // Выбранный

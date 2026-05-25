@@ -2,7 +2,11 @@
   <div
     :class="[
       'switch',
-      { 'switch--active': isActive },
+      {
+        'switch--checked': isActive,
+        'switch--unchecked': !isActive && !isDisabled,
+        'switch--disabled': isDisabled
+      },
       `switch--${color}`
     ]"
   >
@@ -11,11 +15,12 @@
         type="checkbox"
         :checked="isActive"
         :id="switchId"
+        :disabled="isDisabled"
         class="switch-input"
       />
-      <div class="switch-thumb" :style="thumbStyle"></div>
+      <div class="switch-thumb"></div>
     </div>
-    <label :for="switchId">
+    <label :for="switchId" class="switch-label">
       <slot>Свитч</slot>
     </label>
   </div>
@@ -37,36 +42,28 @@ const props = defineProps({
     type: String,
     default: 'yellow', // цвет по умолчанию — жёлтый
     validator: (value) => ['yellow', 'gray', 'emerald'].includes(value)
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  type: {
+    type: String,
+    default: '',
   }
 });
 
 const emit = defineEmits(['update:isActive']);
 
+const isDisabled = computed(() => props.disabled || props.type === 'disabled');
+
 const handleSwitch = () => {
+  if (isDisabled.value) {
+    return;
+  }
+
   emit('update:isActive', !props.isActive);
 };
-
-// Вычисляемое свойство для стиля бегунка
-const thumbStyle = computed(() => {
-  let baseColor;
-  switch (props.color) {
-    case 'yellow':
-      baseColor = props.isActive ?  'var(--switch-thumb-light-disable)': 'var(--switch-thumb-light)';
-      break;
-    case 'gray':
-      baseColor = props.isActive ? 'var(--switch-bg-gray)' : 'var(--switch-bg-disable)';
-      break;
-    case 'emerald':
-      baseColor = props.isActive ?  'var(--switch-thumb-emerald-active)':'var(--switch-thumb-emerald)';
-      break;
-    default:
-      baseColor = '#fff';
-  }
-  return {
-    backgroundColor: baseColor,
-    boxShadow: `0 1px 3px rgba(0, 0, 0, 0.2)`
-  };
-});
 </script>
 
 <style lang="scss" scoped>
@@ -80,10 +77,13 @@ const thumbStyle = computed(() => {
   position: relative;
   width: 44px;
   height: 24px;
+  box-sizing: border-box;
+  border: 2px solid var(--switch-border-unchecked);
   border-radius: 25px;
   cursor: pointer;
   overflow: hidden;
-  transition: background-color 0.3s ease;
+  background-color: var(--switch-bg-unchecked);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .switch-input {
@@ -95,7 +95,7 @@ const thumbStyle = computed(() => {
 
 .switch-thumb {
   position: absolute;
-  top: 3px;
+  top: 2px;
   left: 3px;
   width: 18px;
   height: 18px;
@@ -103,10 +103,18 @@ const thumbStyle = computed(() => {
   transition:  transform 0.3s ease, 
   background-color 0.3s ease;
   z-index: 2;
+  background-color: var(--switch-thumb-unchecked);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.switch--active .switch-thumb {
-  transform: translateX(19px);
+.switch--checked .switch-box {
+  background-color: var(--switch-bg-checked);
+  border-color: var(--switch-border-checked);
+}
+
+.switch--checked .switch-thumb {
+  transform: translateX(17px);
+  background-color: var(--switch-thumb-checked);
 }
 
 label {
@@ -115,25 +123,17 @@ label {
   font-size: 14px;
 }
 
-.switch--yellow .switch-box {
-  background-color: var(--switch-bg-yellow); 
-}
-.switch--yellow.switch--active .switch-box {
-  background-color: var(--switch-bg-yellow-active); 
+.switch--disabled .switch-label {
+  cursor: not-allowed;
 }
 
-.switch--gray .switch-box {
-  background-color: var(--switch-bg-gray); 
-  opacity: 70%;
+.switch--disabled .switch-box {
+  background-color: var(--switch-bg-disabled);
+  border-color: var(--switch-border-disabled);
+  cursor: not-allowed;
 }
 
-.switch--emerald .switch-box {
-  background-color: var(--switch-bg-emerald); 
-}
-.switch--emerald.switch--active .switch-box {
-  background-color: var(--switch-bg-emerald-active);
+.switch--disabled .switch-thumb {
+  background-color: var(--switch-thumb-disabled);
 }
 </style>
-
-
-

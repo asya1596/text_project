@@ -27,8 +27,10 @@
     --emerald-active: #26de2c;
     --yellow-active: #ffd700;
     --disable: #666;
-    --checkbox-unable-bg: #b0b0b0;
-    --checkbox-unable-border: #8c8c8c;
+    --disabled-control-bg: #b0b0b0;
+    --disabled-control-border: #8c8c8c;
+    --checkbox-unable-bg: var(--disabled-control-bg);
+    --checkbox-unable-border: var(--disabled-control-border);
     }
 
     /* 3. Функциональные цвета (действия) */
@@ -55,12 +57,15 @@
     --switch-thumb-dark-disable: var(--gray-light);
     --switch-thumb-emerald:var(--emerald);
     --switch-thumb-emerald-active:var(--emerald-active);
-    --switch-bg-gray:var(--gray);
-    --switch-bg-disable:var(--disable);
-    --switch-bg-yellow:var(--yellow);
-    --switch-bg-yellow-active:var(--yellow-active);
-    --switch-bg-emerald:var(--emerald);
-    --switch-bg-emerald-active: var(--emerald-active);
+    --switch-bg-checked: var(--yellow);
+    --switch-bg-unchecked: transparent;
+    --switch-bg-disabled: var(--disabled-control-bg);
+    --switch-border-checked: var(--gray-btn-bg);
+    --switch-border-unchecked: var(--gray);
+    --switch-border-disabled: var(--disabled-control-border);
+    --switch-thumb-checked: var(--white);
+    --switch-thumb-unchecked: var(--gray-light);
+    --switch-thumb-disabled: var(--gray);
     --checkbox-bg-gray:var(--gray-btn-bg);
     --checkbox-bg-disabled:var(--checkbox-unable-bg);
     --checkbox-border-disabled:var(--checkbox-unable-border);
