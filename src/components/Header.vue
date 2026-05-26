@@ -43,6 +43,12 @@
           </li>
 
           <li class="nav__item">
+            <router-link to="/reviews" class="nav__link">
+              Отзывы
+            </router-link>
+          </li>
+
+          <li class="nav__item">
             <router-link to="/contactspage" class="nav__link">
               Контакты
             </router-link>

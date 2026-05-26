@@ -54,6 +54,7 @@ const formData = reactive({
 });
 
 const isSubmitted = ref(false);
+const isSubmitting = ref(false);
 const errorMessage = ref('');
 const showSuccess = ref(false);
 
@@ -73,11 +74,13 @@ watch(() => formData.message, () => {
 });
 
 const submitForm = () => {
+    if (isSubmitting.value) return;
+
     isSubmitted.value = true;
+    isSubmitting.value = true;
     errorMessage.value = '';
     showSuccess.value = false;
 
-    // Проверка обязательных полей
     if (
         !formData.isNameValid ||
         !formData.isEmailValid ||
@@ -85,6 +88,8 @@ const submitForm = () => {
     ) {
         errorMessage.value =
             'Пожалуйста, заполните все обязательные поля корректно';
+
+        isSubmitting.value = false;
         return;
     }
 
@@ -103,7 +108,6 @@ const submitForm = () => {
 
     let composeUrl = '';
 
-    // Gmail
     if (
         userEmail.includes('@gmail.com') ||
         userEmail.includes('@googlemail.com')
@@ -113,10 +117,7 @@ const submitForm = () => {
             `&to=${to}` +
             `&su=${subject}` +
             `&body=${body}`;
-    }
-
-    // Yandex
-    else if (
+    } else if (
         userEmail.includes('@yandex.') ||
         userEmail.includes('@ya.ru')
     ) {
@@ -125,10 +126,7 @@ const submitForm = () => {
             `?to=${to}` +
             `&subject=${subject}` +
             `&body=${body}`;
-    }
-
-    // Fallback — системная почта
-    else {
+    } else {
         composeUrl =
             `mailto:${developerEmail}` +
             `?subject=${subject}` +
@@ -138,6 +136,7 @@ const submitForm = () => {
     window.open(composeUrl, '_blank');
 
     showSuccess.value = true;
+    isSubmitting.value = false;
 };
 </script>
 

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer.vue";
 import ExamplePage from "@/components/mainbloc/ExamplePage,.vue";
 import ServicesGrid from "@/components/mainbloc/ServicesGrid.vue";
 import ContactsPage from "@/components/mainbloc/ContactsPage.vue";
+import ReviewsSection from "@/components/mainbloc/ReviewsSection.vue";
 
 const routes = [
   {
@@ -46,6 +47,22 @@ const routes = [
     path: "/contactspage",
     name: "contactspage",
     component: ContactsPage,
+  },
+  {
+    path: "/reviews",
+    name: "reviewssection",
+    component: ReviewsSection,
+  },
+  {
+    path: "/admin-login",
+    component: () => import("@/pages/admin/AdminLogin.vue"),
+  },
+  {
+    path: "/admin/reviews",
+    component: () => import("@/pages/admin/AdminReviews.vue"),
+    meta: {
+      requiresAdmin: true,
+    },
   },
 ];
 

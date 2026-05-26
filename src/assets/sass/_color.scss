@@ -152,6 +152,29 @@
     --table-border: var(--gray);
     --table-search-background: var(--ghost-white);
     --table-focus-shadow: rgba(0, 128, 0, 0.18);
+    --review-star-active: var(--gold);
+    --review-star-empty: var(--mono);
+    --review-modal-overlay: rgba(11, 11, 11, 0.55);
+    --review-input-border: var(--gray-light);
+    --color-admin-primary: var(--gold);
+    --color-admin-primary-hover: var(--lime-green);
+    --color-admin-error: var(--dark-red);
+    --radius-admin-card: 18px;
+    --radius-admin-field: 12px;
+    --shadow-admin-card:
+        0 18px 45px rgba(0, 0, 0, 0.08);
+    --admin-login-btn-text:var(--black);
+    --color-admin-reviews-bg: var(--ghost-white);
+    --color-admin-reviews-card-bg: var(--white);
+    --color-admin-reviews-text: var(--black);
+    --color-admin-reviews-muted: var(--gray);
+    --color-admin-reviews-border: var(--milk);
+
+    --color-admin-reviews-accent: var(--gold);
+    --color-admin-reviews-dark: var(--black);
+    --color-admin-reviews-success: var(--green);
+    --color-admin-reviews-error: var(--dark-red);
+    
     }
 
     /* 4. Светлая тема */
@@ -197,6 +220,11 @@
     --tabs-border-hover: var(--grafit);
     --tabs-text: var(--black);
     --tabs-text-active: var(--ghost-white);
+    --color-admin-bg: var(--ghost-white);
+    --color-admin-card-bg: var(--white);
+    --color-admin-text: var(--black);
+    --color-admin-muted: var(--black);
+    --color-admin-border: var(--grafit);
     
 
     // цвета текста
@@ -291,7 +319,7 @@
     --chart-text: var(--ghost-white);
     --chart-muted-text: var(--gray-light);
     --chart-thumb-border: var(--black);
-        --toast-text: var(--ghost-white);
+    --toast-text: var(--ghost-white);
     --toast-border: var(--black);
     --toast-shadow: rgba(0, 0, 0, 0.35);
 
@@ -326,7 +354,21 @@
     --table-border: var(--mono);
     --table-search-background: var(--dark-grey);
     --table-focus-shadow: rgba(50, 205, 50, 0.2);
+    --color-admin-bg: var(--black);
+    --color-admin-card-bg: var(--grafit);
+    --color-admin-text: var(--white);
+    --color-admin-muted: var(--gray-light);
+    --color-admin-border: var(--milk);
+    --color-admin-reviews-bg: var(--black);
+    --color-admin-reviews-card-bg: var(--grafit);
+    --color-admin-reviews-text: var(--white);
+    --color-admin-reviews-muted: var(--gray-light);
+    --color-admin-reviews-border: var(--dark-grey);
 
+    --color-admin-reviews-accent: var(--gold);
+    --color-admin-reviews-dark: var(--black);
+    --color-admin-reviews-success: var(--lime-green);
+    --color-admin-reviews-error: var(--dark-red);
 
     // цвета текста
     --nav-link: var(--ghost-white);

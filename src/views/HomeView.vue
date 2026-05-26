@@ -5,6 +5,7 @@
     <about-self />
     <services-grid />
     <portfolio-grid />
+    <reviews-section />
     <contacts-page />
     <footer />
   </div>
@@ -18,6 +19,7 @@ import MainPage from '@/components/mainbloc/MainPage.vue';
 import ServicesGrid from '@/components/mainbloc/ServicesGrid.vue';
 import ContactsPage from '@/components/mainbloc/ContactsPage.vue';
 import PortfolioGrid from '@/components/mainbloc/PortfolioGrid.vue';
+import ReviewsSection from '@/components/mainbloc/ReviewsSection.vue';
 
 const components = {
   Header,
@@ -27,5 +29,6 @@ const components = {
   ServicesGrid,
   PortfolioGrid,
   ContactsPage,
+  ReviewsSection,
 };
 </script>
