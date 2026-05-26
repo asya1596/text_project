@@ -117,6 +117,26 @@
     --chart-text: var(--dark-grey);
     --chart-muted-text: var(--dimgrey);
     --chart-thumb-border: var(--dark-grey);
+        --toast-text: var(--ghost-white);
+    --toast-border: var(--dark-grey);
+    --toast-shadow: rgba(0, 0, 0, 0.18);
+
+    --toast-button-text: var(--ghost-white);
+    --toast-button-border: var(--dark-grey);
+    --toast-button-background-start: var(--green);
+    --toast-button-background-end: var(--orange);
+
+    --toast-info-background-start: var(--gray);
+    --toast-info-background-end: var(--dimgrey);
+
+    --toast-success-background-start: var(--green);
+    --toast-success-background-end: var(--lime-green);
+
+    --toast-warning-background-start: var(--yellow);
+    --toast-warning-background-end: var(--orange);
+
+    --toast-error-background-start: var(--dark-red);
+    --toast-error-background-end: var(--orange);
     }
 
     /* 4. Светлая тема */
@@ -256,6 +276,26 @@
     --chart-text: var(--ghost-white);
     --chart-muted-text: var(--gray-light);
     --chart-thumb-border: var(--black);
+        --toast-text: var(--ghost-white);
+    --toast-border: var(--black);
+    --toast-shadow: rgba(0, 0, 0, 0.35);
+
+    --toast-button-text: var(--ghost-white);
+    --toast-button-border: var(--black);
+    --toast-button-background-start: var(--lime-green);
+    --toast-button-background-end: var(--orange);
+
+    --toast-info-background-start: var(--mono);
+    --toast-info-background-end: var(--dark-grey);
+
+    --toast-success-background-start: var(--green);
+    --toast-success-background-end: var(--lime-green);
+
+    --toast-warning-background-start: var(--gold);
+    --toast-warning-background-end: var(--orange);
+
+    --toast-error-background-start: var(--dark-red);
+    --toast-error-background-end: var(--orange);
 
     // цвета текста
     --nav-link: var(--ghost-white);

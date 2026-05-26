@@ -6,6 +6,7 @@
 		<HintMessageCrumbSection/>
 		<RangeSliderSection/>
 		<ChartsSection/>
+		<ToastsSection/>
 	</div>
 </template>
 
@@ -16,6 +17,7 @@ import AccordionSelectTabsSection from '../uisections/AccordionSelectTabsSection
 import HintMessageCrumbSection from '../uisections/HintMessageCrumbSection.vue';
 import RangeSliderSection from '../uisections/RangeSliderSection.vue';
 import ChartsSection from '../uisections/ChartsSection.vue';
+import ToastsSection from '../uisections/ToasSection.vue';
 </script>
 
 <style lang="scss" scoped>
