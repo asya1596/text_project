@@ -1,37 +1,48 @@
 <template>
     <div class="legal-info">
-        <h3 class="section-title">Правовая информация</h3>
+        <h3 class="section-title">
+            Правовая информация
+        </h3>
+
         <ul>
-            <li v-for="link in legalLinks" :key="link.text">
-                <a :href="link.href" class="footer__legal-link" target="_blank" rel="noopener noreferrer">
+            <li v-for="link in legalLinks"
+                :key="link.text">
+                <a
+                    :href="link.href"
+                    class="footer__legal-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     {{ link.text }}
                 </a>
             </li>
-        </ul>
 
-        <div class="contact">
-            <span class="mail-icon">
-                <MessageIcon />
-            </span>
-            <a href="mailto:asya15111996@yandex.ru?subject=Запрос по проекту&body=Здравствуйте! У меня есть вопрос по проекту..."
-                class="email">
-                asya15111996@yandex.ru
-            </a>
-        </div>
+            <!-- Cookie settings -->
+            <li>
+                <button
+                    class="cookie-settings-btn"
+                    @click="$emit('open-cookie-settings')"
+                >
+                    Настройки cookie
+                </button>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script setup>
-import MessageIcon from '../icons/MessageIcon.vue';
+defineEmits([
+    'open-cookie-settings'
+]);
 
 const legalLinks = [
     {
-        text: "Политика конфиденциальности",
-        href: "/assets/documents/privacypoicy.pdf",
+        text: 'Политика конфиденциальности',
+        href: '/assets/documents/privacypoicy.pdf',
     },
     {
-        text: "Стандартный договор на оказание услуг",
-        href: "/assets/documents/service-agreement.pdf",
+        text: 'Стандартный договор на оказание услуг',
+        href: '/assets/documents/service-agreement.pdf',
     },
 ];
 </script>
@@ -70,32 +81,19 @@ a:hover {
     color: var(--nav-link-hover);
 }
 
-.contact {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: clamp(14px, 2vw, 20px);
-    gap: 8px;
 
-    @media (max-width: 576px) {
-        flex-direction: column;
-        gap: 4px;
-        align-items: center;
-    }
-}
-
-.mail-icon {
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.email {
+.cookie-settings-btn {
+    padding: 0;
+    border: none;
+    background: transparent;
     color: var(--nav-link);
-    text-decoration: none;
-    font-size: clamp(14px, 1.2vw, 16px);
-    line-height: 1.2;
-    overflow-wrap: anywhere;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s;
+}
+
+.cookie-settings-btn:hover {
+    color: var(--nav-link-hover);
 }
 </style>

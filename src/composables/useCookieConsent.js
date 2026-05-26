@@ -1,0 +1,6 @@
+acceptAll()
+rejectAll()
+saveCustomSettings()
+openSettings()
+closeSettings()
+checkConsent()

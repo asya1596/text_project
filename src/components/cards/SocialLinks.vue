@@ -1,19 +1,36 @@
 <template>
     <div class="social-links">
         <div v-for="link in links" :key="link.id" class="social-link">
-            <a :href="link.url" :target="link.target" class="icon-link">
-                <div class="icon-wrapper">
-                    <component :is="link.iconComponent" class="social-icon" />
-                </div>
-            </a>
-            <a :href="link.url" :target="link.target" class="link-content">
-                <strong>{{ link.title }}</strong>
-                <span>{{ link.value }}</span>
-            </a>
+
+            <template v-if="link.type === 'email'">
+                <a href="#" @click.prevent="openEmailClient(link.value)" class="icon-link">
+                    <div class="icon-wrapper">
+                        <component :is="link.iconComponent" class="social-icon" />
+                    </div>
+                </a>
+
+                <a href="#" @click.prevent="openEmailClient(link.value)" class="link-content">
+                    <strong>{{ link.title }}</strong>
+                    <span>{{ link.value }}</span>
+                </a>
+            </template>
+
+            <template v-else>
+                <a :href="link.url" :target="link.target" class="icon-link">
+                    <div class="icon-wrapper">
+                        <component :is="link.iconComponent" class="social-icon" />
+                    </div>
+                </a>
+
+                <a :href="link.url" :target="link.target" class="link-content">
+                    <strong>{{ link.title }}</strong>
+                    <span>{{ link.value }}</span>
+                </a>
+            </template>
+
         </div>
     </div>
 </template>
-
 
 <script setup>
 import SvgIcon1 from '../icons/SvgIcon1.vue';
@@ -22,14 +39,43 @@ import PhounIcon from '../icons/PhounIcon.vue';
 import VkIcon from '../icons/VkIcon.vue';
 import MaxIcon from '../icons/MaxIcon.vue';
 
+const openEmailClient = (email) => {
+
+    const subject = encodeURIComponent('Связь с разработчиком');
+    const body = encodeURIComponent(
+        'Здравствуйте! Хочу связаться с вами.'
+    );
+
+    // Gmail
+    if (email.includes('@gmail.com')) {
+        window.open(
+            `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`,
+            '_blank'
+        );
+        return;
+    }
+
+    // Yandex
+    if (email.includes('@yandex')) {
+        window.open(
+            `https://mail.yandex.ru/compose?to=${email}&subject=${subject}&body=${body}`,
+            '_blank'
+        );
+        return;
+    }
+
+    // Остальные почтовые клиенты
+    window.location.href =
+        `mailto:${email}?subject=${subject}&body=${body}`;
+};
+
 const links = [
     {
         id: 1,
+        type: 'email',
         title: 'Mail',
         value: 'asya15111996@yandex.ru',
-        iconComponent: MessageIcon,
-        url: 'mailto:asya15111996@yandex.ru',
-        target: '_blank'
+        iconComponent: MessageIcon
     },
     {
         id: 2,
@@ -44,7 +90,7 @@ const links = [
         title: 'Локация',
         value: 'Россия, Краснодар (Удаленно)',
         iconComponent: SvgIcon1,
-        url: 'https://maps.google.com/?q=Россия,Красодар',
+        url: 'https://maps.google.com/?q=Россия,Краснодар',
         target: '_blank'
     },
     {
@@ -58,7 +104,7 @@ const links = [
     {
         id: 5,
         title: 'Max',
-        value: 'Месенджер',
+        value: 'Мессенджер',
         iconComponent: MaxIcon,
         url: 'https://max.ru/u/f9LHodD0cOL6K7S2O3s9t_nEELIZobneYJuyWJqLcv9pGwGEPBQCvaL7xHI',
         target: '_blank'
@@ -95,6 +141,7 @@ const links = [
     text-decoration: none;
     color: inherit;
 }
+
 .icon-wrapper {
     width: 40px;
     height: 40px;
@@ -131,7 +178,8 @@ const links = [
     color: var(--text-description);
     font-size: 14px;
 }
-strong{
-    color:var(--strong);
+
+strong {
+    color: var(--strong);
 }
 </style>

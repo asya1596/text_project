@@ -1,31 +1,43 @@
 <template>
   <div :class="`theme theme--${theme}`">
     <header-component />
+
     <router-view />
-    <footer-component/>
-    <cookie-consent-component/>
+
+    <footer-component
+      @open-cookie-settings="openCookieSettings"
+    />
+
+    <cookie-consent-component
+      ref="cookieConsentRef"
+    />
   </div>
 </template>
 
 <script setup>
-import HeaderComponent from "/src/components/Header.vue";
-import FooterComponent from "/src/components/Footer.vue";
-import CookieConsentComponent from "./components/CookieConsent.vue";
-import {
-  mapState
-} from "vuex";
+import { ref } from 'vue';
+
+import HeaderComponent from '/src/components/Header.vue';
+import FooterComponent from '/src/components/Footer.vue';
+import CookieConsentComponent from '/src/cookieconsent/CookieConsent.vue';
+
+const cookieConsentRef = ref(null);
+
+const openCookieSettings = () => {
+  cookieConsentRef.value?.openSettings();
+};
 </script>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   computed: {
-    ...mapState(
-      {
-        theme: state => state.theme
-      }
-    )
+    ...mapState({
+      theme: state => state.theme
+    })
   }
-}
+};
 </script>
 
 <style lang="scss">

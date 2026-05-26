@@ -4,8 +4,12 @@
             <div class="footer-row">
                 <navigation />
                 <services />
-                <legal-info />
+
+                <legal-info
+                    @open-cookie-settings="$emit('open-cookie-settings')"
+                />
             </div>
+
             <div class="footer-bottom">
                 <p>©2026 Тхагушева Ася. Все права защищены.</p>
             </div>
@@ -17,6 +21,10 @@
 import Navigation from './cards/Navigation.vue';
 import Services from './cards/Services.vue';
 import LegalInfo from './cards/LegalInfo.vue';
+
+defineEmits([
+    'open-cookie-settings'
+]);
 </script>
 
 <style scoped lang="scss">

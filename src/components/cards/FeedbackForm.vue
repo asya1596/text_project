@@ -39,9 +39,10 @@
         </div>
     </div>
 </template>
-
 <script setup>
-import { ref, reactive, watch } from 'vue';
+import { reactive, ref, watch } from 'vue';
+
+const developerEmail = 'asya15111996@yandex.ru';
 
 const formData = reactive({
     name: '',
@@ -49,65 +50,94 @@ const formData = reactive({
     message: '',
     isNameValid: false,
     isEmailValid: false,
-    isMessageValid: false
+    isMessageValid: false,
 });
-const isSubmitted = ref(false);
-const isSubmitting = ref(false);
-const showSuccess = ref(false);
-const errorMessage = ref('');
 
-// Автоматически проверяем валидность при изменении полей
+const isSubmitted = ref(false);
+const errorMessage = ref('');
+const showSuccess = ref(false);
+
+// Валидация имени
 watch(() => formData.name, () => {
     formData.isNameValid = formData.name.trim().length > 0;
 });
 
+// Валидация email
 watch(() => formData.email, () => {
     formData.isEmailValid = /^\S+@\S+\.\S+$/.test(formData.email);
 });
 
+// Валидация сообщения
 watch(() => formData.message, () => {
     formData.isMessageValid = formData.message.trim().length > 0;
 });
 
-// Функция отправки формы
-const submitForm = async () => {
-    showSuccess.value = false;
+const submitForm = () => {
+    isSubmitted.value = true;
     errorMessage.value = '';
+    showSuccess.value = false;
 
-    // Валидация
-    if (!formData.name || !formData.email || !formData.message) {
-        errorMessage.value = 'Пожалуйста, заполните все обязательные поля';
+    // Проверка обязательных полей
+    if (
+        !formData.isNameValid ||
+        !formData.isEmailValid ||
+        !formData.isMessageValid
+    ) {
+        errorMessage.value =
+            'Пожалуйста, заполните все обязательные поля корректно';
         return;
     }
 
-    isSubmitting.value = true;
+    const userEmail = formData.email.toLowerCase();
 
-    try {
-        // Здесь будет отправка на сервер
-        // В реальном приложении замените на ваш API endpoint
-        const response = await fetch('/api/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
+    const to = encodeURIComponent(developerEmail);
+    const subject = encodeURIComponent(
+        'Сообщение с формы обратной связи'
+    );
 
-        if (response.ok) {
-            // Успешная отправка
-            showSuccess.value = true;
-            // Очистка формы
-            formData.name = '';
-            formData.email = '';
-            formData.message = '';
-        } else {
-            throw new Error('Ошибка сервера');
-        }
-    } catch (error) {
-        errorMessage.value = 'Произошла ошибка при отправке. Пожалуйста, попробуйте ещё раз.';
-    } finally {
-        isSubmitting.value = false;
+    const body = encodeURIComponent(
+        `Имя: ${formData.name}\n` +
+        `Email клиента: ${formData.email}\n\n` +
+        `Сообщение:\n${formData.message}`
+    );
+
+    let composeUrl = '';
+
+    // Gmail
+    if (
+        userEmail.includes('@gmail.com') ||
+        userEmail.includes('@googlemail.com')
+    ) {
+        composeUrl =
+            `https://mail.google.com/mail/?view=cm&fs=1` +
+            `&to=${to}` +
+            `&su=${subject}` +
+            `&body=${body}`;
     }
+
+    // Yandex
+    else if (
+        userEmail.includes('@yandex.') ||
+        userEmail.includes('@ya.ru')
+    ) {
+        composeUrl =
+            `https://mail.yandex.ru/compose` +
+            `?to=${to}` +
+            `&subject=${subject}` +
+            `&body=${body}`;
+    }
+
+    // Fallback — системная почта
+    else {
+        composeUrl =
+            `mailto:${developerEmail}` +
+            `?subject=${subject}` +
+            `&body=${body}`;
+    }
+
+    window.open(composeUrl, '_blank');
+
+    showSuccess.value = true;
 };
 </script>
 

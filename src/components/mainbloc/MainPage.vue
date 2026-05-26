@@ -22,7 +22,7 @@ import ArrowsIcon from '../icons/ArrowsIcon.vue';
 const router = useRouter();
 
 const navigateToContacts = () => {
-    router.push('/footer');
+    router.push('/contactspage');
 };
 
 </script>
