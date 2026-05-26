@@ -117,7 +117,7 @@
     --chart-text: var(--dark-grey);
     --chart-muted-text: var(--dimgrey);
     --chart-thumb-border: var(--dark-grey);
-        --toast-text: var(--ghost-white);
+    --toast-text: var(--ghost-white);
     --toast-border: var(--dark-grey);
     --toast-shadow: rgba(0, 0, 0, 0.18);
 
@@ -137,6 +137,21 @@
 
     --toast-error-background-start: var(--dark-red);
     --toast-error-background-end: var(--orange);
+    --table-primary: var(--green);
+    --table-accent: var(--orange);
+    --table-background: var(--ghost-white);
+    --table-header-background: var(--gray-light);
+    --table-row-background: var(--ghost-white);
+    --table-row-hover: var(--milk);
+
+    --table-text: var(--dark-grey);
+    --table-muted-text: var(--dimgrey);
+    --table-header-text: var(--dark-grey);
+    --table-active-header-text: var(--ghost-white);
+
+    --table-border: var(--gray);
+    --table-search-background: var(--ghost-white);
+    --table-focus-shadow: rgba(0, 128, 0, 0.18);
     }
 
     /* 4. Светлая тема */
@@ -296,6 +311,22 @@
 
     --toast-error-background-start: var(--dark-red);
     --toast-error-background-end: var(--orange);
+    --table-primary: var(--lime-green);
+    --table-accent: var(--orange);
+    --table-background: var(--grafit);
+    --table-header-background: var(--dark-grey);
+    --table-row-background: var(--grafit);
+    --table-row-hover: var(--dark-grey);
+
+    --table-text: var(--ghost-white);
+    --table-muted-text: var(--gray-light);
+    --table-header-text: var(--ghost-white);
+    --table-active-header-text: var(--black);
+
+    --table-border: var(--mono);
+    --table-search-background: var(--dark-grey);
+    --table-focus-shadow: rgba(50, 205, 50, 0.2);
+
 
     // цвета текста
     --nav-link: var(--ghost-white);

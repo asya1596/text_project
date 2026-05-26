@@ -7,6 +7,7 @@
 		<RangeSliderSection/>
 		<ChartsSection/>
 		<ToastsSection/>
+		<TableSection/>
 	</div>
 </template>
 
@@ -18,6 +19,7 @@ import HintMessageCrumbSection from '../uisections/HintMessageCrumbSection.vue';
 import RangeSliderSection from '../uisections/RangeSliderSection.vue';
 import ChartsSection from '../uisections/ChartsSection.vue';
 import ToastsSection from '../uisections/ToasSection.vue';
+import TableSection from '../uisections/TableSection.vue';
 </script>
 
 <style lang="scss" scoped>

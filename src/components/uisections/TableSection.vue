@@ -1,0 +1,106 @@
+<template>
+    <div class="example">
+        <h1>Таблицы</h1>
+
+        <div class="controls-panel">
+            <div class="section">
+                <h2>Таблица</h2>
+
+                <div class="table-box">
+                    <SimpleTable
+                        :headers="tableHeaders"
+                        :rows="tableRows"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import SimpleTable from '../UI/SimpleTable.vue';
+
+const tableHeaders = ['Имя', 'Роль', 'Проект', 'Прогресс'];
+
+const tableRows = [
+    ['Анна', 'Frontend', 'Dashboard', 82],
+    ['Иван', 'Backend', 'API', 74],
+    ['Мария', 'Designer', 'UI Kit', 91],
+    ['Олег', 'QA', 'Testing', 68],
+];
+</script>
+
+<style lang="scss" scoped>
+.example {
+    width: 100%;
+
+    h1 {
+        text-align: center;
+        color: var(--text-h1);
+        font-weight: 600;
+        font-size: clamp(18px, 1.8vw, 24px);
+        padding: 0 clamp(12px, 4vw, 48px);
+        transition: color 0.2s ease-out;
+        margin: clamp(10px, 2vw, 20px) 0;
+    }
+}
+
+.controls-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 2vw, 28px);
+    width: min(100%, 1440px);
+    margin: 0 auto;
+    padding: clamp(12px, 3vw, 32px);
+    box-sizing: border-box;
+}
+
+.section {
+    background-color: var(--card-block);
+    border-radius: 8px;
+    padding: clamp(14px, 2vw, 24px);
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: clamp(220px, 20vw, 280px);
+}
+
+h2 {
+    color: var(--text-h2);
+    font-size: clamp(16px, 1.5vw, 20px);
+    margin: 0 0 clamp(12px, 1.5vw, 18px);
+}
+
+.table-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.table-box :deep(*) {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+@media (max-width: 640px) {
+    .controls-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .table-box {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (min-width: 1600px) {
+    .controls-panel {
+        width: min(100%, 1600px);
+    }
+}
+</style>
