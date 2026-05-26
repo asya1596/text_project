@@ -109,6 +109,14 @@
     --range-thumb-focus-border: var(--black);
 
     --range-label-text: var(--dark-grey);
+    --chart-primary: var(--green);
+    --chart-accent: var(--orange);
+    --chart-track: var(--gray);
+    --chart-grid: var(--gray-light);
+
+    --chart-text: var(--dark-grey);
+    --chart-muted-text: var(--dimgrey);
+    --chart-thumb-border: var(--dark-grey);
     }
 
     /* 4. Светлая тема */
@@ -240,6 +248,14 @@
     --range-thumb-focus-border: var(--ghost-white);
 
     --range-label-text: var(--ghost-white);
+    --chart-primary: var(--lime-green);
+    --chart-accent: var(--orange);
+    --chart-track: var(--mono);
+    --chart-grid: var(--dark-grey);
+
+    --chart-text: var(--ghost-white);
+    --chart-muted-text: var(--gray-light);
+    --chart-thumb-border: var(--black);
 
     // цвета текста
     --nav-link: var(--ghost-white);
