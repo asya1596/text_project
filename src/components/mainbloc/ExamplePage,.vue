@@ -4,6 +4,7 @@
 		<InputsTextareaSection/>
 		<AccordionSelectTabsSection/>
 		<HintMessageCrumbSection/>
+		<RangeSliderSection/>
 	</div>
 </template>
 
@@ -12,6 +13,7 @@ import CheckboxToggleSection from '../uisections/CheckboxToggleSection.vue';
 import InputsTextareaSection from '../uisections/InputsTextareaSection.vue';
 import AccordionSelectTabsSection from '../uisections/AccordionSelectTabsSection.vue';
 import HintMessageCrumbSection from '../uisections/HintMessageCrumbSection.vue';
+import RangeSliderSection from '../uisections/RangeSliderSection.vue';
 </script>
 
 <style lang="scss" scoped>

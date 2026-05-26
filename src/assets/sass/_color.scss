@@ -98,6 +98,17 @@
     --breadcrumbs-separator-color: var(--gray-light);
     --breadcrumbs-separator-hover-color: var(--gold);
     --breadcrumbs-focus-color: var(--gold);
+    --range-track-filled: var(--green);
+    --range-track-filled-accent: var(--yellow);
+    --range-track-empty: var(--gray);
+
+    --range-thumb: var(--lime-green);
+    --range-thumb-hover: var(--yellow);
+    --range-thumb-focus: var(--yellow);
+    --range-thumb-border: var(--dark-grey);
+    --range-thumb-focus-border: var(--black);
+
+    --range-label-text: var(--dark-grey);
     }
 
     /* 4. Светлая тема */
@@ -218,6 +229,17 @@
     --breadcrumbs-separator-color: var(--mono);
     --breadcrumbs-separator-hover-color: var(--gold);
     --breadcrumbs-focus-color: var(--gold);
+    --range-track-filled: var(--lime-green);
+    --range-track-filled-accent: var(--gold);
+    --range-track-empty: var(--mono);
+
+    --range-thumb: var(--green);
+    --range-thumb-hover: var(--gold);
+    --range-thumb-focus: var(--gold);
+    --range-thumb-border: var(--black);
+    --range-thumb-focus-border: var(--ghost-white);
+
+    --range-label-text: var(--ghost-white);
 
     // цвета текста
     --nav-link: var(--ghost-white);
