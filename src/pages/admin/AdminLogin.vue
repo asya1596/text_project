@@ -44,7 +44,7 @@
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = '';
 
 const router = useRouter();
 
@@ -58,7 +58,7 @@ const errorMessage = ref('');
 const login = async () => {
     errorMessage.value = '';
 
-    const response = await fetch(`${API_URL}/api/admin/login`, {
+    const response = await fetch('/api/admin/login', {
         method: 'POST',
         credentials: 'include',
         headers: {

@@ -78,7 +78,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = '';
 
 
 const router = useRouter();
@@ -100,7 +100,7 @@ const filteredReviews = computed(() => {
 const loadReviews = async () => {
     errorMessage.value = '';
 
-    const response = await fetch(`${API_URL}/api/admin/reviews`, {
+    const response = await fetch('/api/admin/reviews', {
         credentials: 'include'
     });
 
@@ -118,7 +118,7 @@ const loadReviews = async () => {
 };
 
 const updateStatus = async (id, status) => {
-    const response = await fetch(`${API_URL}/api/admin/reviews/${id}/status`, {
+    const response = await fetch(`/api/admin/reviews/${id}/status`, {
         method: 'PATCH',
         credentials: 'include',
         headers: {
@@ -140,7 +140,7 @@ const deleteReview = async (id) => {
 
     if (!isConfirmed) return;
 
-    const response = await fetch(`${API_URL}/api/admin/reviews/${id}`, {
+    const response = await fetch(`/api/admin/reviews/${id}`, {
         method: 'DELETE',
         credentials: 'include'
     });

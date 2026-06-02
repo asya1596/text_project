@@ -77,7 +77,7 @@
 import { reactive, ref, onMounted } from 'vue';
 import ReviewCard from '../cards/ReviewCard.vue';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = '';
 
 const reviews = ref([]);
 const isModalOpen = ref(false);
@@ -112,7 +112,7 @@ const loadReviews = async () => {
     errorMessage.value = '';
 
     try {
-        const response = await fetch(`${API_URL}/api/reviews`);
+        const response = await fetch('/api/reviews');
 
         if (!response.ok) {
             throw new Error('Не удалось загрузить отзывы');
@@ -133,7 +133,7 @@ const addReview = async () => {
     errorMessage.value = '';
 
     try {
-        const response = await fetch(`${API_URL}/api/reviews`, {
+        const response = await fetch('/api/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
