@@ -1,5 +1,5 @@
 <template>
-    <div class="contact-container">
+    <div  id="contacts" class="contact-container">
         <h1 class="title">Давайте <span>сотрудничать</span></h1>
         <p class="description">
             Свяжитесь со мной, если у вас есть вопросы или вы хотите обсудить ваш проект.

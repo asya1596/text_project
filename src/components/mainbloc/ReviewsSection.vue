@@ -1,5 +1,5 @@
 <template>
-    <section class="reviews-container">
+    <section id="reviews" class="reviews-container">
         <h1 class="title">
             Отзывы <span>клиентов</span>
         </h1>
@@ -9,70 +9,37 @@
         </p>
 
         <div class="reviews-actions">
-            <button
-                type="button"
-                class="review-add-btn"
-                @click="openModal"
-            >
+            <button type="button" class="review-add-btn" @click="openModal">
                 Добавить отзыв
             </button>
         </div>
 
         <div class="reviews-grid">
-            <ReviewCard
-                v-for="review in reviews"
-                :key="review.id"
-                :review="review"
-            />
+            <ReviewCard v-for="review in reviews" :key="review.id" :review="review" />
         </div>
 
-        <div
-            v-if="isModalOpen"
-            class="review-modal"
-            @click.self="closeModal"
-        >
-            <form
-                class="review-form"
-                @submit.prevent="addReview"
-            >
+        <div v-if="isModalOpen" class="review-modal" @click.self="closeModal">
+            <form class="review-form" @submit.prevent="addReview">
                 <h2 class="review-form__title">
                     Добавить отзыв
                 </h2>
 
                 <label class="review-form__label">
                     Ваше имя *
-                    <input
-                        v-model.trim="form.name"
-                        type="text"
-                        class="review-form__input"
-                        placeholder="Введите имя"
-                        required
-                    />
+                    <input v-model.trim="form.name" type="text" class="review-form__input" placeholder="Введите имя"
+                        required />
                 </label>
 
                 <label class="review-form__label">
                     Услуга *
-                    <input
-                        v-model.trim="form.service"
-                        type="text"
-                        class="review-form__input"
-                        placeholder="Например: Создание сайта"
-                        required
-                    />
+                    <input v-model.trim="form.service" type="text" class="review-form__input"
+                        placeholder="Например: Создание сайта" required />
                 </label>
 
                 <label class="review-form__label">
                     Оценка *
-                    <select
-                        v-model.number="form.rating"
-                        class="review-form__input"
-                        required
-                    >
-                        <option
-                            v-for="rating in 5"
-                            :key="rating"
-                            :value="rating"
-                        >
+                    <select v-model.number="form.rating" class="review-form__input" required>
+                        <option v-for="rating in 5" :key="rating" :value="rating">
                             {{ rating }} из 5
                         </option>
                     </select>
@@ -80,29 +47,26 @@
 
                 <label class="review-form__label">
                     Отзыв *
-                    <textarea
-                        v-model.trim="form.text"
-                        class="review-form__textarea"
-                        placeholder="Напишите ваш отзыв"
-                        required
-                    ></textarea>
+                    <textarea v-model.trim="form.text" class="review-form__textarea" placeholder="Напишите ваш отзыв"
+                        required></textarea>
                 </label>
 
-                <div class="review-form__actions">
-                    <button
-                        type="submit"
-                        class="review-form__btn review-form__btn--submit"
-                    >
-                        Сохранить отзыв
+                <div class="reviews-actions">
+                    <button type="button" class="review-add-btn" @click="openModal">
+                        Добавить отзыв
                     </button>
+                </div>
 
-                    <button
-                        type="button"
-                        class="review-form__btn review-form__btn--cancel"
-                        @click="closeModal"
-                    >
-                        Отмена
-                    </button>
+                <p v-if="isLoading" class="reviews-message">
+                    Загружаем отзывы...
+                </p>
+
+                <p v-if="errorMessage" class="reviews-error">
+                    {{ errorMessage }}
+                </p>
+
+                <div class="reviews-grid">
+                    <ReviewCard v-for="review in reviews" :key="review.id" :review="review" />
                 </div>
             </form>
         </div>
@@ -117,6 +81,7 @@ const API_URL = 'http://localhost:3000';
 
 const reviews = ref([]);
 const isModalOpen = ref(false);
+const isLoading = ref(false);
 const errorMessage = ref('');
 
 const form = reactive({
@@ -143,35 +108,56 @@ const resetForm = () => {
 };
 
 const loadReviews = async () => {
-    const response = await fetch(`${API_URL}/api/reviews`);
+    isLoading.value = true;
+    errorMessage.value = '';
 
-    if (!response.ok) {
-        errorMessage.value = 'Не удалось загрузить отзывы';
-        return;
+    try {
+        const response = await fetch(`${API_URL}/api/reviews`);
+
+        if (!response.ok) {
+            throw new Error('Не удалось загрузить отзывы');
+        }
+
+        reviews.value = await response.json();
+    } catch (error) {
+        console.error('Ошибка загрузки отзывов:', error);
+
+        reviews.value = [];
+        errorMessage.value = 'Отзывы временно недоступны';
+    } finally {
+        isLoading.value = false;
     }
-
-    reviews.value = await response.json();
 };
 
 const addReview = async () => {
     errorMessage.value = '';
 
-    const response = await fetch(`${API_URL}/api/reviews`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(form)
-    });
+    try {
+        const response = await fetch(`${API_URL}/api/reviews`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: form.name,
+                service: form.service,
+                rating: form.rating,
+                text: form.text
+            })
+        });
 
-    if (!response.ok) {
-        errorMessage.value = 'Не удалось отправить отзыв';
-        return;
+        if (!response.ok) {
+            throw new Error('Не удалось отправить отзыв');
+        }
+
+        closeModal();
+
+        alert('Отзыв отправлен на модерацию');
+    } catch (error) {
+        console.error('Ошибка отправки отзыва:', error);
+
+        errorMessage.value = 'Не удалось отправить отзыв. Попробуйте позже.';
     }
-
-    closeModal();
-
-    alert('Отзыв отправлен на модерацию');
 };
 
 onMounted(() => {

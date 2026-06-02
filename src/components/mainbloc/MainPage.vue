@@ -1,13 +1,16 @@
 <template>
-    <div class="container">
+    <div id="home" class="container">
         <div class="status-tag">
             <ArrowsIcon class="status-icon" />
             <span class="status-text">Доступен для новых проектов</span>
         </div>
         <h1 class="main-title">Создаю <span>современные</span> веб-решения</h1>
-        <p class="description">Современные фронтенд‑решения для вашего бизнеса.
-            Разрабатываю интерфейсы с высокой производительностью, продуманной доступностью и безупречным визуалом. Ваш
-            сайт станет быстрее, удобнее и привлекательнее для аудитории.</p>
+        <p class="description">
+            Современные веб-решения, которые помогают привлекать клиентов и усиливать присутствие бизнеса в интернете.
+            Разрабатываю быстрые, удобные и визуально привлекательные сайты — от лендингов и сайтов-визиток до
+            многостраничных и высоконагруженных проектов.
+        </p>
+
         <div class="buttons-container">
             <CallBtn class="btn-call button-yellow" buttonContent="Связаться со мной" @click="navigateToContacts" />
         </div>
@@ -22,9 +25,8 @@ import ArrowsIcon from '../icons/ArrowsIcon.vue';
 const router = useRouter();
 
 const navigateToContacts = () => {
-    router.push('/contactspage');
+    router.push('/#contacts');
 };
-
 </script>
 
 <style lang="scss" scoped>

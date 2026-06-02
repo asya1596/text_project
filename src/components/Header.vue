@@ -13,7 +13,7 @@
       <nav class="nav" :class="{ 'mobile-menu-open': isMobileMenuOpen }">
         <ul class="nav__list">
           <li class="nav__item">
-            <router-link to="/" class="nav__link">
+            <router-link to="/#home" class="nav__link">
               Главная
             </router-link>
           </li>
@@ -25,31 +25,31 @@
           </li>
 
           <li class="nav__item">
-            <router-link to="/aboutself" class="nav__link">
+            <router-link to="/#about" class="nav__link">
               Обо мне
             </router-link>
           </li>
 
           <li class="nav__item">
-            <router-link to="/services" class="nav__link">
+            <router-link to="/#services" class="nav__link">
               Услуги
             </router-link>
           </li>
 
           <li class="nav__item">
-            <router-link to="/portfolio" class="nav__link">
+            <router-link to="/#portfolio" class="nav__link">
               Работы
             </router-link>
           </li>
 
           <li class="nav__item">
-            <router-link to="/reviews" class="nav__link">
+            <router-link to="/#reviews" class="nav__link">
               Отзывы
             </router-link>
           </li>
 
           <li class="nav__item">
-            <router-link to="/contactspage" class="nav__link">
+            <router-link to="/#contacts" class="nav__link">
               Контакты
             </router-link>
           </li>

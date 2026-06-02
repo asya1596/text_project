@@ -1,6 +1,6 @@
 <template>
     <h1>Мои <span>работы</span></h1>
-    <div class="portfolio-grid">
+    <div  id="portfolio" class="portfolio-grid">
         <portfolio-card v-for="project in projects" :key="project.id" :link="project.link" :image="project.image"
             :title="project.title" :overlay-text="project.overlayText" />
     </div>

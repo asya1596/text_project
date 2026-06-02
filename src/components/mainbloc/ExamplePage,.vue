@@ -1,13 +1,13 @@
 <template>
 	<div class="example-page">
-		<CheckboxToggleSection/>
-		<InputsTextareaSection/>
-		<AccordionSelectTabsSection/>
-		<HintMessageCrumbSection/>
-		<RangeSliderSection/>
-		<ChartsSection/>
-		<ToastsSection/>
-		<TableSection/>
+		<CheckboxToggleSection />
+		<InputsTextareaSection />
+		<AccordionSelectTabsSection />
+		<HintMessageCrumbSection />
+		<RangeSliderSection />
+		<ChartsSection />
+		<ToastsSection />
+		<TableSection />
 	</div>
 </template>
 

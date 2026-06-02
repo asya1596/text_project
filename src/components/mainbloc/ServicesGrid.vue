@@ -1,9 +1,11 @@
 <template>
-    <div class="serveses-container">
+    <div  id="services" class="serveses-container">
         <h1 class="title">Мои <span>услуги</span></h1>
         <p class="description">
-            От идеи — к работающему продукту. Быстро, качественно, с фокусом на результат
+            Создаю современные веб-решения — от идеи до готового результата. Качественная разработка, внимание к деталям
+            и прозрачные условия сотрудничества. Стоимость услуг — от 1500 ₽.
         </p>
+
         <div class="serveses-grid">
             <div v-for="serves in serveses" :key="serves.title" class="serves-card">
                 <component :is="serves.icon" class="serves-icon" />

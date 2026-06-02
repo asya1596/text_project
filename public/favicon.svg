@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" width="32" height="32" fill="none" clip-path="url(#clipPath_0)" customframe="url(#clipPath_0)"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><defs>
+		<clipPath id="clipPath_0">
+			<rect width="32.000000" height="32.000000" x="0.000000" y="0.000000" rx="4.000000" fill="rgb(255,255,255)"></rect>
+		</clipPath>
+		<clipPath id="clipPath_1">
+			<rect width="31.000000" height="31.000000" x="0.500000" y="0.500000" fill="rgb(255,255,255)"></rect>
+		</clipPath>
+	</defs><rect id="Favicon TA — 32x32" width="32.000000" height="32.000000" x="0.000000" y="0.000000" rx="4.000000" fill="rgb(10,10,10)"></rect><g id="TA Monogram" customframe="url(#clipPath_1)">
+		<rect id="Прямоугольник 1" width="32.000000" height="32.000000" x="0.000000" y="0.000000" fill="rgb(10,10,10)"></rect>
+		<line id="Линия 1" x1="0" x2="24" y1="0" y2="0" stroke="rgb(201,161,48)" stroke-width="1.200000" transform="matrix(0,1,-1,0,16,4)"></line>
+		<line id="Линия 2" x1="8" x2="24" y1="4" y2="4" stroke="rgb(201,161,48)" stroke-width="1.200000"></line>
+		<line id="Линия 3" x1="0" x2="5" y1="0" y2="0" stroke="rgb(201,161,48)" stroke-width="1.200000" transform="matrix(0,1,-1,0,8,4)"></line>
+		<line id="Линия 4" x1="0" x2="5" y1="0" y2="0" stroke="rgb(201,161,48)" stroke-width="1.200000" transform="matrix(0,1,-1,0,24,4)"></line>
+		<line id="Линия 5" x1="0" x2="25.6320114" y1="0" y2="0" stroke="rgb(27,140,94)" stroke-width="1.200000" transform="matrix(0.351124,0.936329,-0.936329,0.351124,21,4)"></line>
+		<line id="Линия 6" x1="0" x2="25.6320114" y1="0" y2="0" stroke="rgb(27,140,94)" stroke-width="1.200000" transform="matrix(-0.351123,0.936329,-0.936329,-0.351123,21,4)"></line>
+		<line id="Линия 7" x1="12" x2="28" y1="18" y2="18" stroke="rgb(27,140,94)" stroke-width="1.000000"></line>
+		<circle id="Эллипс 1" cx="15.9998055" cy="4.00004864" r="1.20000029" fill="rgb(201,161,48)"></circle>
+		<ellipse id="Эллипс 2" rx="1.200001" ry="1.200000" cx="20.9998055" cy="4.00004864" fill="rgb(27,140,94)"></ellipse>
+		<rect id="TA Monogram" width="31.000000" height="31.000000" x="0.500000" y="0.500000" stroke="rgb(0,0,0)" stroke-opacity="0" stroke-width="1.000000"></rect>
+	</g></svg>
