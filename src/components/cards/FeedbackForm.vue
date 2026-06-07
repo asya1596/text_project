@@ -1,37 +1,61 @@
 <template>
     <div class="feedback-form-container">
         <form @submit.prevent="submitForm" class="feedback-form">
-
             <div class="form-group">
                 <label for="name" class="form-label">Ваше имя *</label>
-                <input id="name" v-model="formData.name" type="text" class="form-input"
-                    :class="{ 'is-valid': formData.isNameValid, 'is-invalid': !formData.name && isSubmitted }"
-                    placeholder="Введите ваше имя" required />
-
+                <input
+                    id="name"
+                    v-model="formData.name"
+                    type="text"
+                    class="form-input"
+                    :class="{
+                        'is-valid': formData.isNameValid,
+                        'is-invalid': !formData.isNameValid && isSubmitted,
+                    }"
+                    placeholder="Введите ваше имя"
+                    required
+                />
             </div>
 
             <div class="form-group">
                 <label for="email" class="form-label">Email *</label>
-                <input id="email" v-model="formData.email" type="email" class="form-input"
-                    :class="{ 'is-valid': formData.isEmailValid, 'is-invalid': !formData.email && isSubmitted }"
-                    placeholder="example@mail.com" required />
-
+                <input
+                    id="email"
+                    v-model="formData.email"
+                    type="email"
+                    class="form-input"
+                    :class="{
+                        'is-valid': formData.isEmailValid,
+                        'is-invalid': !formData.isEmailValid && isSubmitted,
+                    }"
+                    placeholder="example@mail.com"
+                    required
+                />
             </div>
 
             <div class="form-group">
                 <label for="message" class="form-label">Сообщение *</label>
-                <textarea id="message" v-model="formData.message" class="form-textarea"
-                    :class="{ 'is-valid': formData.isMessageValid, 'is-invalid': !formData.message && isSubmitted }"
-                    rows="6" placeholder="Опишите ваш вопрос или предложение..." required></textarea>
+                <textarea
+                    id="message"
+                    v-model="formData.message"
+                    class="form-textarea"
+                    :class="{
+                        'is-valid': formData.isMessageValid,
+                        'is-invalid': !formData.isMessageValid && isSubmitted,
+                    }"
+                    rows="6"
+                    placeholder="Опишите ваш вопрос или предложение..."
+                    required
+                ></textarea>
             </div>
 
             <button type="submit" :disabled="isSubmitting" class="submit-button">
-                {{ isSubmitting ? 'Отправка...' : 'Отправить сообщение' }}
+                {{ isSubmitting ? 'Отправка...' : 'Отправить отзыв' }}
             </button>
         </form>
 
         <div v-if="showSuccess" class="success-message">
-            Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.
+            Отзыв успешно отправлен на модерацию.
         </div>
 
         <div v-if="errorMessage" class="error-message">
@@ -39,10 +63,9 @@
         </div>
     </div>
 </template>
+
 <script setup>
 import { reactive, ref, watch } from 'vue';
-
-const developerEmail = 'asya15111996@yandex.ru';
 
 const formData = reactive({
     name: '',
@@ -58,22 +81,28 @@ const isSubmitting = ref(false);
 const errorMessage = ref('');
 const showSuccess = ref(false);
 
-// Валидация имени
-watch(() => formData.name, () => {
-    formData.isNameValid = formData.name.trim().length > 0;
-});
+watch(
+    () => formData.name,
+    () => {
+        formData.isNameValid = formData.name.trim().length > 0;
+    }
+);
 
-// Валидация email
-watch(() => formData.email, () => {
-    formData.isEmailValid = /^\S+@\S+\.\S+$/.test(formData.email);
-});
+watch(
+    () => formData.email,
+    () => {
+        formData.isEmailValid = /^\S+@\S+\.\S+$/.test(formData.email);
+    }
+);
 
-// Валидация сообщения
-watch(() => formData.message, () => {
-    formData.isMessageValid = formData.message.trim().length > 0;
-});
+watch(
+    () => formData.message,
+    () => {
+        formData.isMessageValid = formData.message.trim().length > 0;
+    }
+);
 
-const submitForm = () => {
+const submitForm = async () => {
     if (isSubmitting.value) return;
 
     isSubmitted.value = true;
@@ -86,57 +115,45 @@ const submitForm = () => {
         !formData.isEmailValid ||
         !formData.isMessageValid
     ) {
-        errorMessage.value =
-            'Пожалуйста, заполните все обязательные поля корректно';
-
+        errorMessage.value = 'Пожалуйста, заполните все обязательные поля корректно.';
         isSubmitting.value = false;
         return;
     }
 
-    const userEmail = formData.email.toLowerCase();
+    try {
+        const response = await fetch('/api/reviews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: formData.name.trim(),
+                email: formData.email.trim(),
+                message: formData.message.trim(),
+            }),
+        });
 
-    const to = encodeURIComponent(developerEmail);
-    const subject = encodeURIComponent(
-        'Сообщение с формы обратной связи'
-    );
+        const result = await response.json();
 
-    const body = encodeURIComponent(
-        `Имя: ${formData.name}\n` +
-        `Email клиента: ${formData.email}\n\n` +
-        `Сообщение:\n${formData.message}`
-    );
+        if (!response.ok) {
+            throw new Error(result.message || 'Ошибка отправки отзыва.');
+        }
 
-    let composeUrl = '';
+        showSuccess.value = true;
 
-    if (
-        userEmail.includes('@gmail.com') ||
-        userEmail.includes('@googlemail.com')
-    ) {
-        composeUrl =
-            `https://mail.google.com/mail/?view=cm&fs=1` +
-            `&to=${to}` +
-            `&su=${subject}` +
-            `&body=${body}`;
-    } else if (
-        userEmail.includes('@yandex.') ||
-        userEmail.includes('@ya.ru')
-    ) {
-        composeUrl =
-            `https://mail.yandex.ru/compose` +
-            `?to=${to}` +
-            `&subject=${subject}` +
-            `&body=${body}`;
-    } else {
-        composeUrl =
-            `mailto:${developerEmail}` +
-            `?subject=${subject}` +
-            `&body=${body}`;
+        formData.name = '';
+        formData.email = '';
+        formData.message = '';
+        formData.isNameValid = false;
+        formData.isEmailValid = false;
+        formData.isMessageValid = false;
+        isSubmitted.value = false;
+    } catch (error) {
+        errorMessage.value = error.message || 'Не удалось отправить отзыв. Попробуйте позже.';
+        console.error('Ошибка отправки отзыва:', error);
+    } finally {
+        isSubmitting.value = false;
     }
-
-    window.open(composeUrl, '_blank');
-
-    showSuccess.value = true;
-    isSubmitting.value = false;
 };
 </script>
 
@@ -232,6 +249,7 @@ const submitForm = () => {
     padding: 15px;
     background-color: var(--message-bg);
     color: var(--success-message);
+    border: 1px solid var(--success-message);
     border-radius: 8px;
     text-align: center;
 }
@@ -241,17 +259,15 @@ const submitForm = () => {
     padding: 15px;
     background-color: var(--message-bg);
     color: var(--error-message);
+    border: 1px solid var(--error-message);
     border-radius: 8px;
     text-align: center;
 }
-
-.is-valid {
-    border-color: var(--form-border-success) !important;
-    background-color: var(--form-bg-focus) !important;
+.is-invalid {
+    border-color: var(--error-message) !important;
 
     &:focus {
-        border-color: var(--form-border-success) !important;
-        background-color: var(--form-bg-focus) !important;
+        border-color: var(--error-message) !important;
     }
 }
 

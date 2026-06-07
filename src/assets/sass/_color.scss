@@ -163,6 +163,8 @@
     --radius-admin-field: 12px;
     --shadow-admin-card:
         0 18px 45px rgba(0, 0, 0, 0.08);
+    --color-admin-text: var(--black);
+    --color-admin-title-text: var(--white);
     --admin-login-btn-text:var(--black);
     --color-admin-reviews-bg: var(--ghost-white);
     --color-admin-reviews-card-bg: var(--white);
@@ -222,7 +224,6 @@
     --tabs-text-active: var(--ghost-white);
     --color-admin-bg: var(--ghost-white);
     --color-admin-card-bg: var(--white);
-    --color-admin-text: var(--black);
     --color-admin-muted: var(--black);
     --color-admin-border: var(--grafit);
     
@@ -356,7 +357,6 @@
     --table-focus-shadow: rgba(50, 205, 50, 0.2);
     --color-admin-bg: var(--black);
     --color-admin-card-bg: var(--grafit);
-    --color-admin-text: var(--white);
     --color-admin-muted: var(--gray-light);
     --color-admin-border: var(--milk);
     --color-admin-reviews-bg: var(--black);

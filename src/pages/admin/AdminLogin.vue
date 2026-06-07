@@ -103,7 +103,7 @@ const login = async () => {
 
 .admin-login__title {
     margin: 0 0 8px;
-    color: var(--color-admin-text);
+    color: var(--color-admin-title-text);
     font-size: 28px;
     font-weight: 700;
     line-height: 1.2;
