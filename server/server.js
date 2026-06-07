@@ -39,11 +39,13 @@ const saveReviews = async (reviews) => {
 };
 
 const transporter = nodemailer.createTransport({
-    service: 'yandex',
+    host: 'smtp.yandex.ru',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASSWORD
-    }
+        pass: process.env.MAIL_PASSWORD,
+    },
 });
 
 const adminAuth = (req, res, next) => {
