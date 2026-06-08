@@ -139,19 +139,45 @@ const submitForm = async () => {
 
 .form-input,
 .form-textarea {
+    width: 100%;
     padding: 12px 16px;
     border: 1px solid var(--form-border);
     border-radius: 8px;
     font-size: 16px;
     background-color: var(--input-bg);
     color: var(--text-description);
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    &:hover {
+        border-color: var(--form-bg-focus);
+    }
 
     &:focus {
         outline: none;
         border-color: var(--form-bg-focus);
-        background-color: var(--form-bg-focus);
+        background-color: var(--input-bg);
         box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+
+    &.is-valid {
+        border-color: var(--form-border-success);
+
+        &:hover,
+        &:focus {
+            border-color: var(--form-border-success);
+        }
+    }
+
+    &.is-invalid {
+        border-color: var(--error-message);
+
+        &:hover,
+        &:focus {
+            border-color: var(--error-message);
+        }
     }
 }
 
@@ -170,15 +196,24 @@ const submitForm = async () => {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
 
     &:hover:not(:disabled) {
         opacity: 0.9;
+        transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--form-bg-focus);
+        outline-offset: 3px;
     }
 
     &:disabled {
         opacity: 0.7;
         cursor: not-allowed;
+        transform: none;
     }
 }
 
@@ -199,14 +234,6 @@ const submitForm = async () => {
 .error-message {
     color: var(--error-message);
     border: 1px solid var(--error-message);
-}
-
-.is-valid {
-    border-color: var(--form-border-success) !important;
-}
-
-.is-invalid {
-    border-color: var(--error-message) !important;
 }
 
 @media (max-width: 480px) {
