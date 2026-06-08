@@ -3,50 +3,26 @@
         <form @submit.prevent="submitForm" class="feedback-form">
             <div class="form-group">
                 <label for="name" class="form-label">Ваше имя *</label>
-                <input
-                    id="name"
-                    v-model="formData.name"
-                    type="text"
-                    class="form-input"
-                    :class="{
-                        'is-valid': formData.isNameValid,
-                        'is-invalid': !formData.isNameValid && isSubmitted,
-                    }"
-                    placeholder="Введите ваше имя"
-                    required
-                />
+                <input id="name" v-model="formData.name" type="text" class="form-input" :class="{
+                    'is-valid': isNameValid(),
+                    'is-invalid': !isNameValid() && isSubmitted,
+                }" placeholder="Введите ваше имя" required />
             </div>
 
             <div class="form-group">
                 <label for="email" class="form-label">Email *</label>
-                <input
-                    id="email"
-                    v-model="formData.email"
-                    type="email"
-                    class="form-input"
-                    :class="{
-                        'is-valid': formData.isEmailValid,
-                        'is-invalid': !formData.isEmailValid && isSubmitted,
-                    }"
-                    placeholder="example@mail.com"
-                    required
-                />
+                <input id="email" v-model="formData.email" type="email" class="form-input" :class="{
+                    'is-valid': isEmailValid(),
+                    'is-invalid': !isEmailValid() && isSubmitted,
+                }" placeholder="example@mail.com" required />
             </div>
 
             <div class="form-group">
                 <label for="message" class="form-label">Сообщение *</label>
-                <textarea
-                    id="message"
-                    v-model="formData.message"
-                    class="form-textarea"
-                    :class="{
-                        'is-valid': formData.isMessageValid,
-                        'is-invalid': !formData.isMessageValid && isSubmitted,
-                    }"
-                    rows="6"
-                    placeholder="Опишите ваш вопрос или предложение..."
-                    required
-                ></textarea>
+                <textarea id="message" v-model="formData.message" class="form-textarea" :class="{
+                    'is-valid': formData.isMessageValid,
+                    'is-invalid': !formData.isMessageValid && isSubmitted,
+                }" rows="6" placeholder="Опишите ваш вопрос или предложение..." required></textarea>
             </div>
 
             <button type="submit" :disabled="isSubmitting" class="submit-button">
@@ -65,15 +41,12 @@
 </template>
 
 <script setup>
-import { reactive, ref, watch } from 'vue';
+import { reactive, ref } from 'vue';
 
 const formData = reactive({
     name: '',
     email: '',
     message: '',
-    isNameValid: false,
-    isEmailValid: false,
-    isMessageValid: false,
 });
 
 const isSubmitted = ref(false);
@@ -81,28 +54,15 @@ const isSubmitting = ref(false);
 const errorMessage = ref('');
 const showSuccess = ref(false);
 
-watch(
-    () => formData.name,
-    () => {
-        formData.isNameValid = formData.name.trim().length > 0;
-    }
-);
+const isNameValid = () => formData.name.trim().length > 0;
 
-watch(
-    () => formData.email,
-    () => {
-        formData.isEmailValid = /^\S+@\S+\.\S+$/.test(formData.email);
-    }
-);
+const isEmailValid = () => /^\S+@\S+\.\S+$/.test(formData.email.trim());
 
-watch(
-    () => formData.message,
-    () => {
-        formData.isMessageValid = formData.message.trim().length > 0;
-    }
-);
+const isMessageValid = () => formData.message.trim().length > 0;
 
 const submitForm = async () => {
+    console.log('submitForm вызван');
+
     if (isSubmitting.value) return;
 
     isSubmitted.value = true;
@@ -110,17 +70,15 @@ const submitForm = async () => {
     errorMessage.value = '';
     showSuccess.value = false;
 
-    if (
-        !formData.isNameValid ||
-        !formData.isEmailValid ||
-        !formData.isMessageValid
-    ) {
+    if (!isNameValid() || !isEmailValid() || !isMessageValid()) {
         errorMessage.value = 'Пожалуйста, заполните все обязательные поля корректно.';
         isSubmitting.value = false;
         return;
     }
 
     try {
+        console.log('Отправляю отзыв на сервер');
+
         const response = await fetch('/api/reviews', {
             method: 'POST',
             headers: {
@@ -144,9 +102,6 @@ const submitForm = async () => {
         formData.name = '';
         formData.email = '';
         formData.message = '';
-        formData.isNameValid = false;
-        formData.isEmailValid = false;
-        formData.isMessageValid = false;
         isSubmitted.value = false;
     } catch (error) {
         errorMessage.value = error.message || 'Не удалось отправить отзыв. Попробуйте позже.';
@@ -263,6 +218,7 @@ const submitForm = async () => {
     border-radius: 8px;
     text-align: center;
 }
+
 .is-invalid {
     border-color: var(--error-message) !important;
 
