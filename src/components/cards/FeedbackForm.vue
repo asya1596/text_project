@@ -1,6 +1,6 @@
 <template>
     <div class="feedback-form-container">
-        <form @submit.prevent="submitForm" class="feedback-form">
+        <form class="review-form" @submit.prevent="submitReview" novalidate>
             <div class="form-group">
                 <label for="name" class="form-label">Ваше имя *</label>
                 <input id="name" v-model="formData.name" type="text" class="form-input" :class="{
@@ -20,8 +20,8 @@
             <div class="form-group">
                 <label for="message" class="form-label">Сообщение *</label>
                 <textarea id="message" v-model="formData.message" class="form-textarea" :class="{
-                    'is-valid': formData.isMessageValid,
-                    'is-invalid': !formData.isMessageValid && isSubmitted,
+                    'is-valid': isMessageValid(),
+                    'is-invalid': !isMessageValid() && isSubmitted,
                 }" rows="6" placeholder="Опишите ваш вопрос или предложение..." required></textarea>
             </div>
 
@@ -60,9 +60,7 @@ const isEmailValid = () => /^\S+@\S+\.\S+$/.test(formData.email.trim());
 
 const isMessageValid = () => formData.message.trim().length > 0;
 
-const submitForm = async () => {
-    console.log('submitForm вызван');
-
+const submitReview = async () => {
     if (isSubmitting.value) return;
 
     isSubmitted.value = true;
@@ -77,8 +75,6 @@ const submitForm = async () => {
     }
 
     try {
-        console.log('Отправляю отзыв на сервер');
-
         const response = await fetch('/api/reviews', {
             method: 'POST',
             headers: {
