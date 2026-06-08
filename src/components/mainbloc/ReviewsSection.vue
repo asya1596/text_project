@@ -14,12 +14,20 @@
             </button>
         </div>
 
+        <p v-if="isLoading" class="reviews-message">
+            Загружаем отзывы...
+        </p>
+
+        <p v-if="errorMessage && !isModalOpen" class="reviews-error">
+            {{ errorMessage }}
+        </p>
+
         <div class="reviews-grid">
             <ReviewCard v-for="review in reviews" :key="review.id" :review="review" />
         </div>
 
         <div v-if="isModalOpen" class="review-modal" @click.self="closeModal">
-            <form class="review-form" @submit.prevent="addReview">
+            <form class="review-form" @submit.prevent="addReview" novalidate>
                 <h2 class="review-form__title">
                     Добавить отзыв
                 </h2>
@@ -51,22 +59,14 @@
                         required></textarea>
                 </label>
 
+                <p v-if="modalErrorMessage" class="reviews-error">
+                    {{ modalErrorMessage }}
+                </p>
+
                 <div class="reviews-actions">
-                    <button type="button" class="review-add-btn" @click="openModal">
-                        Добавить отзыв
+                    <button type="submit" class="review-add-btn" :disabled="isSubmitting">
+                        {{ isSubmitting ? 'Отправка...' : 'Отправить отзыв' }}
                     </button>
-                </div>
-
-                <p v-if="isLoading" class="reviews-message">
-                    Загружаем отзывы...
-                </p>
-
-                <p v-if="errorMessage" class="reviews-error">
-                    {{ errorMessage }}
-                </p>
-
-                <div class="reviews-grid">
-                    <ReviewCard v-for="review in reviews" :key="review.id" :review="review" />
                 </div>
             </form>
         </div>
@@ -77,26 +77,28 @@
 import { reactive, ref, onMounted } from 'vue';
 import ReviewCard from '../cards/ReviewCard.vue';
 
-const API_URL = '';
-
 const reviews = ref([]);
 const isModalOpen = ref(false);
 const isLoading = ref(false);
+const isSubmitting = ref(false);
 const errorMessage = ref('');
+const modalErrorMessage = ref('');
 
 const form = reactive({
     name: '',
     service: '',
     rating: 5,
-    text: ''
+    text: '',
 });
 
 const openModal = () => {
     isModalOpen.value = true;
+    modalErrorMessage.value = '';
 };
 
 const closeModal = () => {
     isModalOpen.value = false;
+    modalErrorMessage.value = '';
     resetForm();
 };
 
@@ -105,6 +107,16 @@ const resetForm = () => {
     form.service = '';
     form.rating = 5;
     form.text = '';
+};
+
+const isFormValid = () => {
+    return (
+        form.name.trim().length > 0 &&
+        form.service.trim().length > 0 &&
+        Number(form.rating) >= 1 &&
+        Number(form.rating) <= 5 &&
+        form.text.trim().length > 0
+    );
 };
 
 const loadReviews = async () => {
@@ -121,7 +133,6 @@ const loadReviews = async () => {
         reviews.value = await response.json();
     } catch (error) {
         console.error('Ошибка загрузки отзывов:', error);
-
         reviews.value = [];
         errorMessage.value = 'Отзывы временно недоступны';
     } finally {
@@ -130,33 +141,44 @@ const loadReviews = async () => {
 };
 
 const addReview = async () => {
-    errorMessage.value = '';
+    if (isSubmitting.value) return;
+
+    modalErrorMessage.value = '';
+
+    if (!isFormValid()) {
+        modalErrorMessage.value = 'Пожалуйста, заполните все поля отзыва.';
+        return;
+    }
+
+    isSubmitting.value = true;
 
     try {
         const response = await fetch('/api/reviews', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: form.name,
-                service: form.service,
-                rating: form.rating,
-                text: form.text
-            })
+                name: form.name.trim(),
+                service: form.service.trim(),
+                rating: Number(form.rating),
+                text: form.text.trim(),
+            }),
         });
 
+        const result = await response.json();
+
         if (!response.ok) {
-            throw new Error('Не удалось отправить отзыв');
+            throw new Error(result.message || 'Не удалось отправить отзыв');
         }
 
         closeModal();
-
         alert('Отзыв отправлен на модерацию');
     } catch (error) {
         console.error('Ошибка отправки отзыва:', error);
-
-        errorMessage.value = 'Не удалось отправить отзыв. Попробуйте позже.';
+        modalErrorMessage.value = 'Не удалось отправить отзыв. Попробуйте позже.';
+    } finally {
+        isSubmitting.value = false;
     }
 };
 
