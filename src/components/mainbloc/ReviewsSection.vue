@@ -1,190 +1,111 @@
 <template>
-    <section id="reviews" class="reviews-container">
-        <h1 class="title">
-            Отзывы <span>клиентов</span>
-        </h1>
+    <div class="feedback-form-container">
+        <form class="feedback-form" @submit.prevent="submitForm" novalidate>
+            <div class="form-group">
+                <label for="feedback-name" class="form-label">Ваше имя *</label>
+                <input id="feedback-name" v-model="formData.name" type="text" class="form-input" :class="{
+                    'is-valid': isNameValid(),
+                    'is-invalid': !isNameValid() && isSubmitted,
+                }" placeholder="Введите ваше имя" required />
+            </div>
 
-        <p class="description">
-            Здесь клиенты могут оставить отзыв о сотрудничестве, качестве работы и результате проекта.
-        </p>
+            <div class="form-group">
+                <label for="feedback-email" class="form-label">Email *</label>
+                <input id="feedback-email" v-model="formData.email" type="email" class="form-input" :class="{
+                    'is-valid': isEmailValid(),
+                    'is-invalid': !isEmailValid() && isSubmitted,
+                }" placeholder="example@mail.com" required />
+            </div>
 
-        <div class="reviews-actions">
-            <button type="button" class="review-add-btn" @click="openModal">
-                Добавить отзыв
+            <div class="form-group">
+                <label for="feedback-message" class="form-label">Сообщение *</label>
+                <textarea id="feedback-message" v-model="formData.message" class="form-textarea" :class="{
+                    'is-valid': isMessageValid(),
+                    'is-invalid': !isMessageValid() && isSubmitted,
+                }" rows="6" placeholder="Опишите ваш вопрос или предложение..." required></textarea>
+            </div>
+
+            <button type="submit" :disabled="isSubmitting" class="submit-button">
+                {{ isSubmitting ? 'Отправка...' : 'Отправить сообщение' }}
             </button>
+        </form>
+
+        <div v-if="showSuccess" class="success-message">
+            Сообщение успешно отправлено. Я свяжусь с вами в ближайшее время.
         </div>
 
-        <p v-if="isLoading" class="reviews-message">
-            Загружаем отзывы...
-        </p>
-
-        <p v-if="errorMessage && !isModalOpen" class="reviews-error">
+        <div v-if="errorMessage" class="error-message">
             {{ errorMessage }}
-        </p>
-
-        <div class="reviews-grid">
-            <ReviewCard v-for="review in reviews" :key="review.id" :review="review" />
         </div>
-
-        <div v-if="isModalOpen" class="review-modal" @click.self="closeModal">
-            <form class="review-form" @submit.prevent="addReview" novalidate>
-                <h2 class="review-form__title">
-                    Добавить отзыв
-                </h2>
-
-                <label class="review-form__label">
-                    Ваше имя *
-                    <input v-model.trim="form.name" type="text" class="review-form__input" placeholder="Введите имя"
-                        required />
-                </label>
-
-                <label class="review-form__label">
-                    Услуга *
-                    <input v-model.trim="form.service" type="text" class="review-form__input"
-                        placeholder="Например: Создание сайта" required />
-                </label>
-
-                <label class="review-form__label">
-                    Оценка *
-                    <select v-model.number="form.rating" class="review-form__input" required>
-                        <option v-for="rating in 5" :key="rating" :value="rating">
-                            {{ rating }} из 5
-                        </option>
-                    </select>
-                </label>
-
-                <label class="review-form__label">
-                    Отзыв *
-                    <textarea v-model.trim="form.text" class="review-form__textarea" placeholder="Напишите ваш отзыв"
-                        required></textarea>
-                </label>
-
-                <p v-if="modalErrorMessage" class="reviews-error">
-                    {{ modalErrorMessage }}
-                </p>
-
-                <div class="reviews-actions">
-                    <button type="submit" class="review-add-btn" :disabled="isSubmitting">
-                        {{ isSubmitting ? 'Отправка...' : 'Отправить отзыв' }}
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
+    </div>
 </template>
 
 <script setup>
-import { reactive, ref, onMounted } from 'vue';
-import ReviewCard from '../cards/ReviewCard.vue';
+import { reactive, ref } from 'vue';
 
-const reviews = ref([]);
-const isModalOpen = ref(false);
-const isLoading = ref(false);
-const isSubmitting = ref(false);
-const errorMessage = ref('');
-const modalErrorMessage = ref('');
-
-const form = reactive({
+const formData = reactive({
     name: '',
-    service: '',
-    rating: 5,
-    text: '',
+    email: '',
+    message: '',
 });
 
-const openModal = () => {
-    isModalOpen.value = true;
-    modalErrorMessage.value = '';
-};
+const isSubmitted = ref(false);
+const isSubmitting = ref(false);
+const errorMessage = ref('');
+const showSuccess = ref(false);
 
-const closeModal = () => {
-    isModalOpen.value = false;
-    modalErrorMessage.value = '';
-    resetForm();
-};
+const isNameValid = () => formData.name.trim().length > 0;
 
-const resetForm = () => {
-    form.name = '';
-    form.service = '';
-    form.rating = 5;
-    form.text = '';
-};
+const isEmailValid = () => /^\S+@\S+\.\S+$/.test(formData.email.trim());
 
-const isFormValid = () => {
-    return (
-        form.name.trim().length > 0 &&
-        form.service.trim().length > 0 &&
-        Number(form.rating) >= 1 &&
-        Number(form.rating) <= 5 &&
-        form.text.trim().length > 0
-    );
-};
+const isMessageValid = () => formData.message.trim().length > 0;
 
-const loadReviews = async () => {
-    isLoading.value = true;
-    errorMessage.value = '';
-
-    try {
-        const response = await fetch('/api/reviews');
-
-        if (!response.ok) {
-            throw new Error('Не удалось загрузить отзывы');
-        }
-
-        reviews.value = await response.json();
-    } catch (error) {
-        console.error('Ошибка загрузки отзывов:', error);
-        reviews.value = [];
-        errorMessage.value = 'Отзывы временно недоступны';
-    } finally {
-        isLoading.value = false;
-    }
-};
-
-const addReview = async () => {
+const submitForm = async () => {
     if (isSubmitting.value) return;
 
-    modalErrorMessage.value = '';
+    isSubmitted.value = true;
+    isSubmitting.value = true;
+    errorMessage.value = '';
+    showSuccess.value = false;
 
-    if (!isFormValid()) {
-        modalErrorMessage.value = 'Пожалуйста, заполните все поля отзыва.';
+    if (!isNameValid() || !isEmailValid() || !isMessageValid()) {
+        errorMessage.value = 'Пожалуйста, заполните все обязательные поля корректно.';
+        isSubmitting.value = false;
         return;
     }
 
-    isSubmitting.value = true;
-
     try {
-        const response = await fetch('/api/reviews', {
+        const response = await fetch('/api/feedback', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: form.name.trim(),
-                service: form.service.trim(),
-                rating: Number(form.rating),
-                text: form.text.trim(),
+                name: formData.name.trim(),
+                email: formData.email.trim(),
+                message: formData.message.trim(),
             }),
         });
 
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.message || 'Не удалось отправить отзыв');
+            throw new Error(result.message || 'Ошибка отправки сообщения.');
         }
 
-        closeModal();
-        alert('Отзыв отправлен на модерацию');
+        showSuccess.value = true;
+
+        formData.name = '';
+        formData.email = '';
+        formData.message = '';
+        isSubmitted.value = false;
     } catch (error) {
-        console.error('Ошибка отправки отзыва:', error);
-        modalErrorMessage.value = 'Не удалось отправить отзыв. Попробуйте позже.';
+        console.error('Ошибка отправки сообщения:', error);
+        errorMessage.value = error.message || 'Не удалось отправить сообщение. Попробуйте позже.';
     } finally {
         isSubmitting.value = false;
     }
 };
-
-onMounted(() => {
-    loadReviews();
-});
 </script>
 
 <style lang="scss" scoped>

@@ -271,3 +271,39 @@ app.delete('/api/admin/reviews/:id', adminAuth, async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });
+
+app.post('/api/feedback', async (req, res) => {
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+        return res.status(400).json({
+            message: 'Заполните все поля'
+        });
+    }
+
+    try {
+        await transporter.sendMail({
+            from: process.env.MAIL_USER,
+            to: process.env.ADMIN_EMAIL,
+            replyTo: email,
+            subject: 'Новое сообщение с формы обратной связи',
+            html: `
+                <h2>Новое сообщение с сайта</h2>
+                <p><b>Имя:</b> ${name}</p>
+                <p><b>Email клиента:</b> ${email}</p>
+                <p><b>Сообщение:</b></p>
+                <p>${message}</p>
+            `
+        });
+
+        res.status(200).json({
+            message: 'Сообщение успешно отправлено'
+        });
+    } catch (error) {
+        console.error('Ошибка отправки письма:', error);
+
+        res.status(500).json({
+            message: 'Не удалось отправить сообщение'
+        });
+    }
+});
