@@ -1,37 +1,37 @@
 <template>
     <div class="feedback-form-container">
-        <form class="review-form" @submit.prevent="submitReview" novalidate>
+        <form class="feedback-form" @submit.prevent="submitForm" novalidate>
             <div class="form-group">
-                <label for="name" class="form-label">Ваше имя *</label>
-                <input id="name" v-model="formData.name" type="text" class="form-input" :class="{
+                <label for="feedback-name" class="form-label">Ваше имя *</label>
+                <input id="feedback-name" v-model="formData.name" type="text" class="form-input" :class="{
                     'is-valid': isNameValid(),
                     'is-invalid': !isNameValid() && isSubmitted,
                 }" placeholder="Введите ваше имя" required />
             </div>
 
             <div class="form-group">
-                <label for="email" class="form-label">Email *</label>
-                <input id="email" v-model="formData.email" type="email" class="form-input" :class="{
+                <label for="feedback-email" class="form-label">Email *</label>
+                <input id="feedback-email" v-model="formData.email" type="email" class="form-input" :class="{
                     'is-valid': isEmailValid(),
                     'is-invalid': !isEmailValid() && isSubmitted,
                 }" placeholder="example@mail.com" required />
             </div>
 
             <div class="form-group">
-                <label for="message" class="form-label">Сообщение *</label>
-                <textarea id="message" v-model="formData.message" class="form-textarea" :class="{
+                <label for="feedback-message" class="form-label">Сообщение *</label>
+                <textarea id="feedback-message" v-model="formData.message" class="form-textarea" :class="{
                     'is-valid': isMessageValid(),
                     'is-invalid': !isMessageValid() && isSubmitted,
                 }" rows="6" placeholder="Опишите ваш вопрос или предложение..." required></textarea>
             </div>
 
             <button type="submit" :disabled="isSubmitting" class="submit-button">
-                {{ isSubmitting ? 'Отправка...' : 'Отправить отзыв' }}
+                {{ isSubmitting ? 'Отправка...' : 'Отправить сообщение' }}
             </button>
         </form>
 
         <div v-if="showSuccess" class="success-message">
-            Отзыв успешно отправлен на модерацию.
+            Сообщение успешно отправлено. Я свяжусь с вами в ближайшее время.
         </div>
 
         <div v-if="errorMessage" class="error-message">
@@ -60,7 +60,7 @@ const isEmailValid = () => /^\S+@\S+\.\S+$/.test(formData.email.trim());
 
 const isMessageValid = () => formData.message.trim().length > 0;
 
-const submitReview = async () => {
+const submitForm = async () => {
     if (isSubmitting.value) return;
 
     isSubmitted.value = true;
@@ -75,7 +75,7 @@ const submitReview = async () => {
     }
 
     try {
-        const response = await fetch('/api/reviews', {
+        const response = await fetch('/api/feedback', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const submitReview = async () => {
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.message || 'Ошибка отправки отзыва.');
+            throw new Error(result.message || 'Ошибка отправки сообщения.');
         }
 
         showSuccess.value = true;
@@ -100,8 +100,8 @@ const submitReview = async () => {
         formData.message = '';
         isSubmitted.value = false;
     } catch (error) {
-        errorMessage.value = error.message || 'Не удалось отправить отзыв. Попробуйте позже.';
-        console.error('Ошибка отправки отзыва:', error);
+        console.error('Ошибка отправки сообщения:', error);
+        errorMessage.value = error.message || 'Не удалось отправить сообщение. Попробуйте позже.';
     } finally {
         isSubmitting.value = false;
     }
@@ -118,14 +118,6 @@ const submitReview = async () => {
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-}
-
-.form-title {
-    text-align: center;
-    color: var(--text-h1-green);
-    margin-bottom: 30px;
-    font-size: 28px;
-    font-weight: 700;
 }
 
 .feedback-form {
@@ -146,7 +138,6 @@ const submitReview = async () => {
 }
 
 .form-input,
-.form-select,
 .form-textarea {
     padding: 12px 16px;
     border: 1px solid var(--form-border);
@@ -154,7 +145,7 @@ const submitReview = async () => {
     font-size: 16px;
     background-color: var(--input-bg);
     color: var(--text-description);
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 
     &:focus {
         outline: none;
@@ -164,16 +155,13 @@ const submitReview = async () => {
     }
 }
 
-.form-select {
-    cursor: pointer;
-}
-
 .form-textarea {
     resize: vertical;
     min-height: 150px;
 }
 
 .submit-button {
+    align-self: flex-start;
     padding: 14px 24px;
     background-color: var(--submit-button-bg);
     color: var(--text-bg);
@@ -182,11 +170,10 @@ const submitReview = async () => {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-start;
+    transition: opacity 0.3s ease;
 
     &:hover:not(:disabled) {
-        background-color: var(--submit-button-bg);
+        opacity: 0.9;
     }
 
     &:disabled {
@@ -195,43 +182,36 @@ const submitReview = async () => {
     }
 }
 
-.success-message {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: var(--message-bg);
-    color: var(--success-message);
-    border: 1px solid var(--success-message);
-    border-radius: 8px;
-    text-align: center;
-}
-
+.success-message,
 .error-message {
     margin-top: 20px;
     padding: 15px;
     background-color: var(--message-bg);
-    color: var(--error-message);
-    border: 1px solid var(--error-message);
     border-radius: 8px;
     text-align: center;
 }
 
-.is-invalid {
-    border-color: var(--error-message) !important;
-
-    &:focus {
-        border-color: var(--error-message) !important;
-    }
+.success-message {
+    color: var(--success-message);
+    border: 1px solid var(--success-message);
 }
 
-// Адаптивность
+.error-message {
+    color: var(--error-message);
+    border: 1px solid var(--error-message);
+}
+
+.is-valid {
+    border-color: var(--form-border-success) !important;
+}
+
+.is-invalid {
+    border-color: var(--error-message) !important;
+}
+
 @media (max-width: 480px) {
     .feedback-form-container {
         padding: 15px;
-    }
-
-    .form-title {
-        font-size: 24px;
-        margin-bottom: 20px;
     }
 
     .submit-button {
