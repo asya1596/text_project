@@ -25,8 +25,8 @@
                 }" rows="6" placeholder="Опишите ваш вопрос или предложение..." required></textarea>
             </div>
 
-            <button type="button" class="submit-button" :disabled="isSubmitting" @click="submitReview">
-                {{ isSubmitting ? 'Отправка...' : 'Добавить отзыв' }}
+            <button type="submit" :disabled="isSubmitting" class="submit-button">
+                {{ isSubmitting ? 'Отправка...' : 'Отправить отзыв' }}
             </button>
         </form>
 
