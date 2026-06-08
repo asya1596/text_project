@@ -7,6 +7,12 @@ import ExamplePage from "@/components/mainbloc/ExamplePage,.vue";
 import ServicesGrid from "@/components/mainbloc/ServicesGrid.vue";
 import ContactsPage from "@/components/mainbloc/ContactsPage.vue";
 import ReviewsSection from "@/components/mainbloc/ReviewsSection.vue";
+import ServiceDevelopmentPage from "@/components/mainbloc/ServiceDevelopmentPage.vue";
+import ServiceInvitationsPage from "@/components/mainbloc/ServiceInvitationsPage.vue";
+import ServiceBusinessCardsPage from "@/components/mainbloc/ServiceBusinessCardsPage.vue";
+import ServiceRedesignPage from "@/components/mainbloc/ServiceRedesignPage.vue";
+import ServiceRevisionPage from "@/components/mainbloc/ServiceRevisionPage.vue";
+import ServiceSupportPage from "@/components/mainbloc/ServiceSupportPage.vue";
 
 const routes = [
   {
@@ -64,6 +70,36 @@ const routes = [
       requiresAdmin: true,
     },
   },
+  {
+    path: "/razrabotka-saitov",
+    name: "ServiceDevelopment",
+    component: ServiceDevelopmentPage,
+  },
+  {
+    path: "/elektronnye-priglasheniya-na-svadbu",
+    name: "ServiceInvitations",
+    component: ServiceInvitationsPage,
+  },
+  {
+    path: "/elektronnye-vizitki",
+    name: "ServiceBusinessCards",
+    component: ServiceBusinessCardsPage,
+  },
+  {
+    path: "/redizain-saitov",
+    name: "ServiceRedesign",
+    component: ServiceRedesignPage,
+  },
+  {
+    path: "/dorabotka-saitov",
+    name: "ServiceRevision",
+    component: ServiceRevisionPage,
+  },
+  {
+    path: "/tekhnicheskaya-podderzhka-saitov",
+    name: "ServiceSupport",
+    component: ServiceSupportPage,
+  },
 ];
 
 const router = createRouter({
@@ -90,4 +126,3 @@ const router = createRouter({
 });
 
 export default router;
-

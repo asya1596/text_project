@@ -70,15 +70,15 @@ ul {
 li {
     margin-bottom: clamp(8px, 1vw, 10px);
     font-size: clamp(14px, 1.2vw, 16px);
+    color: var(--nav-link);
+
+    &:hover {
+        color: var(--nav-link-hover);
+    }
 }
 
 a {
-    color: var(--nav-link);
     text-decoration: none;
     transition: color 0.3s;
-}
-
-a:hover {
-    color: var(--nav-link-hover);
 }
 </style>
