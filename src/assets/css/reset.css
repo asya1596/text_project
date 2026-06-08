@@ -1,7 +1,7 @@
-/* Reset and base styles  */
+/* Reset and base styles */
 * {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     border: none;
 }
 
@@ -11,11 +11,23 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
 /* Links */
 
 a,
 a:link,
 a:visited {
+    font-family: inherit;
+    color: inherit;
     text-decoration: none;
 }
 
@@ -36,11 +48,24 @@ main {
 
 h1,
 h2,
-h3,
+h3 {
+    font-family: var(--font-heading);
+    font-size: inherit;
+    font-weight: 700;
+}
+
 h4,
 h5,
-h6,
-p {
+h6 {
+    font-family: var(--font-main);
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+p,
+li,
+span {
+    font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
 }
@@ -68,27 +93,42 @@ address {
 
 input,
 textarea,
-button,
 select {
-    font-family: inherit;
+    font-family: var(--font-main);
     font-size: inherit;
     color: inherit;
     background-color: transparent;
 }
 
+button {
+    font-family: var(--font-ui);
+    font-size: inherit;
+    color: inherit;
+}
+
+input,
+textarea,
 button,
-input[type="submit"] {
+select {
+    background-color: transparent;
+}
+
+button,
+input[type='submit'] {
     display: inline-block;
     box-shadow: none;
-    background-color: transparent;
     background: none;
     cursor: pointer;
 }
 
 input:focus,
 input:active,
+textarea:focus,
+textarea:active,
 button:focus,
-button:active {
+button:active,
+select:focus,
+select:active {
     outline: none;
 }
 
@@ -107,4 +147,16 @@ legend {
 
 input[type='file'] {
     max-width: 100%;
+}
+
+/* UI sections */
+
+.admin-panel,
+.feedback-form,
+.table,
+.pagination,
+.toast,
+.input-wrapper,
+.textarea-wrapper {
+    font-family: var(--font-ui);
 }

@@ -12,7 +12,9 @@
 </template>
 
 <script setup>
-import ArrowIcon from '@/assets/img/ArrowIcon.vue';
+
+import ArrowIcon from '@/components/icons/ArrowIcon.vue';
+
 defineProps({
     labelText: {
         type: String,

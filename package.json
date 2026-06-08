@@ -7,6 +7,9 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@fontsource/commissioner": "^5.2.10",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/manrope": "^5.2.8",
     "@vue/component-compiler-utils": "^3.3.0",
     "apexcharts": "^5.3.5",
     "copy-webpack-plugin": "^14.0.0",

@@ -1,18 +1,63 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Главная страница -->
     <url>
         <loc>https://thagushevaweb.ru/</loc>
-        <lastmod>2026-06-02</lastmod>
+        <lastmod>2026-06-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
+    <!-- Разработка сайтов -->
     <url>
-        <loc>https://thagushevaweb.ru/examplepage</loc>
-        <lastmod>2026-06-02</lastmod>
+        <loc>https://thagushevaweb.ru/razrabotka-saitov</loc>
+        <lastmod>2026-06-08</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Электронные приглашения -->
+    <url>
+        <loc>https://thagushevaweb.ru/elektronnye-priglasheniya-na-svadbu</loc>
+        <lastmod>2026-06-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Дизайн визиток -->
+    <url>
+        <loc>https://thagushevaweb.ru/dizain-vizitok</loc>
+        <lastmod>2026-06-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Редизайн сайтов -->
+    <url>
+        <loc>https://thagushevaweb.ru/redizain-saitov</loc>
+        <lastmod>2026-06-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Доработка сайтов -->
+    <url>
+        <loc>https://thagushevaweb.ru/dorabotka-saitov</loc>
+        <lastmod>2026-06-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Техническая поддержка -->
+    <url>
+        <loc>https://thagushevaweb.ru/tekhnicheskaya-podderzhka-saitov</loc>
+        <lastmod>2026-06-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
 
 </urlset>
+

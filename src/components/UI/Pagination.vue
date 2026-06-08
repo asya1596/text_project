@@ -41,8 +41,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import ArrowIcon from '@/assets/img/ArrowIcon.vue';
-
+import ArrowIcon from '@/components/icons/ArrowIcon.vue';
 const props = defineProps({
     totalPages: {
         type: Number,

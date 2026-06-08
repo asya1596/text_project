@@ -34,7 +34,8 @@
 </template>
 
 <script setup>
-import CirclForCrumb from '@/assets/img/CirclForCrumb.vue';
+
+import CirclForCrumb from '@/components/icons/CirclForCrumb.vue';
 
 const props = defineProps({
     items: {

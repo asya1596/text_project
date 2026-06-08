@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import HintQuestionIcon from '@/assets/img/HintQuestionIcon';
+import HintQuestionIcon from '@/components/icons/HintQuestionIcon.vue';
 
 defineProps({
     hintText: {
