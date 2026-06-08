@@ -144,21 +144,18 @@ const submitForm = async () => {
     border: 1px solid var(--form-border);
     border-radius: 8px;
     font-size: 16px;
-    background-color: var(--input-bg);
+    background-color: var(--input-bg) !important;
     color: var(--text-description);
     transition:
         border-color 0.3s ease,
         background-color 0.3s ease,
         box-shadow 0.3s ease;
 
-    &:hover {
-        border-color: var(--form-bg-focus);
-    }
-
+    &:hover,
     &:focus {
         outline: none;
         border-color: var(--form-bg-focus);
-        background-color: var(--input-bg);
+        background-color: var(--input-bg) !important;
         box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
     }
 
@@ -168,6 +165,7 @@ const submitForm = async () => {
         &:hover,
         &:focus {
             border-color: var(--form-border-success);
+            background-color: var(--input-bg) !important;
         }
     }
 
@@ -177,6 +175,7 @@ const submitForm = async () => {
         &:hover,
         &:focus {
             border-color: var(--error-message);
+            background-color: var(--input-bg) !important;
         }
     }
 }
