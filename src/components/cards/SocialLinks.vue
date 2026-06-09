@@ -2,11 +2,7 @@
     <div class="social-links">
         <div v-for="link in links" :key="link.id" class="social-card">
             <template v-if="link.type === 'email'">
-                <a
-                    href="#"
-                    @click.prevent="openEmailClient(link.value)"
-                    class="social-card-link"
-                >
+                <a href="#" @click.prevent="openEmailClient(link.value)" class="social-card-link">
                     <div class="icon-wrapper">
                         <component :is="link.iconComponent" class="social-icon" />
                     </div>
@@ -17,11 +13,7 @@
             </template>
 
             <template v-else>
-                <a
-                    :href="link.url"
-                    :target="link.target"
-                    class="social-card-link"
-                >
+                <a :href="link.url" :target="link.target" class="social-card-link">
                     <div class="icon-wrapper">
                         <component :is="link.iconComponent" class="social-icon" />
                     </div>
@@ -152,11 +144,14 @@ const links = [
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .social-icon {
-    width: 22px;
-    height: 22px;
+    width: 90%;
+    height: 90%;
+    display: block;
+    flex-shrink: 0;
 }
 
 .social-card-link strong {
@@ -209,8 +204,8 @@ const links = [
     }
 
     .social-icon {
-        width: 20px;
-        height: 20px;
+        width: 100%;
+        height: 100%;
     }
 }
 </style>
