@@ -18,9 +18,9 @@
             </router-link>
           </li>
 
-          <li class="nav__item">
-            <router-link to="/examplepage" class="nav__link">
-              UI/UX Элементы
+            <li class="nav__item">
+            <router-link to="/#services" class="nav__link">
+              Услуги
             </router-link>
           </li>
 
@@ -31,8 +31,8 @@
           </li>
 
           <li class="nav__item">
-            <router-link to="/#services" class="nav__link">
-              Услуги
+            <router-link to="/examplepage" class="nav__link">
+              UI/UX Элементы
             </router-link>
           </li>
 

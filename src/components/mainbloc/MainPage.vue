@@ -1,5 +1,7 @@
 <template>
     <section id="home" class="hero-section">
+        <HeroBackgroundAnimation />
+
         <div class="hero-content">
             <div class="status-tag">
                 <ArrowsIcon class="status-icon" />
@@ -18,11 +20,7 @@
             </p>
 
             <div class="buttons-container">
-                <CallBtn
-                    class="btn-call button-yellow"
-                    buttonContent="Связаться со мной"
-                    @click="navigateToContacts"
-                />
+                <CallBtn class="btn-call button-yellow" buttonContent="Связаться со мной" @click="navigateToContacts" />
             </div>
         </div>
     </section>
@@ -32,6 +30,7 @@
 import { useRouter } from 'vue-router';
 import CallBtn from '../UI/CallBtn.vue';
 import ArrowsIcon from '../icons/ArrowsIcon.vue';
+import HeroBackgroundAnimation from '../UI/HeroBackgroundAnimation.vue';
 
 const router = useRouter();
 
@@ -42,6 +41,7 @@ const navigateToContacts = () => {
 
 <style lang="scss" scoped>
 .hero-section {
+    position: relative;
     width: 100%;
     padding: clamp(60px, 8vw, 120px) 20px;
     background-color: var(--body-background);
@@ -51,6 +51,8 @@ const navigateToContacts = () => {
 }
 
 .hero-content {
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;

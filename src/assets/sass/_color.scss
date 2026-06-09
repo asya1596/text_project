@@ -231,6 +231,15 @@
     --color-admin-card-bg: var(--white);
     --color-admin-muted: var(--black);
     --color-admin-border: var(--grafit);
+    --hero-animation-primary: var(--yellow);
+    --hero-animation-secondary: var(--green);
+    --hero-animation-tertiary: var(--grafit);
+
+    --hero-animation-primary-opacity: rgba(255, 215, 0, 0.16);
+    --hero-animation-secondary-opacity: rgba(169, 169, 169, 0.12);
+    --hero-animation-tertiary-opacity: rgba(108, 108, 108, 0.1);
+
+    --hero-animation-glow: rgba(255, 193, 7, 0.08);
     
 
     // цвета текста
@@ -374,6 +383,15 @@
     --color-admin-reviews-dark: var(--black);
     --color-admin-reviews-success: var(--lime-green);
     --color-admin-reviews-error: var(--dark-red);
+    --hero-animation-primary: var(--gold);
+    --hero-animation-secondary: var(--green);
+    --hero-animation-tertiary: var(--black);
+
+    --hero-animation-primary-opacity: rgba(255, 215, 0, 0.14);
+    --hero-animation-secondary-opacity: rgba(169, 169, 169, 0.1);
+    --hero-animation-tertiary-opacity: rgba(108, 108, 108, 0.08);
+
+    --hero-animation-glow: rgba(255, 193, 7, 0.06);
 
     // цвета текста
     --nav-link: var(--ghost-white);

@@ -2,8 +2,8 @@
   <div class="body">
     <header />
     <main-page />
-    <about-self />
     <services-grid />
+    <about-self />
     <portfolio-grid />
     <reviews-section />
     <contacts-page />
