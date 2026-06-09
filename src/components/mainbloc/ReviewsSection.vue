@@ -190,18 +190,19 @@ onMounted(() => {
 <style lang="scss" scoped>
 .reviews-container {
     width: 100%;
-    margin: 0 auto;
-    padding: 40px 90px;
-    gap: 30px;
+    padding: clamp(50px, 7vw, 90px) 20px;
     background-color: var(--body-background);
+    overflow: hidden;
 }
 
 .title {
+    margin: 0;
     text-align: center;
     color: var(--title-h1);
-    margin-top: 0;
-    font-size: 36px;
+    font-family: var(--font-heading);
+    font-size: clamp(30px, 4vw, 42px);
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .title span {
@@ -209,13 +210,15 @@ onMounted(() => {
 }
 
 .description {
-    text-align: center;
-    width: 90%;
-    margin: 20px auto 30px;
-    line-height: 1.6;
-    font-size: 20px;
+    width: 100%;
+    max-width: 860px;
+    margin: 20px auto 32px;
     color: var(--text-description);
-    max-width: 60%;
+    font-family: var(--font-main);
+    font-size: clamp(15px, 1.7vw, 19px);
+    line-height: 1.65;
+    text-align: center;
+    overflow-wrap: break-word;
 }
 
 .reviews-actions {
@@ -230,22 +233,57 @@ onMounted(() => {
     border-radius: 10px;
     background: var(--btn-primary-bg);
     color: var(--text-gray-btn);
-    cursor: pointer;
+    font-family: var(--font-ui);
     font-size: 15px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.3s ease;
 }
 
-.review-add-btn:hover {
+.review-add-btn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
+.review-add-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.reviews-message,
+.reviews-error {
+    max-width: 860px;
+    margin: 0 auto 24px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-family: var(--font-main);
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.reviews-message {
+    color: var(--text-description);
+    background-color: var(--card-block);
+}
+
+.reviews-error {
+    color: var(--error-message);
+    background-color: var(--message-bg);
+    border: 1px solid var(--error-message);
+}
+
 .reviews-grid {
     width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 30px;
 }
 
 /* MODAL */
@@ -254,26 +292,31 @@ onMounted(() => {
     position: fixed;
     inset: 0;
     z-index: 1200;
+    padding: 20px;
     background: var(--review-modal-overlay, rgba(0, 0, 0, 0.55));
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    overflow-y: auto;
 }
 
 .review-form {
     width: min(100%, 520px);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 16px;
     background: var(--modal-bg);
     color: var(--text-modal);
-    border-radius: 16px;
-    padding: 28px;
     box-shadow: 0 10px 34px rgba(0, 0, 0, 0.35);
 }
 
 .review-form__title {
     margin: 0 0 20px;
     color: var(--text-h2);
-    font-size: 24px;
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 3vw, 26px);
+    font-weight: 700;
 }
 
 .review-form__label {
@@ -282,20 +325,25 @@ onMounted(() => {
     gap: 8px;
     margin-bottom: 15px;
     color: var(--text-description);
+    font-family: var(--font-main);
     font-size: 14px;
 }
 
 .review-form__input,
 .review-form__textarea {
     width: 100%;
+    padding: 12px 14px;
     border: 1px solid var(--review-input-border, rgba(127, 127, 127, 0.35));
+    border-radius: 10px;
     background: var(--body-background);
     color: var(--text-h2);
-    border-radius: 10px;
-    padding: 12px 14px;
+    font-family: var(--font-main);
     font-size: 15px;
     outline: none;
     box-sizing: border-box;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .review-form__textarea {
@@ -306,6 +354,7 @@ onMounted(() => {
 .review-form__input:focus,
 .review-form__textarea:focus {
     border-color: var(--title-h1-accent);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.18);
 }
 
 .review-form__actions {
@@ -319,8 +368,9 @@ onMounted(() => {
     padding: 11px 16px;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
+    font-family: var(--font-ui);
     font-weight: 600;
+    cursor: pointer;
 }
 
 .review-form__btn--submit {
@@ -333,69 +383,33 @@ onMounted(() => {
     color: var(--text-bg);
 }
 
-/* ADAPTIVE */
-
-@media (min-width: 1440px) {
-    .reviews-container {
-        padding: 60px 120px;
-    }
-
-    .description {
-        max-width: 70%;
-        font-size: 19px;
-    }
-
-    .reviews-grid {
-        gap: 30px;
-        max-width: 1360px;
-        margin: 0 auto;
-    }
-}
-
 @media (min-width: 1025px) and (max-width: 1439px) {
-    .reviews-container {
-        padding: 50px 80px;
-    }
-
-    .description {
-        max-width: 65%;
-    }
-
     .reviews-grid {
+        max-width: 1180px;
         gap: 25px;
     }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .reviews-container {
-        padding: 40px 60px;
-    }
-
-    .description {
-        max-width: 80%;
-        font-size: 17px;
-    }
-
     .reviews-grid {
-        grid-template-columns: repeat(2, 1fr);
+        max-width: 860px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
     .reviews-container {
-        padding: 35px 40px;
+        padding: 55px 30px;
     }
 
     .description {
-        max-width: 85%;
-        font-size: 16px;
-        line-height: 1.5;
+        margin-bottom: 32px;
     }
 
     .reviews-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 18px;
     }
 
     .review-form {
@@ -405,27 +419,39 @@ onMounted(() => {
 
 @media (max-width: 480px) {
     .reviews-container {
-        padding: 30px 20px;
-    }
-
-    .title {
-        font-size: 28px;
+        padding: 45px 18px;
     }
 
     .description {
-        max-width: 95%;
-        font-size: 15px;
-        line-height: 1.4;
-        margin: 15px auto 25px;
+        margin: 16px auto 28px;
+        max-width: 100%;
+        line-height: 1.55;
+    }
+
+    .reviews-actions {
+        margin-bottom: 28px;
+    }
+
+    .review-add-btn {
+        width: 100%;
+        max-width: 320px;
     }
 
     .reviews-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 14px;
+    }
+
+    .review-modal {
+        padding: 14px;
+        align-items: flex-start;
     }
 
     .review-form {
+        width: 100%;
+        max-height: none;
         padding: 18px;
+        margin: 20px 0;
     }
 
     .review-form__actions {

@@ -111,19 +111,22 @@ const submitForm = async () => {
 <style lang="scss" scoped>
 .feedback-form-container {
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    height: 100%;
+    margin: 0;
+    padding: clamp(18px, 2vw, 24px);
     background-color: var(--card-block);
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .feedback-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1;
 }
 
 .form-group {

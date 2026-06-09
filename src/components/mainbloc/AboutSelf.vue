@@ -1,33 +1,46 @@
 <template>
-  <div  id="about" class="about-me-container">
-    <h1 class="title">Обо <span>мне</span></h1>
-    <p class="description">
-      Создаю современные веб-решения с акцентом на качество, функциональность и продуманный пользовательский опыт.
-      Разрабатываю лендинги, сайты-визитки, многостраничные и высоконагруженные проекты, а также нестандартные решения и
-      цифровые приглашения для особых событий. Использую как полноценную разработку на коде, так и low-code инструменты,
-      что позволяет запускать проекты гибко и эффективно, сохраняя высокий уровень реализации.
-    </p>
+  <section id="about" class="about-me-container">
+    <div class="about-content">
+      <h1 class="title">Обо <span>мне</span></h1>
 
-    <div class="stack-and-grid">
-      <div class="tech-stack">
-        <h1 class="tech-stack-title">Технологический стек</h1>
-        <div v-for="tech in techStack" :key="tech.name" class="tech-item">
-          <h1 class="tech-name">{{ tech.name }}</h1>
-          <div class="progress-bar" :style="getGradientStyle(tech.level)">
-            <div class="progress-fill" :style="{ width: tech.level + '%' }"></div>
+      <p class="description">
+        Я веб-разработчик, который помогает запускать понятные,
+        аккуратные и удобные цифровые продукты. Работаю с кодом,
+        интерфейсами и low-code решениями, подбирая формат под задачу
+        клиента.
+      </p>
+
+      <div class="stack-and-grid">
+        <div class="tech-stack">
+          <h2 class="tech-stack-title">Технологический стек</h2>
+
+          <div v-for="tech in techStack" :key="tech.name" class="tech-item">
+            <h3 class="tech-name">
+              {{ tech.name }}
+            </h3>
+
+            <div class="progress-bar" :style="getGradientStyle()">
+              <div class="progress-fill" :style="{ width: tech.level + '%' }"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div v-for="skill in skills" :key="skill.title" class="skill-card">
+            <component :is="skill.icon" class="skill-icon" />
+
+            <h3 class="skill-title">
+              {{ skill.title }}
+            </h3>
+
+            <p class="skill-description">
+              {{ skill.description }}
+            </p>
           </div>
         </div>
       </div>
-
-      <div class="skills-grid">
-        <div v-for="skill in skills" :key="skill.title" class="skill-card">
-          <component :is="skill.icon" class="skill-icon" />
-          <h1 class="skill-title">{{ skill.title }}</h1>
-          <div class="skill-description">{{ skill.description }}</div>
-        </div>
-      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -36,75 +49,66 @@ import StarIcon from '../icons/StarIcon.vue';
 import GridIcon from '../icons/GridIcon.vue';
 import ArrowsIcon from '../icons/ArrowsIcon.vue';
 
-
-
 const techStack = [
   { name: 'Vue 3', level: 90 },
   { name: 'JavaScript', level: 85 },
   { name: 'HTML / CSS', level: 90 },
   { name: 'Tailwind CSS', level: 90 },
-  { name: 'Tilda', level: 90 }
+  { name: 'Tilda', level: 90 },
 ];
 
 const skills = [
   {
     icon: ArrowsIcon,
     title: 'Frontend',
-    description: 'Разработка на Vue 3 и чистом JavaScript'
+    description: 'Разработка интерфейсов на Vue 3 и JavaScript',
   },
   {
     icon: GridIcon,
-    title: 'Дизайн-макеты',
-    description: 'Уверенная работа с Pixso и Figma'
+    title: 'UI-макеты',
+    description: 'Работа с макетами в Figma и Pixso',
   },
   {
     icon: PenIcon,
     title: 'Вёрстка',
-    description: 'Чистый HTML, CSS'
+    description: 'Адаптивная HTML/CSS-вёрстка под разные устройства',
   },
   {
     icon: StarIcon,
-    title: 'Платформы',
-    description: 'Создание эффективных сайтов на Tilda'
-  }
+    title: 'Low-code',
+    description: 'Создание сайтов на Tilda и похожих платформах',
+  },
 ];
 
-function getGradientStyle(level) {
-  if (level >= 90) {
-    return { background: 'var(--progress-bar-bg)' };
-  } else if (level >= 75) {
-    return { background: 'var(--progress-bar-bg)' };
-  } else {
-    return { background: 'var(--progress-bar-bg)' };
-  }
+function getGradientStyle() {
+  return {
+    background: 'var(--progress-bar-bg)',
+  };
 }
 </script>
-
 
 <style lang="scss" scoped>
 .about-me-container {
   width: 100%;
-  margin: 0 auto;
-  padding: 40px 20px;
-  gap: 30px;
+  padding: clamp(50px, 7vw, 90px) 20px;
   background-color: var(--body-background);
+  overflow: hidden;
 }
 
-.stack-and-grid {
-  width: 90%;
+.about-content {
+  width: 100%;
+  max-width: 1360px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  padding: 40px 0;
-  gap: 20px;
 }
 
 .title {
+  margin: 0;
   text-align: center;
   color: var(--title-h1);
-  margin-top: 0;
-  font-size: 36px;
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 4vw, 42px);
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .title span {
@@ -112,54 +116,72 @@ function getGradientStyle(level) {
 }
 
 .description {
-  text-align: center;
-  width: 90%;
-  margin: 20px auto 40px;
-  line-height: 1.6;
-  font-size: 20px;
+  width: 100%;
+  max-width: 860px;
+  margin: 20px auto 45px;
   color: var(--text-description);
-  max-width: 60%;
+  font-family: var(--font-main);
+  font-size: clamp(15px, 1.7vw, 19px);
+  line-height: 1.65;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.stack-and-grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.tech-stack,
+.skills-grid {
+  flex: 1;
+  min-width: 0;
 }
 
 .tech-stack {
-  width: 48%;
-  background-color: var(--card-block);
-  padding: 30px;
+  padding: clamp(22px, 3vw, 32px);
   border-radius: 16px;
+  background-color: var(--card-block);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .tech-stack-title {
-  color: var(--text-h2);
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 30px;
-  border-bottom: 2px solid var(--underscore-text);
+  margin: 0 0 28px;
   padding-bottom: 10px;
+  border-bottom: 2px solid var(--underscore-text);
+  color: var(--text-h2);
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.2vw, 26px);
+  font-weight: 700;
   text-align: left;
 }
 
 .tech-item {
-  margin-bottom: 25px;
-  transition: all 0.3s ease;
+  margin-bottom: 24px;
   padding: 5px;
   border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.tech-item:last-child {
+  margin-bottom: 0;
 }
 
 .tech-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
 }
 
 .tech-name {
+  margin: 0 0 10px;
   color: var(--text-h2);
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 400;
+  font-family: var(--font-ui);
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 500;
 }
 
 .progress-bar {
@@ -172,21 +194,20 @@ function getGradientStyle(level) {
 .progress-fill {
   height: 100%;
   border-radius: 8px;
+  background: linear-gradient(90deg, #4caf50, #ffa500);
   transition: width 0.5s ease;
-  background: linear-gradient(90deg, #4CAF50, #FFA500);
 }
 
 .skills-grid {
-  width: 50%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
 .skill-card {
-  background-color: var(--card-block);
-  padding: 10px;
+  padding: clamp(16px, 2vw, 24px);
   border-radius: 16px;
+  background-color: var(--card-block);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: all 0.3s ease;
@@ -198,68 +219,113 @@ function getGradientStyle(level) {
 }
 
 .skill-icon {
-  margin-top: 20px;
-  font-size: 36px;
-  margin-bottom: 20px;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 18px;
   display: inline-block;
 }
 
 .skill-title {
-  font-size: 18px;
+  margin: 0 0 8px;
   color: var(--text-h2);
-  margin: 0 0 5px;
+  font-family: var(--font-ui);
+  font-size: clamp(15px, 1.4vw, 18px);
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .skill-description {
-  color: var(--text-h2);
-  line-height: 1.6;
   max-width: 250px;
   margin: 0 auto;
+  color: var(--text-h2);
+  font-family: var(--font-main);
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.55;
 }
 
-@media (min-width: 1025px) {
-  .stack-and-grid {
+@media (min-width: 1440px) {
+  .about-content {
     max-width: 1360px;
-    justify-content: center;
   }
 
   .description {
-    max-width: 70%;
+    max-width: 860px;
   }
-}
 
-@media (max-width: 1024px) {
   .stack-and-grid {
-    display: block;
-    padding: 20px 0;
-  }
-
-  .tech-stack {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .skills-grid {
-    width: 100%;
-    gap: 15px;
+    gap: 30px;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+  .about-content {
+    max-width: 860px;
+  }
+
+  .stack-and-grid {
+    flex-direction: column;
+  }
+
+  .tech-stack,
   .skills-grid {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .about-me-container {
+    padding: 55px 30px;
+  }
+
+  .stack-and-grid {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .tech-stack,
+  .skills-grid {
+    width: 100%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-me-container {
+    padding: 45px 18px;
+  }
+
+  .description {
+    margin: 16px auto 32px;
+    max-width: 100%;
+    line-height: 1.55;
+  }
+
+  .stack-and-grid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tech-stack,
+  .skills-grid {
+    width: 100%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .skill-card {
-    padding: 15px;
-    margin: 5px 0;
+    padding: 16px;
   }
 
-  .description {
-    max-width: 90%;
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 14px;
   }
 }
 </style>

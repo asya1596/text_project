@@ -1,14 +1,24 @@
 <template>
-    <div  id="contacts" class="contact-container">
-        <h1 class="title">Давайте <span>сотрудничать</span></h1>
-        <p class="description">
-            Свяжитесь со мной, если у вас есть вопросы или вы хотите обсудить ваш проект.
-        </p>
-        <div class="contact-grid">
-            <social-links class="social-links-component" />
-            <feedback-form class="feedback-form-component" />
+    <section id="contacts" class="contacts-section">
+        <div class="contacts-content">
+            <h1 class="title">Давайте <span>сотрудничать</span></h1>
+
+            <p class="description">
+                Напишите мне, если хотите обсудить проект, уточнить стоимость
+                или подобрать подходящий формат работы.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <SocialLinks class="social-links-component" />
+                </div>
+
+                <div class="contact-card">
+                    <FeedbackForm class="feedback-form-component" />
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup>
@@ -17,26 +27,27 @@ import FeedbackForm from '../cards/FeedbackForm.vue';
 </script>
 
 <style lang="scss" scoped>
-.contact-container {
+.contacts-section {
+    width: 100%;
+    padding: clamp(50px, 7vw, 90px) 20px;
+    background-color: var(--body-background);
+    overflow: hidden;
+}
+
+.contacts-content {
     width: 100%;
     max-width: 1360px;
     margin: 0 auto;
-    padding: 40px 20px;
-    gap: 30px;
-    background-color: var(--body-background);
 }
 
 .title {
+    margin: 0;
     text-align: center;
     color: var(--title-h1);
-    margin-top: 0;
-    font-size: 36px;
+    font-family: var(--font-heading);
+    font-size: clamp(30px, 4vw, 42px);
     font-weight: 700;
-
-    @media (max-width: 480px) {
-        font-size: 28px;
-        padding: 0 10px;
-    }
+    line-height: 1.2;
 }
 
 .title span {
@@ -44,102 +55,109 @@ import FeedbackForm from '../cards/FeedbackForm.vue';
 }
 
 .description {
-    text-align: center;
-    width: 90%;
-    margin: 20px auto 40px;
-    line-height: 1.6;
-    font-size: 20px;
+    width: 100%;
+    max-width: 860px;
+    margin: 20px auto 45px;
     color: var(--text-description);
-    max-width: 60%;
-
-    @media (max-width: 480px) {
-        font-size: 16px;
-        line-height: 1.5;
-        width: 95%;
-        margin: 15px auto 30px;
-    }
+    font-family: var(--font-main);
+    font-size: clamp(15px, 1.7vw, 19px);
+    line-height: 1.65;
+    text-align: center;
+    overflow-wrap: break-word;
 }
 
 .contact-grid {
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
     gap: 30px;
-    padding: 0 40px;
+}
 
-    @media (min-width: 769px) and (max-width: 1024px) {
-        padding: 0 20px;
+.contact-card {
+    min-width: 0;
+    height: 100%;
+    display: flex;
+}
+
+.contact-card :deep(.social-links-container),
+.contact-card :deep(.feedback-form-container) {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+.contact-card :deep(.feedback-form),
+.contact-card :deep(.social-links-container) {
+    flex: 1;
+}
+
+.social-links-component,
+.feedback-form-component {
+    width: 100%;
+}
+
+@media (min-width: 1440px) {
+    .contacts-content {
+        max-width: 1360px;
+    }
+
+    .contact-grid {
+        gap: 30px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1439px) {
+    .contacts-content {
+        max-width: 1180px;
+    }
+
+    .contact-grid {
         gap: 25px;
     }
+}
 
-    @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 20px;
-        padding: 0 20px;
-        margin: 0 -20px;
-
-        >* {
-            width: 100%;
-            margin: 0;
-            box-sizing: border-box;
-            padding: 0 20px;
-        }
+@media (min-width: 769px) and (max-width: 1024px) {
+    .contacts-content {
+        max-width: 860px;
     }
 
-    @media (min-width: 1025px) {
-        max-width: 1360px;
-        margin: 0 auto;
-        padding: 0;
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .contacts-section {
+        padding: 55px 30px;
+    }
+
+    .description {
+        margin-bottom: 32px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
     }
 }
 
 @media (max-width: 480px) {
-    .contact-container {
-        padding: 30px 10px;
+    .contacts-section {
+        padding: 45px 18px;
     }
 
-    .social-links-component {
-        width: 100% !important;
-        padding: 0 10px !important;
+    .description {
+        margin: 16px auto 32px;
+        max-width: 100%;
+        line-height: 1.55;
+    }
 
-        .social-links-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            padding: 15px 0;
-        }
-
-        .social-link {
-            flex: 0 1 calc(33.333% - 8px);
-            max-width: calc(33.333% - 8px);
-            text-align: center;
-
-            @media (max-width: 360px) {
-                flex: 0 1 calc(50% - 6px);
-                max-width: calc(50% - 6px);
-            }
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            font-size: 20px;
-
-            @media (max-width: 360px) {
-                width: 32px;
-                height: 32px;
-                font-size: 16px;
-            }
-        }
-
-        .social-text {
-            font-size: 12px;
-            line-height: 1.2;
-
-            @media (max-width: 360px) {
-                font-size: 11px;
-            }
-        }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
 }
 </style>

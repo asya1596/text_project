@@ -1,16 +1,25 @@
 <template>
-    <section id="services" class="serveses-container">
-        <h1 class="title">Мои <span>услуги</span></h1>
+    <section id="services" class="services-section">
+        <div class="services-content">
+            <h1 class="title">Мои <span>услуги</span></h1>
 
-        <p class="description">
-            Создаю современные веб-решения — от идеи до готового результата.
-            Качественная разработка, внимание к деталям и прозрачные условия
-            сотрудничества. Стоимость услуг — от 1500 ₽.
-        </p>
+            <p class="description">
+                Создаю современные веб-решения — от идеи до готового результата.
+                Качественная разработка, внимание к деталям и прозрачные условия
+                сотрудничества. Стоимость услуг — от 1500 ₽.
+            </p>
 
-        <div class="serveses-grid">
-            <ServiceCard v-for="service in services" :key="service.title" :icon="service.icon" :title="service.title"
-                :description="service.description" :to="service.to" :card-class="service.cardClass" />
+            <div class="services-grid">
+                <ServiceCard
+                    v-for="service in services"
+                    :key="service.title"
+                    :icon="service.icon"
+                    :title="service.title"
+                    :description="service.description"
+                    :to="service.to"
+                    :card-class="service.cardClass"
+                />
+            </div>
         </div>
     </section>
 </template>
@@ -66,20 +75,27 @@ const services = [
 </script>
 
 <style lang="scss" scoped>
-.serveses-container {
+.services-section {
     width: 100%;
-    margin: 0 auto;
-    padding: 40px 90px;
-    gap: 30px;
+    padding: clamp(50px, 7vw, 90px) 20px;
     background-color: var(--body-background);
+    overflow: hidden;
+}
+
+.services-content {
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
 }
 
 .title {
+    margin: 0;
     text-align: center;
     color: var(--title-h1);
-    margin-top: 0;
-    font-size: 36px;
+    font-family: var(--font-heading);
+    font-size: clamp(30px, 4vw, 42px);
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .title span {
@@ -87,105 +103,88 @@ const services = [
 }
 
 .description {
-    text-align: center;
-    width: 90%;
-    margin: 20px auto 40px;
-    line-height: 1.6;
-    font-size: 20px;
+    width: 100%;
+    max-width: 860px;
+    margin: 20px auto 45px;
     color: var(--text-description);
-    max-width: 60%;
+    font-family: var(--font-main);
+    font-size: clamp(15px, 1.7vw, 19px);
+    line-height: 1.65;
+    text-align: center;
+    overflow-wrap: break-word;
 }
 
-.serveses-grid {
+.services-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
 }
 
 @media (min-width: 1440px) {
-    .serveses-container {
-        padding: 60px 120px;
+    .services-content {
+        max-width: 1360px;
     }
 
     .description {
-        max-width: 70%;
-        font-size: 19px;
+        max-width: 860px;
     }
 
-    .serveses-grid {
+    .services-grid {
         gap: 30px;
-        max-width: 1360px;
-        margin: 0 auto;
     }
 }
 
 @media (min-width: 1025px) and (max-width: 1439px) {
-    .serveses-container {
-        padding: 50px 80px;
+    .services-content {
+        max-width: 1180px;
     }
 
-    .description {
-        max-width: 65%;
-    }
-
-    .serveses-grid {
+    .services-grid {
         gap: 25px;
     }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .serveses-container {
-        padding: 40px 60px;
+    .services-content {
+        max-width: 860px;
     }
 
-    .description {
-        max-width: 80%;
-        font-size: 17px;
-    }
-
-    .serveses-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-    .serveses-container {
-        padding: 35px 40px;
+    .services-section {
+        padding: 55px 30px;
     }
 
     .description {
-        max-width: 85%;
-        font-size: 16px;
-        line-height: 1.5;
+        margin-bottom: 32px;
     }
 
-    .serveses-grid {
+    .services-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 18px;
     }
 }
 
 @media (max-width: 480px) {
-    .serveses-container {
-        padding: 30px 20px;
-    }
-
-    .title {
-        font-size: 28px;
+    .services-section {
+        padding: 45px 18px;
     }
 
     .description {
-        max-width: 95%;
-        font-size: 15px;
-        line-height: 1.4;
-        margin: 15px auto 30px;
+        margin: 16px auto 32px;
+        max-width: 100%;
+        line-height: 1.55;
     }
 
-    .serveses-grid {
-        gap: 12px;
+    .services-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
     }
 }
 </style>

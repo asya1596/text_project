@@ -1,9 +1,16 @@
 <template>
-    <h1>Мои <span>работы</span></h1>
-    <div  id="portfolio" class="portfolio-grid">
-        <portfolio-card v-for="project in projects" :key="project.id" :link="project.link" :image="project.image"
-            :title="project.title" :overlay-text="project.overlayText" />
-    </div>
+    <section id="portfolio" class="portfolio-section">
+        <div class="portfolio-content">
+            <h1 class="portfolio-title">
+                Мои <span>работы</span>
+            </h1>
+
+            <div class="portfolio-grid">
+                <PortfolioCard v-for="project in projects" :key="project.id" :link="project.link" :image="project.image"
+                    :title="project.title" :overlay-text="project.overlayText" />
+            </div>
+        </div>
+    </section>
 </template>
 
 <script setup>
@@ -23,79 +30,102 @@ const projects = [
         link: 'https://zarema-nedvizh-krd.ru/',
     },
 ];
-
 </script>
 
 <style lang="scss" scoped>
-h1 {
-    text-align: center;
-    color: var(--title-h1);
-    font-weight: 600;
-    font-size: 36px;
-    padding-left: 5%;
-    transition: color 0.2s ease-out;
-    margin-bottom: 10px;
-    margin-top: 10px;
+.portfolio-section {
+    width: 100%;
+    padding: clamp(50px, 7vw, 90px) 20px;
+    background-color: var(--body-background);
+    overflow: hidden;
 }
 
-h1 span {
+.portfolio-content {
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.portfolio-title {
+    margin: 0 0 40px;
+    text-align: center;
+    color: var(--title-h1);
+    font-family: var(--font-heading);
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    transition: color 0.2s ease-out;
+}
+
+.portfolio-title span {
     color: var(--title-h1-accent);
 }
 
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
     width: 100%;
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+}
 
-    @media (min-width: 1600px) {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        padding: 30px;
-        max-width: 1420px;
+@media (min-width: 1440px) {
+    .portfolio-content {
+        max-width: 1360px;
     }
 
-    @media (min-width: 1440px) and (max-width: 1599px) {
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 35px;
-        max-width: 1400px;
-    }
-
-    @media (min-width: 1280px) and (max-width: 1439px) {
-        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    .portfolio-grid {
         gap: 30px;
     }
+}
 
-    @media (min-width: 1024px) and (max-width: 1279px) {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-        padding: 15px;
-        max-width: 1000px;
+@media (min-width: 1025px) and (max-width: 1439px) {
+    .portfolio-content {
+        max-width: 1180px;
     }
 
-    @media (min-width: 768px) and (max-width: 1023px) {
-        grid-template-columns: 1fr;
+    .portfolio-grid {
+        gap: 25px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .portfolio-content {
+        max-width: 860px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
-        padding: 15px;
-        max-width: 90%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .portfolio-section {
+        padding: 55px 30px;
     }
 
-    @media (max-width: 767px) {
+    .portfolio-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
-        margin: 0 auto;
-        padding: 10px;
-        max-width: 92%;
+        gap: 18px;
     }
 
-    @media (max-width: 480px) {
-        gap: 10px;
-        padding: 8px;
-        margin: 0 auto;
+    .portfolio-title {
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-section {
+        padding: 45px 18px;
+    }
+
+    .portfolio-title {
+        margin-bottom: 28px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
 }
 </style>

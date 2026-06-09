@@ -136,7 +136,7 @@ const toggleMobileMenu = () => {
 
 .nav__link {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(13px, 1vw, 16px);
+  font-size: clamp(16px, 1vw, 19px);
   font-weight: 500;
   color: var(--nav-link);
   text-decoration: none;
